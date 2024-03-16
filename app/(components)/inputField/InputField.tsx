@@ -1,12 +1,18 @@
 import { InputType } from "@/types";
 
-const InputField: React.FC<InputType> = ({ placeholder, value, onChange }) => {
+const InputField: React.FC<InputType> = ({
+  placeholder,
+  value,
+  onChange,
+  type,
+}) => {
   return (
     <>
       <div className="flex flex-col  justify-center items-center mb-2 ">
         <input
           placeholder={placeholder}
           value={value}
+          type={type}
           onChange={onChange}
           className="w-[447px]
            h-[58px]

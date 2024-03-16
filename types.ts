@@ -4,4 +4,5 @@ export type InputType = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   label?: string;
+  type?: string;
 };

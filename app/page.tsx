@@ -1,5 +1,9 @@
+import { getServerSession } from "next-auth";
 import ListImage from "../public/Lists.png";
-export default function Home() {
+export default async function Home() {
+  const user = getServerSession();
+  console.log(user);
+
   return (
     <>
       <div
@@ -12,12 +16,7 @@ export default function Home() {
         }}
       >
         <div>
-          <h1>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            iste at doloremque maiores totam assumenda, explicabo minima in, sed
-            beatae facilis dolorum quia quasi, optio sequi. Illum corporis culpa
-            dolorum.
-          </h1>
+          <div>hello</div>
         </div>
       </div>
     </>

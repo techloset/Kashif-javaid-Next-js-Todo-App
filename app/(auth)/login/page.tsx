@@ -6,10 +6,21 @@ import LabelText from "@/app/(components)/labelText/LabelText";
 import InputField from "@/app/(components)/inputField/InputField";
 import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { signIn } from "next-auth/react";
+import Router from "next/router";
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const handler = (e: FormEvent) => {
+    e.preventDefault();
+    signIn("Sign", {
+      email,
+      password,
+      redirect: false,
+    });
+    Router.replace("/");
+  };
   return (
     <>
       <div
@@ -25,6 +36,7 @@ export default function page() {
           <LabelText name="Email" />
           <InputField
             placeholder="Email"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -33,6 +45,7 @@ export default function page() {
           </h1>
           <InputField
             placeholder="Confirm password"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -40,7 +53,7 @@ export default function page() {
             Forget Password
           </h1>
           <GoogleButton title="Sign In with Google" />
-          <Button title="Sign In" />
+          <Button title="Sign In" onClick={handler} />
         </div>
         <div className="pb-3 pt-[113px] flex justify-end  items-end  mr-2 text-8xl text-custom-signup font-normal ">
           sign In.
