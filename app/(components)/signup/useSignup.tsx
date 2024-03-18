@@ -23,7 +23,7 @@ export default function useSignup() {
       }
       const { existing } = res.data;
 
-      if (!existing) {
+      if (existing) {
         alert("Email already exists");
         return router.push("/login");
       }

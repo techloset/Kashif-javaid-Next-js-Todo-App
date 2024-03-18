@@ -1,8 +1,8 @@
-import { getServerSession } from "next-auth";
+"use client";
+import { signOut, useSession, signIn } from "next-auth/react";
 import ListImage from "../public/Lists.png";
-export default async function Home() {
-  const user = getServerSession();
-  console.log(user);
+export default function Home() {
+  const { status } = useSession();
 
   return (
     <>
@@ -16,7 +16,18 @@ export default async function Home() {
         }}
       >
         <div>
-          <div>hello</div>
+          <div>
+            {status === "authenticated" ? (
+              <div>
+                <div>Hello, user!</div>
+                <button onClick={() => signOut()}>Sign Out</button>
+              </div>
+            ) : (
+              <div>
+                <button onClick={() => signIn()}>Sign In </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

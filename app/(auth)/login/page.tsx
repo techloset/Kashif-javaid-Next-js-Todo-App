@@ -8,18 +8,20 @@ import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
+
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handler = (e: FormEvent) => {
+  const router = useRouter();
+  const handler = async (e: FormEvent) => {
     e.preventDefault();
     signIn("Sign", {
       email,
       password,
       redirect: false,
     });
-    Router.replace("/");
+    router.push("/home");
   };
   return (
     <>
@@ -52,7 +54,10 @@ export default function page() {
           <h1 className="flex justify-center text-white pl-[300px] mt-[16px]">
             Forget Password
           </h1>
-          <GoogleButton title="Sign In with Google" />
+          <GoogleButton
+            title="Sign In with Google"
+            onClick={() => signIn("google")}
+          />
           <Button title="Sign In" onClick={handler} />
         </div>
         <div className="pb-3 pt-[113px] flex justify-end  items-end  mr-2 text-8xl text-custom-signup font-normal ">

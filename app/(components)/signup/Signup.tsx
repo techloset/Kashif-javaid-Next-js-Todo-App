@@ -8,6 +8,7 @@ import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
 import useSignup from "./useSignup";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 export default function Signup(props: { title: string }) {
   const {
@@ -65,7 +66,7 @@ export default function Signup(props: { title: string }) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <GoogleButton title="Sign Up with Google" />
+        <GoogleButton title="Sign Up with Google" onClick={() => signIn()} />
         <Button title="Sign Up" onClick={formHandle} />
         <div className="flex justify-center mr-28 mt-[21px]">
           <h1 className="text-white font-medium text-xl">

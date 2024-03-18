@@ -1,14 +1,19 @@
-import ListImage from "../../public/Lists.png";
+"use client";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
 
-export default function Page() {
+export default function Profile() {
+  const { data: session } = useSession();
+
   return (
-    <div
-      style={{
-        backgroundImage: `url(${ListImage.src})`,
-        backgroundSize: "cover",
-        width: "100%",
-        height: "100vh",
-      }}
-    ></div>
+    <div>
+      <Image
+        src={session?.user?.image ?? ""}
+        alt="Profile Image"
+        width={40}
+        height={40}
+      />
+      <span>Name:{session?.user?.name}</span>
+    </div>
   );
 }
