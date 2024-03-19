@@ -1,12 +1,12 @@
 import { prisma } from "@/prisma/client";
-import { AuthOptions } from "next-auth";
+import { AuthOptions, User } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
-import axios from "axios";
 export const authOptions: AuthOptions = {
   secret: process.env.NextAuth_SECRET,
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -47,29 +47,38 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }: any) {
-      console.log(user);
-      if (account?.provider === "google") {
-        try {
-          const { name, email } = await user;
-          const res = await axios.post("api/google", {
-            name,
-            email,
-          });
-          if (res) {
-            return user;
+    async signIn({ account, profile }: any) {
+      if (account.provider === "google") {
+        const existingUser = await prisma.user.findUnique({
+          where: { email: profile.email },
+        });
+        if (existingUser) {
+          console.log("User already exists:", existingUser);
+        } else {
+          try {
+            const newUser = await prisma.user.create({
+              data: {
+                name: profile.name,
+                email: profile.email,
+                password: "",
+              },
+            });
+            console.log("User created:", newUser);
+          } catch (error) {
+            console.log("Error creating user:", error);
           }
-        } catch (error) {
-          console.log("error", error);
         }
       }
-
-      return user;
+      return profile;
     },
   },
 
   session: {
     strategy: "jwt",
+  },
+  pages: {
+    signIn: "/home",
+    error: "/auth/error",
   },
 
   debug: process.env.NODE_ENV === "development",
