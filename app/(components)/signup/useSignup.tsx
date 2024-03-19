@@ -21,11 +21,11 @@ export default function useSignup() {
       if (res.status !== 200) {
         throw new Error("Server error");
       }
-      const { existing } = res.data;
+      const { existingUser } = res.data;
 
-      if (existing) {
-        alert("Email already exists");
-        return router.push("/login");
+      if (existingUser) {
+        alert("User already exists");
+        return existingUser;
       }
 
       await axios.post("api/register", {

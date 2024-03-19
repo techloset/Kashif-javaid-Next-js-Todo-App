@@ -13,16 +13,25 @@ import { useRouter } from "next/navigation";
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const router = useRouter();
   const handler = async (e: FormEvent) => {
     e.preventDefault();
-    signIn("Sign", {
-      email,
-      password,
-      redirect: false,
-    });
-    router.push("/home");
+    try {
+      const res = await signIn("signup", {
+        email,
+        password,
+        redirect: false,
+      });
+      console.log(res);
+      console.log(handler);
+
+      router.replace("/home");
+    } catch (error) {
+      console.log("error", error);
+    }
   };
+
   return (
     <>
       <div
@@ -56,7 +65,7 @@ export default function page() {
           </h1>
           <GoogleButton
             title="Sign In with Google"
-            onClick={() => signIn("google")}
+            onClick={() => signIn("google", { callbackUrl: "/" })}
           />
           <Button title="Sign In" onClick={handler} />
         </div>

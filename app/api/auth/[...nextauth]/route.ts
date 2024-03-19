@@ -1,12 +1,12 @@
 import { prisma } from "@/prisma/client";
-import { AuthOptions, User } from "next-auth";
+import { AuthOptions } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
-export const authOptions: AuthOptions = {
-  secret: process.env.NextAuth_SECRET,
 
+export const authOptions: AuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -14,38 +14,38 @@ export const authOptions: AuthOptions = {
     }),
 
     CredentialsProvider({
-      name: "Sign",
-      credentials: {
-        email: { label: "email", type: "email", placeholder: "email" },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "Password",
-        },
-      },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+      name: "signup",
+      credentials: {},
+      async authorize(signup: any) {
+        try {
+          const { email, password } = signup;
+          if (!email || !password) {
+            return null;
+          }
+          const user = await prisma.user.findUnique({
+            where: {
+              email,
+            },
+          });
+          if (!user) {
+            return null;
+          }
+          const passwordMatch = await bcrypt.compare(password, user.password);
+          console.log(passwordMatch);
+
+          if (!passwordMatch) {
+            return null;
+          }
+
+          return user;
+        } catch (error) {
+          console.log("error ", error);
           return null;
         }
-        const user = await prisma.user.findUnique({
-          where: {
-            email: credentials.email,
-          },
-        });
-        if (!user) {
-          return null;
-        }
-        const passwordMatch = await bcrypt.compare(
-          credentials.password,
-          user.password
-        );
-        if (!passwordMatch) {
-          return null;
-        }
-        return user;
       },
     }),
   ],
+
   callbacks: {
     async signIn({ account, profile }: any) {
       if (account.provider === "google") {
@@ -76,12 +76,10 @@ export const authOptions: AuthOptions = {
   session: {
     strategy: "jwt",
   },
-  pages: {
-    signIn: "/home",
-    error: "/auth/error",
-  },
 
-  debug: process.env.NODE_ENV === "development",
+  pages: {
+    signIn: "/login",
+  },
 };
 
 const handler = NextAuth(authOptions);

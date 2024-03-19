@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Profile() {
   const { data: session } = useSession();
@@ -14,6 +14,10 @@ export default function Profile() {
         height={40}
       />
       <span>Name:{session?.user?.name}</span>
+      <div>
+        <div>Hello, user!</div>
+        <button onClick={() => signOut()}>Sign Out</button>
+      </div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export default function Home() {
           height: "100vh",
         }}
       >
-        <div>
+        {/* <div>
           <div>
             {status === "authenticated" ? (
               <div>
@@ -28,7 +28,8 @@ export default function Home() {
               </div>
             )}
           </div>
-        </div>
+        </div> */}
+        <h1>hello</h1>
       </div>
     </>
   );
