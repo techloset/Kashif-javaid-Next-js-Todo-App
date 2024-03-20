@@ -18,17 +18,16 @@ export default function page() {
   const handler = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await signIn("signup", {
+      console.log(email);
+      console.log(password);
+      await signIn("credentials", {
         email,
         password,
         redirect: false,
       });
-      console.log(res);
-      console.log(handler);
-
-      router.replace("/home");
+      router.push("/home");
     } catch (error) {
-      console.log("error", error);
+      console.log(error);
     }
   };
 

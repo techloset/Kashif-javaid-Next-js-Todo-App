@@ -25,9 +25,9 @@ export default function useSignup() {
 
       if (existingUser) {
         alert("User already exists");
+        router.push("/login");
         return existingUser;
       }
-
       await axios.post("api/register", {
         name,
         email,

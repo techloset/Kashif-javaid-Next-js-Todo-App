@@ -1,9 +1,9 @@
-import { prisma } from "@/prisma/client";
 import { AuthOptions } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
+import { prisma } from "@/prisma/client";
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -14,43 +14,41 @@ export const authOptions: AuthOptions = {
     }),
 
     CredentialsProvider({
-      name: "signup",
+      name: "credentials",
       credentials: {},
-      async authorize(signup: any) {
-        try {
-          const { email, password } = signup;
-          if (!email || !password) {
-            return null;
-          }
-          const user = await prisma.user.findUnique({
-            where: {
-              email,
-            },
-          });
-          if (!user) {
-            return null;
-          }
-          const passwordMatch = await bcrypt.compare(password, user.password);
-          console.log(passwordMatch);
+      async authorize(credentials: any) {
+        const { email, password } = credentials;
 
-          if (!passwordMatch) {
-            return null;
-          }
-
-          return user;
-        } catch (error) {
-          console.log("error ", error);
+        if (!email || !password) {
           return null;
         }
+
+        const user = await prisma.user.findUnique({
+          where: {
+            email,
+          },
+        });
+
+        if (!user) {
+          return null;
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+          return null;
+        }
+
+        return user;
       },
     }),
   ],
 
   callbacks: {
     async signIn({ account, profile }: any) {
-      if (account.provider === "google") {
+      if (account?.provider === "google") {
         const existingUser = await prisma.user.findUnique({
-          where: { email: profile.email },
+          where: { email: profile?.email },
         });
         if (existingUser) {
           console.log("User already exists:", existingUser);
@@ -58,8 +56,8 @@ export const authOptions: AuthOptions = {
           try {
             const newUser = await prisma.user.create({
               data: {
-                name: profile.name,
-                email: profile.email,
+                name: profile?.name,
+                email: profile?.email,
                 password: "",
               },
             });
@@ -69,16 +67,15 @@ export const authOptions: AuthOptions = {
           }
         }
       }
-      return profile;
+      return true;
     },
   },
 
   session: {
     strategy: "jwt",
   },
-
   pages: {
-    signIn: "/login",
+    signIn: "/signup",
   },
 };
 
