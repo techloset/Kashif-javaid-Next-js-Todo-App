@@ -28,6 +28,7 @@ export default function useSignup() {
         router.push("/login");
         return existingUser;
       }
+
       await axios.post("api/register", {
         name,
         email,

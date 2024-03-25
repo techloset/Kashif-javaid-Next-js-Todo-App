@@ -19,6 +19,15 @@ model User {
     @@map("users")
 }
 
+model Todo {
+    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    title         String
+    createdAt     DateTime  @default(now())
+    emailVerified DateTime? @map("verifiedAt")
+
+    @@map("todos")
+}
+
 model Session {
     id           String   @id @default(auto()) @map("_id") @db.ObjectId
     sessionToken String   @unique
