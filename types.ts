@@ -6,3 +6,8 @@ export type InputType = {
   label?: string;
   type?: string;
 };
+
+export interface TodoItem {
+  id: string;
+  title: string;
+}

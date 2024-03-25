@@ -1,27 +1,44 @@
-"use client";
-import { useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
-export default function useCreate() {
+const useCreate = () => {
   const [title, setTitle] = useState("");
-  const formHandler = async () => {
+  const [data, setData] = useState([]);
+  const addlist = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!title) {
+      alert("Please enter title");
+      return;
+    }
+
     try {
-      const res = await axios.post("api/createtodo", {
+      await axios.post("api/createtodo", {
         title,
       });
-      console.log(res.data);
-
-      console.log("created");
+      alert("Success to create");
     } catch (error) {
-      console.log("error creating");
+      console.log(error);
     }
   };
 
-  {
-  }
-
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("api/createtodo", {});
+      const responseData = res.data.response;
+      setData(responseData);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
   return {
     title,
     setTitle,
-    formHandler,
+    fetchData,
+    data,
+    addlist,
   };
-}
+};
+
+export default useCreate;

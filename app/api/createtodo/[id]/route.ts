@@ -20,3 +20,20 @@ export const PUT = async (
     return NextResponse.json({ message: "error" });
   }
 };
+
+export const GET = async (
+  requestL: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  try {
+    const { id } = params;
+    const title = await prisma.todo.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return NextResponse.json({ title });
+  } catch (error) {
+    return NextResponse.json({ error });
+  }
+};
