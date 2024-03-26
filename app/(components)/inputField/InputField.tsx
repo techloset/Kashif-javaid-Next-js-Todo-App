@@ -24,7 +24,7 @@ const InputField: React.FC<InputType> = ({
             outline-none
             text-white
             px-8
-            text-xl
+            text-30px
                "
         />
       </div>

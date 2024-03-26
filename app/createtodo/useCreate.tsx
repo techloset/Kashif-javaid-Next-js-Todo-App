@@ -15,9 +15,8 @@ const useCreate = () => {
         title,
       });
       alert("Success to create");
-    } catch (error) {
-      console.log(error);
-    }
+      setTitle("");
+    } catch (error) {}
   };
 
   const fetchData = async () => {
@@ -25,13 +24,11 @@ const useCreate = () => {
       const res = await axios.get("api/createtodo", {});
       const responseData = res.data.response;
       setData(responseData);
-    } catch (error) {
-      console.log("Error fetching data:", error);
-    }
+    } catch (error) {}
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [data]);
   return {
     title,
     setTitle,

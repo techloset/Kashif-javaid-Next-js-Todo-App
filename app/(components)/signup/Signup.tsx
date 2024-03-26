@@ -49,14 +49,16 @@ export default function Signup(props: { title: string }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <LabelText name="Password" />
+          <div className="ml-16">
+            <LabelText name="Password" />
+          </div>
           <InputField
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <h1 className="flex justify-center mr-[260px] text-white mb-2">
+          <h1 className="flex justify-center mr-[140px] text-30px text-white mb-2">
             Confirm Password
           </h1>
           <InputField
@@ -68,12 +70,14 @@ export default function Signup(props: { title: string }) {
         </div>
         <GoogleButton title="Sign Up with Google" onClick={() => signIn()} />
         <Button title="Sign Up" onClick={formHandle} />
-        <div className="flex justify-center mr-28 mt-[21px]">
-          <h1 className="text-white font-medium text-xl">
+        <div className="flex justify-center mr-[90px] mt-[18px]">
+          <h1 className="text-white font-medium text-20px mt-2">
             Already have an account?
           </h1>
           <Link href="/login">
-            <h1 className="ml-2 text-orange-500 text-xl underline">Log In</h1>
+            <h1 className="ml-2 text-orange-500 text-30px underline  pb-2">
+              Log In
+            </h1>
           </Link>
         </div>
         <div className="pb-3 pt-[113px] flex justify-end  items-end  mr-2 text-8xl text-custom-signup font-normal ">

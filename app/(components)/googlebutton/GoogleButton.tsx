@@ -19,7 +19,7 @@ export default function GoogleButton(props: {
             height={48}
             alt="Image not found"
           />
-          <h1 className="  w-[339px] h-[39px]  text-orange-500 text-3xl font-medium">
+          <h1 className="  w-[339px] h-[39px]  text-orange-500 text-30px font-medium">
             {props.title}
           </h1>
         </button>

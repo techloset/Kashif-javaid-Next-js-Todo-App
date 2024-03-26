@@ -30,16 +30,20 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <LabelText name="Password" />
+          <div className="ml-16">
+            <LabelText name="Password" />
+          </div>
           <InputField
             placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <h1 className="flex justify-center text-white mt-4">
-            Forget Password
-          </h1>
+          <div className="flex justify-center ml-[130px]">
+            <h1 className=" text-20px text-white mt-4 ml-[120px]">
+              Forget Password
+            </h1>
+          </div>
           <GoogleButton
             title="Sign In with Google"
             onClick={() => signIn("google", { callbackUrl: "/" })}

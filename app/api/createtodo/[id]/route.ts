@@ -22,7 +22,7 @@ export const PUT = async (
 };
 
 export const GET = async (
-  requestL: NextRequest,
+  request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   try {
