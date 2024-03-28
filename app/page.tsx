@@ -1,19 +1,28 @@
-import { signOut } from "next-auth/react";
+"use client";
+import Image from "next/image";
 import header from "../public/header.png";
 import navbar from "../public/Lists.png";
-import Image from "next/image";
+
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 export default function Page() {
   return (
     <div
       style={{
-        position: "relative",
         backgroundImage: `url(${navbar.src})`,
-        backgroundSize: "cover",
+        backgroundSize: "100vh 100vh",
+        minHeight: "170vh",
       }}
     >
       <Image src={header} alt="Image Not found" />
+      <button
+        className="ml-5 text-white text-20px border-[3px] px-2 py-1 border-orange-600 rounded-full"
+        onClick={() => signOut({ callbackUrl: "/login" })}
+      >
+        Signout
+      </button>
+
       <div className="flex justify-center">
         <h1 className="text-white mt-[16px] text-124px font-normal ">
           Todo Lists
@@ -57,7 +66,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex h-fit">
         <div className="flex mt-[18px] text-white ml-[295px] ">
           <div className="border-custom-border5 border-b-[16px] flex text-64px ">
             <Link href={"/createtodo"} className="flex ">
@@ -68,17 +77,6 @@ export default function Page() {
             </Link>
           </div>
         </div>
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          left: 0,
-          width: "100%",
-          zIndex: -1,
-        }}
-      >
-        <Image src={navbar} alt="not" />
       </div>
     </div>
   );

@@ -1,37 +1,49 @@
 "use client";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import Image from "next/image";
+import navbar from "../../../public/Lists.png";
+import header from "../../../public/header.png";
+import InputField from "@/app/(components)/inputField/InputField";
+import useId from "./useId";
 
-export default function usePage(id: string) {
-  const [topic, setTopic] = useState<any>(null);
-  const [edit, setEdit] = useState("");
+export default function Page({
+  params,
+}: {
+  params: { id: string; title: string };
+}) {
+  const { id } = params;
 
-  useEffect(() => {
-    const fetchTopic = async () => {
-      try {
-        const res = await axios.get(`api/createtodo/${id}`);
-        if (res.status === 200) {
-          setTopic(res.data.topic);
-          setEdit(res.data.topic.title); // Assuming the title is present in the topic data
-        } else {
-          throw new Error("Failed to fetch todo");
-        }
-      } catch (error) {
-        console.error("Error fetching todo:", error);
-      }
-    };
+  const { setTopicTitle, handleEdit } = useId(params);
 
-    fetchTopic();
-  }, [id]);
+  return (
+    <>
+      <div
+        className="relative h-screen"
+        style={{
+          backgroundImage: `url(${navbar.src})`,
+          backgroundSize: "cover",
+          width: "100%",
+          height: "100vh",
+        }}
+      >
+        <Image src={header} alt="Image Not found" />
 
-  const handleEdit = () => {
-    setEdit("");
-  };
+        <div className="mt-[125px]">
+          <InputField
+            type="text"
+            placeholder="Edit Todo"
+            onChange={(e) => setTopicTitle(e.target.value)}
+          />
+        </div>
 
-  return {
-    topic,
-    edit,
-    setEdit,
-    handleEdit,
-  };
+        <div className="flex justify-center items-center mt-[91px] ">
+          <button
+            className="bg-orange-500 w-[210px] h-[63px] rounded-full"
+            onClick={handleEdit}
+          >
+            <h1 className="font-medium text-3xl">Edit List.</h1>
+          </button>
+        </div>
+      </div>
+    </>
+  );
 }

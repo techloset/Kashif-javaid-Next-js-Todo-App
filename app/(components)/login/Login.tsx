@@ -50,7 +50,7 @@ export default function Login() {
           />
           <Button title="Sign In" onClick={handler} />
         </div>
-        <div className="absolute bottom-0 right-0 pb-3 pt-28 mr-2 text-5xl text-white">
+        <div className="absolute bottom-0 right-0 pb-3 pt-28 mr-2 text-100px text-white">
           Sign In
         </div>
       </div>

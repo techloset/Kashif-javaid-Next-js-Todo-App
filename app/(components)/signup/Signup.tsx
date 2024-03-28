@@ -80,7 +80,7 @@ export default function Signup(props: { title: string }) {
             </h1>
           </Link>
         </div>
-        <div className="pb-3 pt-[113px] flex justify-end  items-end  mr-2 text-8xl text-custom-signup font-normal ">
+        <div className="pb-3 pt-[113px] flex justify-end  items-end  mr-2 text-100px text-custom-signup font-normal ">
           sign up.
         </div>
       </div>

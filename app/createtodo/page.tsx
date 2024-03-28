@@ -1,11 +1,12 @@
 "use client";
-import header from "../../public/header.png";
-import navbar from "../../public/Lists.png";
-import useCreate from "./useCreate";
-import InputField from "../(components)/inputField/InputField";
 import Image from "next/image";
-import { TodoItem } from "@/types";
+import navbar from "../../public/Lists.png";
+import header from "../../public/header.png";
+import InputField from "../(components)/inputField/InputField";
+
 import Link from "next/link";
+import useCreate from "./useCreate";
+import { TodoItem } from "@/types";
 
 export default function Page() {
   const { title, setTitle, data, addlist } = useCreate();
@@ -43,13 +44,14 @@ export default function Page() {
     "border-custom-border-todo8",
     "border-custom-border-todo9",
   ];
+
   return (
     <div
       className="relative"
       style={{
         backgroundImage: `url(${navbar.src})`,
-        backgroundSize: "cover",
-        width: "100%",
+        backgroundSize: "150vh",
+
         height: "100%",
       }}
     >
@@ -78,7 +80,7 @@ export default function Page() {
                 <div className={`${colorClass} ${borderClass}`}>
                   <Link href={`/edittodo/${item.id}`}>
                     <h1
-                      className={`w-[277px] h-[58px] rounded-full text-3xl font-medium p-3  px-20 py-5 ${textClass}`}
+                      className={`w-[277px] h-[58px] rounded-full text-3xl font-medium p-3  px-20 py-5 text-center ${textClass}`}
                     >
                       {item.title}
                     </h1>
