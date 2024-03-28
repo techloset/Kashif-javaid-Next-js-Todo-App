@@ -1,22 +1,18 @@
 import React from "react";
 
-export default function Alert() {
+interface AlertProps {
+  message: string;
+  onClose: () => void;
+}
+
+const Alert: React.FC<AlertProps> = (props: { message: string }) => {
   return (
-    <div
-      className="bg-teal-50 border-t-2 border-teal-500 rounded-lg p-4 dark:bg-teal-800/30"
-      role="alert"
-    >
-      <div className="flex">
-        <div className="flex-shrink-0"></div>
-        <div className="ms-3">
-          <h3 className="text-gray-800 font-semibold dark:text-white">
-            Successfully updated.
-          </h3>
-          <p className="text-sm text-gray-700 dark:text-gray-400">
-            You have successfully updated your email preferences.
-          </p>
-        </div>
+    <div role="alert" className="w-[350px]">
+      <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+        {props.message}
       </div>
     </div>
   );
-}
+};
+
+export default Alert;

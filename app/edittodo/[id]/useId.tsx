@@ -22,10 +22,6 @@ const useId = ({ id, title }: { id: string; title: string }) => {
   }, [id]);
 
   const handleEdit = async () => {
-    if (!title) {
-      alert("Please enter a title");
-      return;
-    }
     try {
       const res = await axios.put(
         `http://localhost:3000/api/createtodo/${id}`,
@@ -33,6 +29,10 @@ const useId = ({ id, title }: { id: string; title: string }) => {
           title: topicTitle,
         }
       );
+      if (title) {
+        alert("Please enter a title");
+        return;
+      }
 
       alert("success update");
     } catch (error) {
