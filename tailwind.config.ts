@@ -34,6 +34,7 @@ const config: Config = {
         "custom-text-todo7": "#4A0E5C",
         "custom-text-todo8": "#FFBE00",
         "custom-text-todo9": "#CBE4DE",
+        "custom-background-color": "#D9D9D9",
       },
 
       borderColor: {

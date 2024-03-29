@@ -28,6 +28,15 @@ model Todo {
     @@map("todos")
 }
 
+model Profile {
+    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    file          String
+    createdAt     DateTime  @default(now())
+    emailVerified DateTime? @map("verifiedAt")
+
+    @@map("profile")
+}
+
 model Session {
     id           String   @id @default(auto()) @map("_id") @db.ObjectId
     sessionToken String   @unique
