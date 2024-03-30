@@ -1,34 +1,29 @@
 import { prisma } from "@/prisma/client";
+import { writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
   try {
     const data = await request.formData();
-    const file = data.get("file");
+    const file = await data.get("file");
 
     if (!file) {
-      return NextResponse.json({ message: "No file selected", status: 400 });
+      return NextResponse.json({ message: "No file found" });
     }
 
-    const byteData = await file.arrayBuffer();
-    const buffer = Buffer.from(byteData);
+    const buffer = Buffer.from(await file.arrayBuffer());
 
-    // Extract filename (assuming the file object has a `name` property)
-    const filename = file.name;
+    const fileName = file.name; // Retrieve the name of the file
 
-    await prisma.profile.create({
-      data: {
-        image: buffer, // Pass the buffer directly
-        filename: filename, // Add filename as a separate property
-      },
+    const createdProfile = await prisma.profile.createMany({
+      data: { file: fileName },
     });
 
-    return NextResponse.json({ message: "success", status: 200 });
+    await writeFile(`uploads/${fileName}`, buffer);
+
+    return NextResponse.json({ message: "success" });
   } catch (error) {
-    console.error("Error:", error);
-    return NextResponse.json({
-      message: "Error occurred while processing the request",
-      status: 500,
-    });
+    console.error("Error processing request:", error);
+    return NextResponse.json({ message: "error" });
   }
 };

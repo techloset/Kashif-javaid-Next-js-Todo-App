@@ -11,8 +11,6 @@ export default function useLogin() {
   const handler = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      console.log(email);
-      console.log(password);
       await signIn("credentials", {
         email,
         password,

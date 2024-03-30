@@ -12,30 +12,20 @@ import axios from "axios";
 export default function Page() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [file, setFiles] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(null);
 
   const handler = () => {};
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const res = await axios.post("api/uploadimage", {
+      file: file?.name,
+    });
+    console.log(res.data);
 
     if (!file) {
       console.error("No file selected");
       return;
-    }
-
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const result = await axios.post("api/uploadimage", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log(result);
-    } catch (error) {
-      console.error("Error:", error);
     }
   };
 
@@ -63,15 +53,11 @@ export default function Page() {
               className="relative top-[50px] left-14 "
             />
           </div>
-          <form
-            onSubmit={handleSubmit}
-            method="POST"
-            enctype="multipart/form-data"
-            className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer"
-          >
+          <form className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer">
             <input
               type="file"
               name="file"
+              onChange={(e) => setFile(e.target.files?.[0] || null)}
               className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer"
             />
           </form>
@@ -96,7 +82,7 @@ export default function Page() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <Button title="Change Password" onClick={handler} />
+          <Button title="Change Password" onClick={handleSubmit} />
         </div>
       </div>
     </>
