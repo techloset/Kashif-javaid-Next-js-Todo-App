@@ -89,6 +89,7 @@ export default function Page({ params }: { params: { id: string } }) {
               className="relative top-[50px] left-14 "
             />
           </div>
+
           <form className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer">
             <input
               type="file"
