@@ -30,7 +30,7 @@ model Todo {
 
 model Profile {
     id            String    @id @default(auto()) @map("_id") @db.ObjectId
-    file          String
+    imageUrl      String
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
 
