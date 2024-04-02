@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import navbar from "../../../public/Lists.png";
-import header from "../../../public/header.png";
+import navbar from "../../../../public/Lists.png";
+import header from "../../../../public/header.png";
 import InputField from "@/app/(components)/inputField/InputField";
 import useId from "./useId";
 
