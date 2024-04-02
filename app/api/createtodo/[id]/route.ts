@@ -6,13 +6,14 @@ export const PUT = async (
 ) => {
   try {
     const { id } = params;
-    const { title } = await request.json();
+    const { title, color } = await request.json();
     await prisma.todo.update({
       where: {
         id: id,
       },
       data: {
         title,
+        color,
       },
     });
     return NextResponse.json({ message: "success" });

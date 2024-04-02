@@ -2,11 +2,14 @@
 import Image from "next/image";
 import header from "../public/header.png";
 import navbar from "../public/Lists.png";
-
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import usePage from "./usePage";
+import { TodoItem } from "@/types";
 
 export default function Page() {
+  const { data } = usePage();
+
   return (
     <div
       style={{
@@ -29,52 +32,40 @@ export default function Page() {
         </h1>
         <h1 className="text-orange-600 text-124px font-normal">.</h1>
       </div>
-      <div className="text-white ml-[295px] text-64px ">
-        <Link href={"/home"}>
-          <div className="border-custom-border1 border-b-8 w-[178px] ">
-            <h1 className="relative right-2 top-8">Home</h1>
+      <div className="ml-[295px] text-64px ">
+        <div>
+          <div className="w-auto flex flex-col">
+            {data &&
+              data.map((item: TodoItem, index: number) => {
+                return (
+                  <div key={index} className="w-fit  h-[83px]">
+                    <div className="text-white ">
+                      <h1
+                        className={`  text-white h-[18px] my-2  ${item.color}`}
+                      >
+                        <div>
+                          <h1 className="inline-block relative bottom-14 right-2">
+                            {item.title}
+                          </h1>
+                        </div>
+                      </h1>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
-        </Link>
-
-        <div className="border-custom-border2 border-b-8 w-[164px] ">
-          <h1 className="relative right-3 top-8 w-[160px]">
-            <Link href={"/work"}>Work</Link>
-          </h1>
-        </div>
-
-        <div className="border-custom-border3 border-b-8 w-[178px] ">
-          <h1 className="relative right-3 top-8 w-[160px]">
-            <Link href={"/home"}>Home</Link>
-          </h1>
-        </div>
-
-        <div className="border-custom-border4 border-b-8 w-[178px] ">
-          <h1 className="relative right-3 top-8 w-[160px]">
-            <Link href={"/work"}>Work</Link>
-          </h1>
-        </div>
-        <div className="border-orange-600 border-b-8 w-[178px] ">
-          <h1 className="relative right-3 top-8 w-[160px]">
-            <Link href={"/home"}>Home</Link>
-          </h1>
-        </div>
-
-        <div className="border-orange-600 border-b-8 w-[178px] ">
-          <h1 className="relative right-3 top-8 w-[160px]">
-            <Link href={"/work"}>Work</Link>
-          </h1>
         </div>
       </div>
 
       <div className="flex h-fit">
         <div className="flex mt-[18px] text-white ml-[295px] ">
           <div className="border-custom-border5 border-b-[16px] flex text-64px ">
-            <Link href={"/createtodo"} className="flex ">
+            <div className="flex ">
               <h1 className="mr-3 relative right-2 top-10">+</h1>
               <h1 className="relative right-3 top-10">
                 <Link href={"/createtodo"}>Add List.</Link>
               </h1>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

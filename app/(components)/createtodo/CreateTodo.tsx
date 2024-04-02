@@ -4,6 +4,7 @@ import navbar from "../../../public/Lists.png";
 import header from "../../../public/header.png";
 import useCreate from "./useCreate";
 import InputField from "@/app/(components)/inputField/InputField";
+import { signOut } from "next-auth/react";
 
 export default function CreateTodo() {
   const {
@@ -23,10 +24,16 @@ export default function CreateTodo() {
       style={{
         backgroundImage: `url(${navbar.src})`,
         backgroundSize: "150vh",
-        height: "100vh",
+        height: "100%",
       }}
     >
       <Image src={header} alt="Header Image" />
+      <button
+        className="ml-5 text-white text-20px border-[3px] px-2 py-1 mt-3 border-orange-600 rounded-full"
+        onClick={() => signOut({ callbackUrl: "/login" })}
+      >
+        Signout
+      </button>
       <div className="mt-[125px]">
         <InputField
           type="text"

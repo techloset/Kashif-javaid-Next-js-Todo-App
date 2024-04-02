@@ -1,13 +1,14 @@
 import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { OnSelectColor } from "@/types";
+import { useRouter } from "next/navigation";
 
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
   const [data, setData] = useState([]);
   const [selectedColor, setSelectedColor] = useState("");
-
+  const router = useRouter();
   const handleColorSelect = (color: string) => {
     setSelectedColor(color);
     if (onSelectColor) {
@@ -31,6 +32,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
       alert("Success to create");
       setTitle("");
       setColor("");
+      router.push("/");
     } catch (error) {}
   };
 

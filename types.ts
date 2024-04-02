@@ -10,6 +10,7 @@ export type InputType = {
 export interface TodoItem {
   id: string;
   title: string;
+  color: string;
 }
 export type OnSelectColor = (color: string) => void;
 
