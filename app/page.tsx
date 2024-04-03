@@ -39,17 +39,24 @@ export default function Page() {
               data.map((item: TodoItem, index: number) => {
                 return (
                   <div key={index} className="w-fit  h-[83px]">
-                    <div className="text-white ">
-                      <h1
-                        className={`  text-white h-[18px] my-2  ${item.color}`}
-                      >
-                        <div>
-                          <h1 className="inline-block relative bottom-14 right-2">
-                            {item.title}
-                          </h1>
-                        </div>
-                      </h1>
-                    </div>
+                    <Link
+                      href={{
+                        pathname: `list/${item.id}`,
+                        query: { color: item.color },
+                      }}
+                    >
+                      <div className="text-white ">
+                        <h1
+                          className={`  text-white h-[18px] my-2  ${item.color}`}
+                        >
+                          <div>
+                            <h1 className="inline-block relative bottom-14 right-2">
+                              {item.title}
+                            </h1>
+                          </div>
+                        </h1>
+                      </div>
+                    </Link>
                   </div>
                 );
               })}

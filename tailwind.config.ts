@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         "custom-input": "#232020",
+        "custom-home-color": "#F9F5EB",
         "custom-signup": "rgba(244, 244, 244, 0.42)",
         "custom-todo1": "#FDFBDA",
         "custom-todo2": "#413543",
