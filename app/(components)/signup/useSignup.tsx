@@ -21,6 +21,7 @@ export default function useSignup() {
       if (res.status !== 200) {
         throw new Error("Server error");
       }
+
       const { existingUser } = res.data;
 
       if (existingUser) {

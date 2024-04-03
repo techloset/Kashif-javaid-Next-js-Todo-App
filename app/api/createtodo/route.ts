@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
   try {
-    const { title, color } = await request.json();
-    const data = await prisma.todo.create({ data: { title, color } });
+    const { title, color, textColor, borderColor } = await request.json();
+    const data = await prisma.todo.create({
+      data: { title, color, textColor, borderColor },
+    });
     return NextResponse.json({ data });
   } catch (error) {
     return NextResponse.json({ message: "error" });

@@ -4,12 +4,7 @@ import { useSearchParams } from "next/navigation";
 import icon from "../../../../public/icon.png";
 import setting from "../../../../public/Tune.png";
 
-export default function Page({
-  params,
-}: {
-  params: { id: string };
-  color: string;
-}) {
+export default function Page({ params }: { params: { id: string } }) {
   const searchParams = useSearchParams();
   const color = searchParams.get("color");
 
@@ -27,23 +22,23 @@ export default function Page({
           className="w-[48px] h-[48px] mt-[24px] mr-[24px]"
         />
       </div>
-      <div className={`relative ${color} h-full`}>
-        <div className={`relative bottom-20 flex flex-wrap`}>
-          {Array.from({ length: 10000 }, (_, i) => (
-            <div
-              key={i}
-              className={`h-[2px] w-[2px] rounded-full ${color} m-1`}
-            ></div>
-          ))}
+      <div
+        className={`${color}   h-full w-full bg-[radial-gradient(#F9F5EB_1px,transparent_2px)] [background-size:16px_16px]`}
+      >
+        <div className="flex justify-center pt-[48px] ">
+          <h1 className="text-124px text-custom-home-color">Home List</h1>
+          <h1 className={`text-124px h-1 text-custom-home-color `}>.</h1>
         </div>
-        <h1 className="text-white ">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
-          neque dolore facere dolor recusandae quia nesciunt minus similique
-          tempora laborum aliquam ea doloribus omnis! Doloribus sed iusto nam
-          debitis dolorem!
-        </h1>
-        <h1>lorem200</h1>
+        <div className="">
+          <input
+            type="text"
+            name="text"
+            className={` ${color} w-[597px]  h-[58px] `}
+          />
+        </div>
       </div>
+
+      <div></div>
     </>
   );
 }

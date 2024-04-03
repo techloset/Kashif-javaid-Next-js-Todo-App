@@ -23,6 +23,8 @@ model Todo {
     id            String    @id @default(auto()) @map("_id") @db.ObjectId
     title         String
     color         String
+    textColor     String
+    borderColor   String
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
 
