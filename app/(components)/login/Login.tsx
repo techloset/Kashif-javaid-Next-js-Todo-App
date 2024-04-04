@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import NavbarImage from "../../../public/navbar.png";
-import ListImage from "../../../public/Lists.png";
+
 import LabelText from "@/app/(components)/labelText/LabelText";
 import InputField from "@/app/(components)/inputField/InputField";
 import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
@@ -13,16 +13,9 @@ export default function Login() {
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(${ListImage.src})`,
-          backgroundSize: "cover",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
+      <div className="h-[900px] bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px]">
         <Image src={NavbarImage} alt="Image Not Found" />
-        <div>
+        <div className="mt-[60px]">
           <LabelText name="Email" />
           <InputField
             placeholder="Email"
@@ -50,8 +43,9 @@ export default function Login() {
           />
           <Button title="Sign In" onClick={handler} />
         </div>
-        <div className="absolute bottom-0 right-0 pb-3 pt-28 mr-2 text-100px text-white">
-          Sign In
+        <div className="absolute   right-0 pt-[20px] flex  mr-2 text-100px text-white">
+          <h1 className="text-100px pt-2"> Sign In</h1>
+          <h1 className="text-100px text-orange-500">.</h1>
         </div>
       </div>
     </>

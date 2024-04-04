@@ -42,12 +42,16 @@ export default function Page() {
                     <Link
                       href={{
                         pathname: `list/${item.id}`,
-                        query: { color: item.color },
+                        query: {
+                          color: item.color,
+                          border: item.textColor,
+                          text: item.borderColor,
+                        },
                       }}
                     >
                       <div className="text-white ">
                         <h1
-                          className={`  text-white h-[18px] my-2  ${item.color}`}
+                          className={`text-white h-[18px] my-2  ${item.color}`}
                         >
                           <div>
                             <h1 className="inline-block relative bottom-14 right-2">

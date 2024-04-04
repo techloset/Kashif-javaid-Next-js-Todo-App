@@ -11,6 +11,8 @@ export interface TodoItem {
   id: string;
   title: string;
   color: string;
+  textColor: string;
+  borderColor: string;
 }
 export type OnSelectColor = (color: string) => void;
 

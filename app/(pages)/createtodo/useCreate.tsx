@@ -53,11 +53,11 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     }
 
     try {
-      await axios.post("api/createtodo", {
+      await axios.post("http://localhost:3000/api/createtodo", {
         title,
         color: selectedColor,
-        textColor: setTextColor,
-        borderColor: setBorderColor,
+        textColor,
+        borderColor,
       });
       alert("Success! To-do created.");
 
@@ -67,7 +67,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("api/createtodo", {});
+      const res = await axios.get("http://localhost:3000/api/createtodo", {});
       const responseData = res.data.response;
       setData(responseData);
     } catch (error) {}

@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import navbarImage from "../../../public/navbar.png";
-import ListImage from "../../../public/Lists.png";
 import InputField from "@/app/(components)/inputField/InputField";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
@@ -25,13 +24,7 @@ export default function Signup(props: { title: string }) {
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(${ListImage.src})`,
-          backgroundSize: "cover",
-          width: "100%",
-        }}
-      >
+      <div className="bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px]">
         <Image src={navbarImage} alt="image not found"></Image>
         <div className="mt-[64px]"></div>
         <div>
@@ -81,7 +74,8 @@ export default function Signup(props: { title: string }) {
           </Link>
         </div>
         <div className="pb-3 pt-[113px] flex justify-end  items-end  mr-2 text-100px text-custom-signup font-normal ">
-          sign up.
+          <h1 className="text-100px">sign up</h1>
+          <h1 className="text-100px text-orange-500">.</h1>
         </div>
       </div>
     </>
