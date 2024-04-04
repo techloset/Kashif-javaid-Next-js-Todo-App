@@ -27,18 +27,8 @@ model Todo {
     borderColor   String
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
-    lists         List[]
 
     @@map("todos")
-}
-
-model List {
-    id     String @id @default(auto()) @map("_id") @db.ObjectId
-    todo   Todo   @relation(fields: [todoId], references: [id])
-    todoId String @db.ObjectId
-    title  String
-
-    @@map("lists")
 }
 
 model Profile {

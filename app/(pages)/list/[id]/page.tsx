@@ -3,12 +3,23 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import icon from "../../../../public/icon.png";
 import setting from "../../../../public/Tune.png";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Page({ params }: { params: { id: string } }) {
+  const [title, setTile] = useState("");
   const searchParams = useSearchParams();
   const color = searchParams.get("color");
   const text = searchParams.get("text");
   const border = searchParams.get("border");
+  const fetchData = async () => {
+    try {
+      const res = await axios.post("http://localhost:3000/api/list", {
+        title,
+      });
+      console.log(res);
+    } catch (error) {}
+  };
 
   return (
     <>
@@ -36,11 +47,12 @@ export default function Page({ params }: { params: { id: string } }) {
             type="text"
             name="text"
             placeholder="Add List"
+            onChange={(e) => e.target.value}
             className={` ${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
           />
         </div>
-        <div>
-          <button>List Add</button>
+        <div className="border-4 w-24 bg-purple-500">
+          <button onClick={fetchData}>List Add</button>
         </div>
       </div>
     </>
