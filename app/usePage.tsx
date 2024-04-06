@@ -8,7 +8,6 @@ export default function usePage() {
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/createtodo", {});
-
       const responseData = res.data.response;
       setData(responseData);
     } catch (error) {

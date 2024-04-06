@@ -1,14 +1,12 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
 import icon from "../../../../public/icon.png";
 import setting from "../../../../public/Tune.png";
 import useList from "../useList";
 
-export default function Page() {
-  const [id, setId] = useState("");
+export default function Page({ params }: { params: { id: string } }) {
   const { color, text, setTitle, title, border, fetchData } = useList({
-    params: { id },
+    params: { id: params.id },
   });
 
   return (

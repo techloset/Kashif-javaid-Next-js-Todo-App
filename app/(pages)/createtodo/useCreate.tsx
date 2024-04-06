@@ -68,6 +68,8 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/createtodo", {});
+      console.log(res);
+
       const responseData = res.data.response;
       setData(responseData);
     } catch (error) {}
