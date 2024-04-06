@@ -11,7 +11,6 @@ export default function usePage() {
 
       const responseData = res.data.response;
       setData(responseData);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

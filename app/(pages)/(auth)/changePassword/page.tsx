@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import NavbarImage from "../../../public/navbar.png";
-import ListImage from "../../../public/Lists.png";
+import NavbarImage from "../../../../public/navbar.png";
+import ListImage from "../../../../public/Lists.png";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import InputField from "@/app/(components)/inputField/InputField";
 import { useState } from "react";

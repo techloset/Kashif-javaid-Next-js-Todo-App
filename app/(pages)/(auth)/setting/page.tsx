@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
-import navbarimage from "../../../public/forget.png";
-import headerimage from "../../../public/Lists.png";
-import profileimage from "../../../public/profile .png";
-import LabelText from "@/app/(components)/labelText/LabelText";
+import navbarimage from "../../../../public/forget.png";
+import headerimage from "../../../../public/Lists.png";
+import profileimage from "../../../../public/profile .png";
+
 import InputField from "@/app/(components)/inputField/InputField";
 import { FormEvent, useState } from "react";
 import axios from "axios";
+import LabelText from "@/app/(components)/labelText/LabelText";
 export default function Page({ params }: { params: { id: string } }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

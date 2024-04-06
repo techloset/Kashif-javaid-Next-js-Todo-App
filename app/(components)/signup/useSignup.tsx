@@ -2,6 +2,7 @@
 import { FormEvent, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 export default function useSignup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +12,7 @@ export default function useSignup() {
   const formHandle = async (e: FormEvent) => {
     e.preventDefault();
     if (!name || !email || !password || !confirmpassword) {
-      alert("Please fill all required fields");
+      toast.error("All fields are required");
       return;
     }
     try {
@@ -25,7 +26,7 @@ export default function useSignup() {
       const { existingUser } = res.data;
 
       if (existingUser) {
-        alert("User already exists");
+        toast.error("User already exists");
         router.push("/login");
         return existingUser;
       }
@@ -35,11 +36,11 @@ export default function useSignup() {
         email,
         password,
       });
-      await alert("Registration successful!");
+      await toast.success(`Successfully registered`);
       router.push("/login");
     } catch (error) {
       console.log("Error: ", error);
-      alert("Registration failed!");
+      toast.error("Could not register");
     }
   };
 

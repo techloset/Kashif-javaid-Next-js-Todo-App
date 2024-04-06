@@ -1,29 +1,19 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import icon from "../../../../public/icon.png";
 import setting from "../../../../public/Tune.png";
-import { useState } from "react";
-import axios from "axios";
+import useList from "../useList";
 
-export default function Page({ params }: { params: { id: string } }) {
-  const [title, setTile] = useState("");
-  const searchParams = useSearchParams();
-  const color = searchParams.get("color");
-  const text = searchParams.get("text");
-  const border = searchParams.get("border");
-  const fetchData = async () => {
-    try {
-      const res = await axios.post("http://localhost:3000/api/list", {
-        title,
-      });
-      console.log(res);
-    } catch (error) {}
-  };
+export default function Page() {
+  const [id, setId] = useState("");
+  const { color, text, setTitle, title, border, fetchData } = useList({
+    params: { id },
+  });
 
   return (
     <>
-      <div className={`${color} h-[96px] flex justify-between`}>
+      <div className={`${color} h-[96px] flex justify-between `}>
         <Image
           src={icon}
           alt="Not found image"
@@ -36,7 +26,7 @@ export default function Page({ params }: { params: { id: string } }) {
         />
       </div>
       <div
-        className={`${color} h-full  bg-[radial-gradient(#F9F5EB_1px,transparent_2px)] [background-size:16px_16px]`}
+        className={`${color} h-auto bg-[radial-gradient(#F9F5EB_1px,transparent_2px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
           <h1 className={`text-124px ${text}`}>Home List</h1>
@@ -47,7 +37,8 @@ export default function Page({ params }: { params: { id: string } }) {
             type="text"
             name="text"
             placeholder="Add List"
-            onChange={(e) => e.target.value}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             className={` ${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
           />
         </div>

@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
   try {
-    const { userId, title } = await request.json();
-    await prisma.list.create({ data: { userId, title } });
+    const { title, todoId } = await request.json();
+    await prisma.list.create({
+      data: { title, todoId },
+    });
     return NextResponse.json({ message: "success" });
   } catch (error) {
     console.error(error);

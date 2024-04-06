@@ -31,6 +31,15 @@ model Todo {
     @@map("todos")
 }
 
+model List {
+    todoId        String    @id @default(auto()) @map("_id") @db.ObjectId
+    title         String
+    createdAt     DateTime  @default(now())
+    emailVerified DateTime? @map("verifiedAt")
+
+    @@map("lists")
+}
+
 model Profile {
     id            String    @id @default(auto()) @map("_id") @db.ObjectId
     imageUrl      String
