@@ -5,66 +5,13 @@ import headerimage from "../../../../public/Lists.png";
 import profileimage from "../../../../public/profile .png";
 
 import InputField from "@/app/(components)/inputField/InputField";
-import { FormEvent, useState } from "react";
-import axios from "axios";
 import LabelText from "@/app/(components)/labelText/LabelText";
+import useSetting from "./useSetting";
 export default function Page({ params }: { params: { id: string } }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [image, setImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const cloud = process.env.CLOUD_NAME;
-  const UPLOAD_PRESET = "todo-app";
-  const handlersubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    if (!image) {
-      console.error("No image selected");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", UPLOAD_PRESET);
-
-    try {
-      const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      const data = await res.data.secure_url;
-      setImageUrl(data);
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-
-    try {
-      axios.post("http://localhost:3000/api/uploadimage", {
-        imageUrl: imageUrl,
-      });
-      console.log(imageUrl);
-    } catch (error) {
-      console.log(error);
-    }
-
-    try {
-      const res = await axios.post(
-        `http://localhost:3000/api/uploadimage/${params.id}`,
-        {
-          imageUrl: imageUrl,
-        }
-      );
-      console.log("update image url", res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { name, setName, email, setEmail, setImage, handlersubmit } =
+    useSetting({
+      params: { id: params.id },
+    });
 
   return (
     <>

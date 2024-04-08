@@ -3,6 +3,7 @@ import Image from "next/image";
 import icon from "../../../../public/icon.png";
 import setting from "../../../../public/Tune.png";
 import useList from "../useList";
+import Link from "next/link";
 
 export default function Page({ params }: { params: { id: string } }) {
   const { color, text, setTitle, title, border, fetchData, data } = useList({
@@ -17,11 +18,13 @@ export default function Page({ params }: { params: { id: string } }) {
           alt="Not found image"
           className="w-[48px] h-[48px] mt-[24px] ml-[24px] "
         />
-        <Image
-          src={setting}
-          alt="Not found image"
-          className="w-[48px] h-[48px] mt-[24px] mr-[24px]"
-        />
+        <Link href={`/setting/${params.id}`}>
+          <Image
+            src={setting}
+            alt="Not found image"
+            className="w-[48px] h-[48px] mt-[24px] mr-[24px]"
+          />
+        </Link>
       </div>
       <div
         className={`${color} h-auto bg-[radial-gradient(#F9F5EB_1px,transparent_2px)] [background-size:16px_16px]`}
