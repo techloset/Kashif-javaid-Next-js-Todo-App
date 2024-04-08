@@ -5,7 +5,7 @@ import setting from "../../../../public/Tune.png";
 import useList from "../useList";
 
 export default function Page({ params }: { params: { id: string } }) {
-  const { color, text, setTitle, title, border, fetchData } = useList({
+  const { color, text, setTitle, title, border, fetchData, data } = useList({
     params: { id: params.id },
   });
 
@@ -40,6 +40,13 @@ export default function Page({ params }: { params: { id: string } }) {
             className={` ${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
           />
         </div>
+        {data &&
+          data.map((item: any, index: number) => (
+            <div key={index}>
+              <p className={`${text}`}>Title: {item.title}</p>
+            </div>
+          ))}
+
         <div className="border-4 w-24 bg-purple-500">
           <button onClick={fetchData}>List Add</button>
         </div>

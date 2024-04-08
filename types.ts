@@ -16,6 +16,11 @@ export interface TodoItem {
 }
 export type OnSelectColor = (color: string) => void;
 
+export interface Item {
+  item: Item;
+  todoId: string;
+}
+
 // type APP = {
 //   TODO_LIST: LIST[]
 //   USER: {}

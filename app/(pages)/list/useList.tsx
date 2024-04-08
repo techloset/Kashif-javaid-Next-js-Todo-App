@@ -1,9 +1,11 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Item } from "@/types";
+import toast from "react-hot-toast";
 
 const useList = ({ params }: { params: { id: string } }) => {
-  console.log(params);
+  const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
   const searchParams = useSearchParams();
   const color = searchParams.get("color");
@@ -12,15 +14,41 @@ const useList = ({ params }: { params: { id: string } }) => {
 
   const fetchData = async () => {
     try {
+      if (!title) {
+        return null;
+      }
+      toast.error("Please select a title");
       const res = await axios.post("http://localhost:3000/api/list", {
         title,
         todoId: params.id,
       });
-      console.log(res);
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchList = async () => {
+    try {
+      const todoId = params.id;
+      const res = await axios.get(`http://localhost:3000/api/list/${todoId}`);
+      console.log(res);
+
+      const responseData = res.data.result.filter(
+        (item: Item) => item.todoId === todoId
+      );
+      setData(responseData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchList();
+  }, [fetchList]);
 
   return {
     title,
@@ -29,6 +57,7 @@ const useList = ({ params }: { params: { id: string } }) => {
     text,
     border,
     fetchData,
+    data,
   };
 };
 

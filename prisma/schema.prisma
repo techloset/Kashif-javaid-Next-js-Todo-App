@@ -32,7 +32,8 @@ model Todo {
 }
 
 model List {
-    todoId        String    @id @default(auto()) @map("_id") @db.ObjectId
+    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    todoId        String    @map("_todoId") // Todo ID
     title         String
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
