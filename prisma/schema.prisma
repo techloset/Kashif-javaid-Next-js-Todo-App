@@ -8,25 +8,15 @@ datasource db {
 }
 
 model User {
-    id       String  @id @default(auto()) @map("_id") @db.ObjectId
-    name     String?
-    email    String  @unique
-    password String
-
+    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    name          String?
+    email         String    @unique
+    password      String
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
     sessions      Session[]
 
     @@map("users")
-}
-
-model Profile {
-    id            String    @id @default(auto()) @map("_id") @db.ObjectId
-    imageUrl      String
-    createdAt     DateTime  @default(now())
-    emailVerified DateTime? @map("verifiedAt")
-
-    @@map("profile")
 }
 
 model Todo {
@@ -49,6 +39,15 @@ model List {
     emailVerified DateTime? @map("verifiedAt")
 
     @@map("lists")
+}
+
+model Profile {
+    id            String    @id @default(auto()) @map("_id") @db.ObjectId
+    imageUrl      String
+    createdAt     DateTime  @default(now())
+    emailVerified DateTime? @map("verifiedAt")
+
+    @@map("profile")
 }
 
 model Session {

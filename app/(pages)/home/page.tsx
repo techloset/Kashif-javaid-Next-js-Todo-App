@@ -14,6 +14,7 @@ export default function Profile() {
         height={40}
       />
       <span>Name:{session?.user?.name}</span>
+      <span>Name:{session?.user?.name}</span>
       <div>
         <div>Hello, user!</div>
         <button onClick={() => signOut()}>Sign Out</button>

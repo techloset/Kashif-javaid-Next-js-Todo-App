@@ -12,6 +12,7 @@ export default function Page({ params }: { params: { id: string } }) {
     useSetting({
       params: { id: params.id },
     });
+  console.log(params);
 
   return (
     <>
