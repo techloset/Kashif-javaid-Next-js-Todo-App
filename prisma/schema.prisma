@@ -12,6 +12,7 @@ model User {
     name          String?
     email         String    @unique
     password      String
+    imageUrl      String?
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
     sessions      Session[]
@@ -39,15 +40,6 @@ model List {
     emailVerified DateTime? @map("verifiedAt")
 
     @@map("lists")
-}
-
-model Profile {
-    id            String    @id @default(auto()) @map("_id") @db.ObjectId
-    imageUrl      String
-    createdAt     DateTime  @default(now())
-    emailVerified DateTime? @map("verifiedAt")
-
-    @@map("profile")
 }
 
 model Session {

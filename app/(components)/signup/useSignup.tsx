@@ -36,6 +36,7 @@ export default function useSignup() {
         email,
         password,
       });
+
       await toast.success(`Successfully registered`);
       router.push("/login");
     } catch (error) {

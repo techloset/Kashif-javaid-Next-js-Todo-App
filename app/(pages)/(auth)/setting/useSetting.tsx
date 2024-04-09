@@ -1,9 +1,7 @@
 "use client";
 import { FormEvent, useState } from "react";
 import axios from "axios";
-
-import toast from "react-hot-toast";
-export default function useSetting({ params }: { params: { id: string } }) {
+export default function useSetting() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -40,7 +38,7 @@ export default function useSetting({ params }: { params: { id: string } }) {
     }
 
     try {
-      await axios.post("http://localhost:3000/api/uploadimage", {
+      await axios.post(`http://localhost:3000/api/register`, {
         imageUrl: imageUrl,
       });
 
