@@ -1,6 +1,6 @@
-"use client";
 import { FormEvent, useState } from "react";
 import axios from "axios";
+
 export default function useSetting() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -8,6 +8,7 @@ export default function useSetting() {
   const [imageUrl, setImageUrl] = useState<string>("");
   const cloud = "dk48g8htz";
   const UPLOAD_PRESET = "todo-app";
+
   const handlersubmit = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -31,22 +32,21 @@ export default function useSetting() {
         }
       );
 
-      const data = await res.data.secure_url;
+      const data = res.data.secure_url;
       setImageUrl(data);
+
+      const uploadRes = await axios.post(
+        `http://localhost:3000/api/uploadimage`,
+        {
+          imageUrl: data,
+        }
+      );
+      console.log(data);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
-
-    try {
-      await axios.post(`http://localhost:3000/api/register`, {
-        imageUrl: imageUrl,
-      });
-
-      console.log(imageUrl);
-    } catch (error) {
-      console.log(error);
-    }
   };
+
   return {
     name,
     setName,

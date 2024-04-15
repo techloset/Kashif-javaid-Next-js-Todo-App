@@ -12,11 +12,12 @@ export default function useLogin() {
   const handler = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await signIn("credentials", {
+      const res = await signIn("credentials", {
         email,
         password,
         redirect: false,
       });
+
       toast.success("User Login successfully");
       router.push("/");
     } catch (error) {

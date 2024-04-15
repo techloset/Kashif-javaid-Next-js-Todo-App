@@ -8,6 +8,7 @@ export default function useSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
+  const [userId, setUserId] = useState("");
   const router = useRouter();
   const formHandle = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,6 +38,8 @@ export default function useSignup() {
         password,
       });
 
+      console.log(setUserId);
+
       await toast.success(`Successfully registered`);
       router.push("/login");
     } catch (error) {
@@ -55,5 +58,7 @@ export default function useSignup() {
     confirmpassword,
     setConfirmPassword,
     formHandle,
+    userId,
+    setUserId,
   };
 }

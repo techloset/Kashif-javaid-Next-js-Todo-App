@@ -13,6 +13,7 @@ const InputField: React.FC<InputType> = ({
           placeholder={placeholder}
           value={value}
           type={type}
+          spellCheck={false}
           onChange={onChange}
           className="w-[447px]
            h-[58px]
