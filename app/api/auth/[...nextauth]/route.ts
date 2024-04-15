@@ -17,7 +17,8 @@ export const authOptions: AuthOptions = {
       name: "credentials",
       credentials: {},
       async authorize(credentials: any) {
-        const { email, password } = credentials;
+        const { userId, email, password } = credentials;
+        console.log(userId);
 
         if (!email || !password) {
           return null;
@@ -59,9 +60,9 @@ export const authOptions: AuthOptions = {
                 name: profile?.name,
                 email: profile?.email,
                 password: "",
+                imageUrl: profile?.imageUrl,
               },
             });
-            console.log("User created:", newUser);
           } catch (error) {
             console.log("Error creating user:", error);
           }

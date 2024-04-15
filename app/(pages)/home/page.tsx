@@ -4,6 +4,8 @@ import { signOut, useSession } from "next-auth/react";
 
 export default function Profile() {
   const { data: session } = useSession();
+  console.log(session);
+
   return (
     <div>
       <Image
@@ -13,6 +15,7 @@ export default function Profile() {
         height={40}
       />
       <span>Name{session?.user?.name}</span>
+      <br />
 
       <div>
         <div>Hello, user!</div>
