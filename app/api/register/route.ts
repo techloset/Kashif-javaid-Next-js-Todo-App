@@ -25,27 +25,3 @@ export const GET = async () => {
     return NextResponse.json({ message: "error" });
   }
 };
-
-export const PUT = async (request: NextRequest) => {
-  try {
-    const { userId, imageUrl } = await request.json();
-
-    console.log(userId);
-    console.log(imageUrl);
-
-    const updatedUser = await prisma.user.update({
-      where: { id: userId },
-      data: {
-        imageUrl,
-      },
-    });
-
-    console.log(updatedUser);
-
-    return NextResponse.json({ message: "success" });
-  } catch (error) {
-    console.log(error, "Error updating");
-
-    return NextResponse.json({ message: "error" });
-  }
-};

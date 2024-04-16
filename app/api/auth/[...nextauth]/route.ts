@@ -17,8 +17,7 @@ export const authOptions: AuthOptions = {
       name: "credentials",
       credentials: {},
       async authorize(credentials: any) {
-        const { userId, email, password } = credentials;
-        console.log(userId);
+        const { email, password } = credentials;
 
         if (!email || !password) {
           return null;

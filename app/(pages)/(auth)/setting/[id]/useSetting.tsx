@@ -2,31 +2,30 @@ import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export default function useSetting() {
+export default function useSetting({ params }: { params: { id: string } }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [data, setData] = useState([]);
   const [imageUrl, setImageUrl] = useState<string>("");
-
   const cloud = "dk48g8htz";
   const UPLOAD_PRESET = "todo-app";
 
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/register", {});
-      const responseData = res.data.data;
-      const userData = responseData[0];
+      const responseData = await res.data.data;
+      const userData = responseData;
 
-      const { id } = userData;
-      setData(responseData);
+      setData(userData);
+      const id = params.id;
+      console.log(id);
 
       try {
         const uploadRes = await axios.put(
-          `http://localhost:3000/api/register`,
+          `http://localhost:3000/api/register/${id}`,
           {
             imageUrl: imageUrl,
-            userId: id,
           }
         );
       } catch (error) {

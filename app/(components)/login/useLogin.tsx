@@ -1,13 +1,14 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function useLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [user, setUser] = useState([]);
   const router = useRouter();
   const handler = async (e: FormEvent) => {
     e.preventDefault();
@@ -25,6 +26,17 @@ export default function useLogin() {
     }
   };
 
+  const showdata = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/register", {});
+      const responseData = await res.data.data;
+      setUser(responseData);
+      console.log(responseData);
+    } catch (error) {}
+  };
+  useEffect(() => {
+    showdata();
+  }, [setUser]);
   return {
     email,
     setEmail,

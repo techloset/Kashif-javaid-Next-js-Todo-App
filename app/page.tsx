@@ -1,15 +1,13 @@
 "use client";
 import Image from "next/image";
-import header from "../public/header.png";
-import navbar from "../public/Lists.png";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import usePage from "./usePage";
-import { TodoItem } from "@/types";
+import { TodoItem, Item } from "@/types";
 import icon from "../public/icon.png";
 import setting from "../public/setting.png";
 export default function Page() {
-  const { data } = usePage();
+  const { data, user } = usePage();
 
   return (
     <div
@@ -21,13 +19,17 @@ export default function Page() {
           alt="Not found"
           className="w-[48px] pt-[24px] ml-[24px]"
         />
-        <Link href={`/setting/`}>
-          <Image
-            src={setting}
-            alt="Not Found"
-            className="w-[48px]  pt-[24px] mr-[24px]"
-          />
-        </Link>
+        {user.map((user: Item, index) => (
+          <div key={index} className="w-fit h-[83px]">
+            <Link href={`/setting/${user.id}`}>
+              <Image
+                src={setting}
+                alt="Not Found"
+                className="w-[48px]  pt-[24px] mr-[24px]"
+              />
+            </Link>
+          </div>
+        ))}
       </div>
 
       <div className=" h-[900px] py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]">

@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import navbarimage from "../../../../public/forget.png";
-import headerimage from "../../../../public/Lists.png";
-import profileimage from "../../../../public/profile .png";
+import navbarimage from "../../../../../public/forget.png";
+import headerimage from "../../../../../public/Lists.png";
+import profileimage from "../../../../../public/profile .png";
 
 import InputField from "@/app/(components)/inputField/InputField";
 import LabelText from "@/app/(components)/labelText/LabelText";
@@ -12,7 +12,6 @@ export default function Page({ params }: { params: { id: string } }) {
     useSetting({
       params: { id: params.id },
     });
-  console.log(params);
 
   return (
     <>

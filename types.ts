@@ -14,6 +14,9 @@ export interface TodoItem {
   textColor: string;
   borderColor: string;
 }
+export interface Item {
+  id: string;
+}
 export type OnSelectColor = (color: string) => void;
 
 export interface Item {
