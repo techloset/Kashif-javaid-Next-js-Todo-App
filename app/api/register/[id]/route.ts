@@ -6,16 +6,18 @@ export const PUT = async (
 ) => {
   try {
     const { id } = params;
+    const { imageUrl, name } = await request.json();
 
-    const { imageUrl } = await request.json();
     const data = await prisma.user.update({
       where: {
         id: id,
       },
       data: {
         imageUrl,
+        name,
       },
     });
+    console.log(data);
 
     return NextResponse.json({ message: "success", data });
   } catch (error) {
@@ -34,6 +36,7 @@ export const GET = async (
         id: id,
       },
     });
+
     return NextResponse.json({ imageUrl });
   } catch (error) {
     return NextResponse.json({ error });

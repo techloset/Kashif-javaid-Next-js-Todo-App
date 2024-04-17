@@ -16,6 +16,7 @@ export interface TodoItem {
 }
 export interface Item {
   id: string;
+  imageUrl: string;
 }
 
 export interface Data {

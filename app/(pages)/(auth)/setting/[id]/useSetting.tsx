@@ -1,12 +1,13 @@
 import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Item } from "@/types";
 
 export default function useSetting({ params }: { params: { id: string } }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState<File | null>(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Item[]>([]);
   const [imageUrl, setImageUrl] = useState<string>("");
   const cloud = "dk48g8htz";
   const UPLOAD_PRESET = "todo-app";
@@ -15,28 +16,25 @@ export default function useSetting({ params }: { params: { id: string } }) {
     try {
       const res = await axios.get("http://localhost:3000/api/register", {});
       const responseData = await res.data.data;
-      const userData = responseData;
 
+      const userData = responseData;
       setData(userData);
       const id = params.id;
-      console.log(id);
+      const currentUser = responseData.find((user: Item) => user.id === id);
 
-      try {
-        const uploadRes = await axios.put(
-          `http://localhost:3000/api/register/${id}`,
-          {
-            imageUrl: imageUrl,
-          }
-        );
-      } catch (error) {
-        console.error("Error uploading image:", error);
+      if (currentUser) {
+        setImageUrl(currentUser.imageUrl);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  const handlersubmit = async (e: FormEvent) => {
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!image) {
@@ -49,7 +47,7 @@ export default function useSetting({ params }: { params: { id: string } }) {
     formData.append("upload_preset", UPLOAD_PRESET);
 
     try {
-      const res = await axios.post(
+      const uploadRes = await axios.post(
         `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
         formData,
         {
@@ -59,8 +57,12 @@ export default function useSetting({ params }: { params: { id: string } }) {
         }
       );
 
-      const imageUrl = res.data.secure_url;
-      setImageUrl(imageUrl);
+      const newImageUrl = uploadRes.data.secure_url;
+      setImageUrl(newImageUrl);
+      const updateRes = await axios.put(
+        `http://localhost:3000/api/register/${params.id}`,
+        { imageUrl: newImageUrl }
+      );
 
       fetchData();
     } catch (error) {
@@ -68,16 +70,14 @@ export default function useSetting({ params }: { params: { id: string } }) {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return {
     name,
     setName,
     email,
     setEmail,
     setImage,
-    handlersubmit,
+    handleSubmit,
+    data,
+    imageUrl,
   };
 }

@@ -50,8 +50,8 @@ export default function Page({ params }: { params: { id: string } }) {
             data.map((item: any, index: number) => (
               <div key={index} className="flex  py-[14px] ">
                 <input
-                  type="checkbox"
-                  className={`h-[48px] w-[48px] rounded-lg ${text} ring-2 focus:ring-${border}  ${color}  appearance-none  border-none cursor-auto`}
+                  type="form-checkbox"
+                  className={`h-[48px] w-[48px] rounded-lg ${text} ring-2 focus:ring-${border}  ${color}   border-none cursor-auto appearance-none accent-red-100 `}
                 />
 
                 <p className={`${text}`}>Title: {item.title}</p>

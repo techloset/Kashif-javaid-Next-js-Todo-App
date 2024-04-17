@@ -3,15 +3,18 @@ import Image from "next/image";
 import navbarimage from "../../../../../public/forget.png";
 import headerimage from "../../../../../public/Lists.png";
 import profileimage from "../../../../../public/profile .png";
-
 import InputField from "@/app/(components)/inputField/InputField";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import useSetting from "./useSetting";
+import { Item } from "@/types";
+import { useState } from "react";
 export default function Page({ params }: { params: { id: string } }) {
-  const { name, setName, email, setEmail, setImage, handlersubmit } =
+  const { data, name, setName, email, setEmail, setImage, handleSubmit } =
     useSetting({
       params: { id: params.id },
     });
+  const [showImage, setShowImage] = useState(true);
+  console.log(data);
 
   return (
     <>
@@ -37,15 +40,31 @@ export default function Page({ params }: { params: { id: string } }) {
               className="relative top-[50px] left-14 "
             />
           </div>
-
           <form className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer">
+            ?
             <input
               type="file"
               name="file"
               onChange={(e) => setImage(e.target.files?.[0] || null)}
-              className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer"
+              className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer "
             />
           </form>
+          :
+          {data.map((user: Item, index: number) => {
+            if (user.id === params.id) {
+              return (
+                <div key={index} className="flex justify-center">
+                  <Image
+                    src={user.imageUrl}
+                    alt="not"
+                    width={20}
+                    height={20}
+                    className="w-[156px] h-[156px]"
+                  />
+                </div>
+              );
+            }
+          })}
         </div>
 
         <h1 className="flex justify-center mt-[11px] text-white font-normal text-30px">
@@ -77,7 +96,7 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
           <div
             className="flex justify-center mt-[36.27px]"
-            onClick={handlersubmit}
+            onClick={handleSubmit}
           >
             <button className="w-[318px] h-[63px] border border-orange-600 bg-orange-600 rounded-full font-medium text-30px px-[24px]  py-[5px]">
               Save Changes
