@@ -17,7 +17,6 @@ export const PUT = async (
         name,
       },
     });
-    console.log(data);
 
     return NextResponse.json({ message: "success", data });
   } catch (error) {

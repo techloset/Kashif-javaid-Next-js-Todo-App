@@ -11,6 +11,14 @@ const useList = ({ params }: { params: { id: string } }) => {
   const color = searchParams.get("color");
   const text = searchParams.get("text");
   const border = searchParams.get("border");
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const handleToggleCheck = (itemId: string) => {
+    if (checkedItems.includes(itemId)) {
+      setCheckedItems(checkedItems.filter((id) => id !== itemId));
+    } else {
+      setCheckedItems([...checkedItems, itemId]);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -35,7 +43,6 @@ const useList = ({ params }: { params: { id: string } }) => {
     try {
       const todoId = params.id;
       const res = await axios.get(`http://localhost:3000/api/list/${todoId}`);
-      console.log(res);
 
       const responseData = res.data.result.filter(
         (item: Item) => item.todoId === todoId
@@ -58,6 +65,8 @@ const useList = ({ params }: { params: { id: string } }) => {
     border,
     fetchData,
     data,
+    checkedItems,
+    handleToggleCheck,
   };
 };
 

@@ -22,6 +22,10 @@ export interface Item {
 export interface Data {
   email: string;
 }
+export interface List {
+  id: string;
+  title: string;
+}
 export type OnSelectColor = (color: string) => void;
 
 export interface Item {

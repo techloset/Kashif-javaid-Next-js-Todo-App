@@ -32,7 +32,7 @@ export default function Page() {
         ))}
       </div>
 
-      <div className=" h-[900px] py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]">
+      <div className=" h-fit py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]">
         <button
           className="ml-5 text-white text-20px border-[3px] px-2 py-1 border-orange-600 rounded-full"
           onClick={() => signOut({ callbackUrl: "/login" })}
@@ -65,7 +65,7 @@ export default function Page() {
                       >
                         <div className="text-white ">
                           <h1
-                            className={`text-white h-[18px] my-2  ${item.color}`}
+                            className={`text-white h-[18px] my-2  bg-${item.color}`}
                           >
                             <div>
                               <h1 className="inline-block relative bottom-14 right-2">

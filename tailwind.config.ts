@@ -58,6 +58,7 @@ const config: Config = {
       fontFamily: {},
     },
     fontSize: {
+      "10px": "10px",
       "20px": "20px",
       "28px": "28px",
       "30px": "30px",

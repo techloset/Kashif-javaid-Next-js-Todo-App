@@ -1,5 +1,4 @@
 import { InputType } from "@/types";
-
 const InputField: React.FC<InputType> = ({
   placeholder,
   value,

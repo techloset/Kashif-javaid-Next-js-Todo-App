@@ -1,31 +1,38 @@
 "use client";
 import Image from "next/image";
-import navbarimage from "../../../../../public/forget.png";
-import headerimage from "../../../../../public/Lists.png";
+import icon from "../../../../../public/icon.png";
+import logout from "../../../../../public/Logout.png";
 import profileimage from "../../../../../public/profile .png";
 import InputField from "@/app/(components)/inputField/InputField";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import useSetting from "./useSetting";
 import { Item } from "@/types";
-import { useState } from "react";
+import Link from "next/link";
 export default function Page({ params }: { params: { id: string } }) {
   const { data, name, setName, email, setEmail, setImage, handleSubmit } =
     useSetting({
       params: { id: params.id },
     });
-  const [showImage, setShowImage] = useState(true);
-  console.log(data);
 
   return (
     <>
-      <div
-        style={{
-          backgroundImage: `url(${headerimage.src})`,
-          backgroundSize: "150vh",
-          height: "100%",
-        }}
-      >
-        <Image src={navbarimage} alt="not found" />
+      <div className="bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_-5px)] [background-size:10px_10px] h-full">
+        <div className="bg-black  bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px]">
+          <div className="flex justify-between">
+            <Image
+              src={icon}
+              alt="not"
+              className="w-[48px] h-[48px] mt-[24px] ml-[24px]"
+            />
+            <Link href={"/"}>
+              <Image
+                src={logout}
+                alt="not"
+                className="w-[48px] h-[48px]  mt-[24px] mr-[24px]"
+              />
+            </Link>
+          </div>
+        </div>
 
         <div className="flex justify-center mt-[60px]">
           <h1 className="text-white text-124px">Settings</h1>
@@ -33,38 +40,47 @@ export default function Page({ params }: { params: { id: string } }) {
         </div>
 
         <div className="flex justify-center mt-4">
-          <div className="w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer">
-            <Image
-              src={profileimage}
-              alt="not found"
-              className="relative top-[50px] left-14 "
-            />
-          </div>
-          <form className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer">
-            ?
+          <div>
             <input
               type="file"
               name="file"
               onChange={(e) => setImage(e.target.files?.[0] || null)}
               className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer "
             />
-          </form>
-          :
-          {data.map((user: Item, index: number) => {
-            if (user.id === params.id) {
-              return (
-                <div key={index} className="flex justify-center">
-                  <Image
-                    src={user.imageUrl}
-                    alt="not"
-                    width={20}
-                    height={20}
-                    className="w-[156px] h-[156px]"
-                  />
-                </div>
-              );
-            }
-          })}
+            <Image
+              src={profileimage}
+              alt="not found"
+              className="relative top-[125px] left-[140px] "
+            />
+          </div>
+          {!data.some(
+            (user: Item) => user.id === params.id && user.imageUrl
+          ) ? (
+            <form className=" w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color ">
+              <input
+                type="file"
+                name="file"
+                onChange={(e) => setImage(e.target.files?.[0] || null)}
+                className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer "
+              />
+            </form>
+          ) : (
+            data.map((user: Item, index: number) => {
+              if (user.id === params.id) {
+                return (
+                  <div key={index} className="flex justify-center">
+                    <Image
+                      src={user.imageUrl}
+                      alt="User Image"
+                      width={200}
+                      height={200}
+                      className="w-[156px] h-[150px] rounded-full bg-cover"
+                    />
+                  </div>
+                );
+              }
+            })
+          )}
         </div>
 
         <h1 className="flex justify-center mt-[11px] text-white font-normal text-30px">

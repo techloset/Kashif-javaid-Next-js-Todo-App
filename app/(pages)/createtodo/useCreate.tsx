@@ -68,7 +68,6 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/createtodo", {});
-      console.log(res);
 
       const responseData = res.data.response;
       setData(responseData);
@@ -79,15 +78,15 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     fetchData();
   }, []);
   const customColors = [
-    "bg-custom-todo1",
-    "bg-custom-todo2",
-    "bg-custom-todo3",
-    "bg-custom-todo4",
-    "bg-custom-todo5",
-    "bg-custom-todo6",
-    "bg-custom-todo7",
-    "bg-custom-todo8",
-    "bg-custom-todo9",
+    "custom-todo1",
+    "custom-todo2",
+    "custom-todo3",
+    "custom-todo4",
+    "custom-todo5",
+    "custom-todo6",
+    "custom-todo7",
+    "custom-todo8",
+    "custom-todo9",
   ];
   const customTexts = [
     "Vintage Garden",

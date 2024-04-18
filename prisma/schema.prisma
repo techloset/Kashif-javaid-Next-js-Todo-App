@@ -12,7 +12,7 @@ model User {
     name          String
     email         String    @unique
     password      String
-    imageUrl      String
+    imageUrl      String?
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
     sessions      Session[]
