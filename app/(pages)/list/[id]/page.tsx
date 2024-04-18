@@ -2,13 +2,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import icon from "../../../../public/icon.png";
+import removeicon from "../../../../public/remove.svg";
+import editicon from "../../../../public/edit.svg";
 import setting from "../../../../public/Tune.png";
 import useList from "../useList";
 import Link from "next/link";
 import { List } from "@/types";
-import Button from "@/app/(components)/button/Button";
 import AddButton from "@/app/(components)/addbutton/AddButton";
-
+import axios from "axios";
+import toast from "react-hot-toast";
 export default function Page({
   params,
 }: {
@@ -24,6 +26,7 @@ export default function Page({
     data,
     checkedItems,
     handleToggleCheck,
+    removeTopic,
   } = useList({
     params: { id: params.id },
   });
@@ -63,7 +66,7 @@ export default function Page({
             className={` bg-${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
           />
         </div>
-        <div className="mt-[49px] ml-[350px] py-[14px]  ">
+        <div className="mt-[49px] ml-[350px] py-[14px] flex flex-col">
           {data &&
             data.map((item: List, index: number) => (
               <div key={index} className="flex flex-col ">
@@ -71,22 +74,40 @@ export default function Page({
                   <input
                     type="checkbox"
                     id={`checkbox-${index}`}
-                    className={`h-[48px] mr-3 py-[10px] w-[48px] rounded-lg ${text} ring-2 ring-${border} ${color} border-none cursor-auto appearance-none checked:appearance-auto  relative bottom-2`}
+                    className={`h-[48px] mr-3 py-[10px] w-[48px] rounded-lg ${text} ring-2 ring-${border} ${color} border-none cursor-auto appearance-none checked:appearance-auto  relative 
+                    bottom-2`}
                     onChange={() => handleToggleCheck(item.id)}
                   />
                   <h1
-                    className={`w-fit h-[20px]  border-b-8 ${
+                    className={`flex  w-fit h-[20px]  border-b-8 ${
                       checkedItems.includes(item.id)
                         ? border
                         : "border-transparent"
                     }`}
                   >
-                    <div>
-                      <h1 className="text-64px relative bottom-10 right-2">
-                        <h1 className={`${text}`}> {item.title}</h1>
+                    <div className="ml-[24px]">
+                      <h1 className="text-64px relative bottom-10 right-2 ">
+                        <h1 className={`${text} `}> {item.title}</h1>
                       </h1>
                     </div>
                   </h1>
+                </div>
+                <div className="flex  w-[700px] ">
+                  <Link href={`/edit/${params.id}`}>
+                    <Image
+                      src={editicon}
+                      alt="not"
+                      className=" relative ml-[500px] bottom-16"
+                    />
+                  </Link>
+
+                  <button onClick={() => removeTopic(item.id)}>
+                    <Image
+                      src={removeicon}
+                      alt="Remove"
+                      className="relative right-2 bottom-16"
+                    />
+                  </button>
                 </div>
               </div>
             ))}

@@ -21,20 +21,3 @@ export const GET = async () => {
     return NextResponse.json({ error });
   }
 };
-
-export const DELETE = async (request: NextRequest) => {
-  try {
-    const id = await request.nextUrl.searchParams.get("id");
-    if (!id) {
-      return NextResponse.json({ message: "Invalid", status: 400 });
-    }
-    await prisma.todo.delete({
-      where: {
-        id: id,
-      },
-    });
-    return NextResponse.json({ message: "success" });
-  } catch (error) {
-    return NextResponse.json({ error });
-  }
-};

@@ -25,11 +25,13 @@ const useList = ({ params }: { params: { id: string } }) => {
       if (!title) {
         return null;
       }
-      toast.error("Please select a title");
+
       const res = await axios.post("http://localhost:3000/api/list", {
         title,
         todoId: params.id,
       });
+      toast.success("Successfully List Created");
+      setTitle("");
     } catch (error) {
       console.error(error);
     }
@@ -53,6 +55,21 @@ const useList = ({ params }: { params: { id: string } }) => {
     }
   };
 
+  const removeTopic = async (id: string) => {
+    try {
+      const confirmed = confirm("Are you sure you want to remove?");
+      if (confirmed) {
+        await axios.delete(`http://localhost:3000/api/list/?id=${id}`);
+        toast.success("Successfully removed");
+        fetchData();
+      } else {
+        toast.error("Removal cancelled");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchList();
   }, [fetchList]);
@@ -67,6 +84,7 @@ const useList = ({ params }: { params: { id: string } }) => {
     data,
     checkedItems,
     handleToggleCheck,
+    removeTopic,
   };
 };
 

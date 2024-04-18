@@ -4,6 +4,7 @@ import navbar from "../../../public/Lists.png";
 import header from "../../../public/header.png";
 import useCreate from "./useCreate";
 import InputField from "@/app/(components)/inputField/InputField";
+import AddButton from "@/app/(components)/addbutton/AddButton";
 
 export default function Page() {
   const {
@@ -54,14 +55,8 @@ export default function Page() {
           </div>
         ))}
       </div>
-      <div className="flex justify-center items-center mt-[91px] ">
-        <button
-          className="bg-orange-500 w-[210px] h-[63px] rounded-full"
-          onClick={addlist}
-        >
-          <h1 className="font-medium text-3xl">Add List.</h1>
-        </button>
-      </div>
+
+      <AddButton title="Add List" onClick={addlist} />
     </div>
   );
 }

@@ -13,3 +13,19 @@ export const POST = async (request: NextRequest) => {
     return NextResponse.json({ message: "error" });
   }
 };
+export const DELETE = async (request: NextRequest) => {
+  try {
+    const id = await request.nextUrl.searchParams.get("id");
+    if (!id) {
+      return NextResponse.json({ message: "Invalid", status: 400 });
+    }
+    await prisma.list.delete({
+      where: {
+        id: id,
+      },
+    });
+    return NextResponse.json({ message: "success" });
+  } catch (error) {
+    return NextResponse.json({ error });
+  }
+};
