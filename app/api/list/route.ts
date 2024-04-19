@@ -13,6 +13,7 @@ export const POST = async (request: NextRequest) => {
     return NextResponse.json({ message: "error" });
   }
 };
+
 export const DELETE = async (request: NextRequest) => {
   try {
     const id = await request.nextUrl.searchParams.get("id");

@@ -9,12 +9,11 @@ import useList from "../useList";
 import Link from "next/link";
 import { List } from "@/types";
 import AddButton from "@/app/(components)/addbutton/AddButton";
-import axios from "axios";
-import toast from "react-hot-toast";
+
 export default function Page({
   params,
 }: {
-  params: { title: string; id: string };
+  params: { title: string; id: string; todoId: string };
 }) {
   const {
     color,
@@ -93,7 +92,7 @@ export default function Page({
                   </h1>
                 </div>
                 <div className="flex  w-[700px] ">
-                  <Link href={`/edit/${params.id}`}>
+                  <Link href={`/edittodo/${item.id}`}>
                     <Image
                       src={editicon}
                       alt="not"

@@ -10,7 +10,9 @@ export default function Page({
 }: {
   params: { id: string; title: string };
 }) {
-  const { id } = params;
+  const { id, title } = params;
+
+  console.log(params.title);
 
   const { setTopicTitle, handleEdit } = useId(params);
 

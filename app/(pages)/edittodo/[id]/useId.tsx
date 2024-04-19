@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const useId = ({ id, title }: { id: string; title: string }) => {
   const [topicTitle, setTopicTitle] = useState("");
@@ -23,22 +24,14 @@ const useId = ({ id, title }: { id: string; title: string }) => {
 
   const handleEdit = async () => {
     try {
-      const res = await axios.put(
-        `http://localhost:3000/api/createtodo/${id}`,
-        {
-          title: topicTitle,
-        }
-      );
-      if (title) {
-        alert("Please enter a title");
-        return;
-      }
-
-      alert("success update");
+      const res = await axios.put(`http://localhost:3000/api/list/${id}`, {
+        title: topicTitle,
+      });
+      toast.success("Successfully updated topic");
     } catch (error) {
       console.error("Error editing todo:", error);
     }
-    router.push("/createtodo");
+    router.back();
   };
 
   return {

@@ -5,7 +5,6 @@ import header from "../../../public/header.png";
 import useCreate from "./useCreate";
 import InputField from "@/app/(components)/inputField/InputField";
 import AddButton from "@/app/(components)/addbutton/AddButton";
-
 export default function Page() {
   const {
     title,
