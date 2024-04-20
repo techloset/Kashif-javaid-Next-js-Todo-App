@@ -3,6 +3,7 @@ import axios from "axios";
 import { OnSelectColor } from "@/types";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { URL } from "@/app/constance/url";
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
@@ -54,7 +55,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     }
 
     try {
-      await axios.post("http://localhost:3000/api/createtodo", {
+      await axios.post(`${URL}/api/createtodo`, {
         title,
         color: selectedColor,
         textColor,
@@ -67,7 +68,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/createtodo", {});
+      const res = await axios.get(`${URL}/api/createtodo`, {});
 
       const responseData = res.data.response;
       setData(responseData);

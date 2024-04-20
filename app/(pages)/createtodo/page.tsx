@@ -1,4 +1,4 @@
-import CreateTodo from "@/app/(components)/createtodo/CreateTodo";
+import CreateTodo from "@/app/(components)/createTodo/CreateTodo";
 import React from "react";
 
 export default function page() {

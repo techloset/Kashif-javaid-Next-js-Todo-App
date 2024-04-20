@@ -5,7 +5,7 @@ import ListImage from "../../../../public/Lists.png";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import InputField from "@/app/(components)/inputField/InputField";
 import { useState } from "react";
-import AddButton from "@/app/(components)/addbutton/AddButton";
+import AddButton from "@/app/(components)/addButton/AddButton";
 import axios from "axios";
 export default function page() {
   const [email, setEmail] = useState("");

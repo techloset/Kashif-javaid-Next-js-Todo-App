@@ -1,3 +1,4 @@
+import { URL } from "@/app/constance/url";
 import { Data } from "@/types";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -12,7 +13,7 @@ export default function useHome() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/createtodo", {});
+      const res = await axios.get(`${URL}/api/createtodo`, {});
       const responseData = res.data.response;
       setData(responseData);
     } catch (error) {}
@@ -20,13 +21,14 @@ export default function useHome() {
 
   const showdata = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/register", {});
+      const res = await axios.get(`${URL}/api/register`, {});
 
       const responseData = await res.data.data;
 
       const user = responseData.filter(
         (userData: Data) => userData.email === session?.user?.email
       );
+      console.log(user);
 
       setUser(user);
     } catch (error) {}

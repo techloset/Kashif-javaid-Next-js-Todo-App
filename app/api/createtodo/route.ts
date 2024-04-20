@@ -7,7 +7,6 @@ export const POST = async (request: NextRequest) => {
     const data = await prisma.todo.create({
       data: { title, color, textColor, borderColor },
     });
-    console.log(data);
 
     return NextResponse.json({ data });
   } catch (error) {

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Item } from "@/types";
 import toast from "react-hot-toast";
+import { URL } from "@/app/constance/url";
 
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
         return null;
       }
 
-      const res = await axios.post("http://localhost:3000/api/list", {
+      const res = await axios.post(`${URL}/api/list`, {
         title,
         todoId: params.id,
       });
@@ -46,7 +47,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   const fetchList = async () => {
     try {
       const todoId = params.id;
-      const res = await axios.get(`http://localhost:3000/api/list/${todoId}`);
+      const res = await axios.get(`${URL}/api/list/${todoId}`);
 
       const responseData = res.data.result.filter(
         (item: Item) => item.todoId === todoId
@@ -61,7 +62,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
     try {
       const confirmed = confirm("Are you sure you want to remove?");
       if (confirmed) {
-        await axios.delete(`http://localhost:3000/api/list/?id=${id}`);
+        await axios.delete(`${URL}/api/list/?id=${id}`);
         toast.success("Successfully removed");
         fetchData();
       } else {

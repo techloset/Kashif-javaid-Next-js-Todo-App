@@ -1,4 +1,4 @@
-import AddList from "@/app/(components)/addlist/AddList";
+import AddList from "@/app/(components)/addList/AddList";
 import React from "react";
 
 export default function page({

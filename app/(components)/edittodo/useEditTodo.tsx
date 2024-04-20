@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { URL } from "@/app/constance/url";
 
 const useEditTodo = ({ id, title }: { id: string; title: string }) => {
   const [topicTitle, setTopicTitle] = useState("");
@@ -10,9 +11,7 @@ const useEditTodo = ({ id, title }: { id: string; title: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:3000/api/createtodo/${id}`
-        );
+        const res = await axios.get(`${URL}/api/createtodo/${id}`);
         setTopicTitle(res.data.title);
       } catch (error) {
         console.error("Error fetching topic:", error);
@@ -24,7 +23,7 @@ const useEditTodo = ({ id, title }: { id: string; title: string }) => {
 
   const handleEdit = async () => {
     try {
-      const res = await axios.put(`http://localhost:3000/api/list/${id}`, {
+      const res = await axios.put(`${URL}/api/list/${id}`, {
         title: topicTitle,
       });
       toast.success("Successfully updated topic");

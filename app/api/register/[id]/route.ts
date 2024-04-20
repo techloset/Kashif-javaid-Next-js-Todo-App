@@ -6,7 +6,7 @@ export const PUT = async (
 ) => {
   try {
     const { id } = params;
-    const { imageUrl, name } = await request.json();
+    const { imageUrl, name, email } = await request.json();
 
     const data = await prisma.user.update({
       where: {
@@ -14,7 +14,8 @@ export const PUT = async (
       },
       data: {
         imageUrl,
-        name,
+        name: name,
+        email: email,
       },
     });
 

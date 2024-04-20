@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { URL } from "@/app/constance/url";
 
 export default function useLogin() {
   const [email, setEmail] = useState("");
@@ -29,7 +30,7 @@ export default function useLogin() {
 
   const showdata = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/register", {});
+      const res = await axios.get(`${URL}/api/register`, {});
       const responseData = await res.data.data;
       setUser(responseData);
     } catch (error) {}

@@ -1,4 +1,4 @@
-import EditTodo from "@/app/(components)/edittodo/EditTodo";
+import EditTodo from "@/app/(components)/editTodo/EditTodo";
 import React from "react";
 
 export default function page({

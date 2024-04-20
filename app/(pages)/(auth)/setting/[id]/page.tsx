@@ -1,4 +1,4 @@
-import Setting from "@/app/(components)/setting/Page";
+import Setting from "@/app/(components)/setting/Setting";
 
 import React from "react";
 

@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { URL } from "@/app/constance/url";
 export default function useSignup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ export default function useSignup() {
       return;
     }
     try {
-      const res = await axios.post("api/userexist", {
+      const res = await axios.post(`${URL}/api/userexist`, {
         email,
       });
       if (res.status !== 200) {
@@ -32,7 +33,7 @@ export default function useSignup() {
         return existingUser;
       }
 
-      await axios.post("api/register", {
+      await axios.post(`${URL}/api/register`, {
         name,
         email,
         password,

@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Item } from "@/types";
+import { URL } from "@/app/constance/url";
 
 export default function useSetting({ params }: { params: { id: string } }) {
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ export default function useSetting({ params }: { params: { id: string } }) {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/register", {});
+      const res = await axios.get(`${URL}/api/register`, {});
       const responseData = await res.data.data;
 
       const userData = responseData;
@@ -38,7 +39,6 @@ export default function useSetting({ params }: { params: { id: string } }) {
     e.preventDefault();
 
     if (!image) {
-      toast.error("Please select an image");
       return;
     }
 
@@ -59,14 +59,17 @@ export default function useSetting({ params }: { params: { id: string } }) {
 
       const newImageUrl = uploadRes.data.secure_url;
       setImageUrl(newImageUrl);
-      const updateRes = await axios.put(
-        `http://localhost:3000/api/register/${params.id}`,
-        { imageUrl: newImageUrl }
-      );
-
+      const updateRes = await axios.put(`${URL}/api/register/${params.id}`, {
+        imageUrl: newImageUrl,
+        name: name,
+        email: email,
+      });
+      setName("");
+      setEmail("");
+      toast.success("Successfully Updated");
       fetchData();
     } catch (error) {
-      console.error("Error uploading image:", error);
+      toast.error("Error updating");
     }
   };
 

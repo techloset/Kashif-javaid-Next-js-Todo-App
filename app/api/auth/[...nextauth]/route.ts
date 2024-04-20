@@ -58,10 +58,11 @@ export const authOptions: AuthOptions = {
               data: {
                 name: profile?.name,
                 email: profile?.email,
+                imageUrl: "",
                 password: "",
-                imageUrl: profile?.imageUrl,
               },
             });
+            console.log(newUser);
           } catch (error) {
             console.log("Error creating user:", error);
           }

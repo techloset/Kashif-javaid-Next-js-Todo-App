@@ -8,7 +8,7 @@ import setting from "../../../public/Tune.png";
 
 import Link from "next/link";
 import { List } from "@/types";
-import AddButton from "@/app/(components)/addbutton/AddButton";
+import AddButton from "@/app/(components)/addButton/AddButton";
 import useAddList from "./useAddList";
 
 export default function AddList({
