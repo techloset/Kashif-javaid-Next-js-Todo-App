@@ -8,14 +8,16 @@ datasource db {
 }
 
 model User {
-    id            String    @id @default(auto()) @map("_id") @db.ObjectId
-    name          String
-    email         String    @unique
-    password      String
-    imageUrl      String?
-    createdAt     DateTime  @default(now())
-    emailVerified DateTime? @map("verifiedAt")
-    sessions      Session[]
+    id                String    @id @default(auto()) @map("_id") @db.ObjectId
+    name              String
+    email             String    @unique
+    password          String
+    imageUrl          String?
+    createdAt         DateTime  @default(now())
+    emailVerified     DateTime? @map("verifiedAt")
+    resetToken        String?
+    resetTokenExpires DateTime?
+    sessions          Session[]
 
     @@map("users")
 }

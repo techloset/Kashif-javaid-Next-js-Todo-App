@@ -9,6 +9,7 @@ export default function useLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState([]);
+
   const router = useRouter();
   const handler = async (e: FormEvent) => {
     e.preventDefault();
@@ -31,9 +32,9 @@ export default function useLogin() {
       const res = await axios.get("http://localhost:3000/api/register", {});
       const responseData = await res.data.data;
       setUser(responseData);
-      console.log(responseData);
     } catch (error) {}
   };
+
   useEffect(() => {
     showdata();
   }, [setUser]);

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-const useId = ({ id, title }: { id: string; title: string }) => {
+const useEditTodo = ({ id, title }: { id: string; title: string }) => {
   const [topicTitle, setTopicTitle] = useState("");
   const router = useRouter();
   useEffect(() => {
@@ -40,4 +40,4 @@ const useId = ({ id, title }: { id: string; title: string }) => {
   };
 };
 
-export default useId;
+export default useEditTodo;

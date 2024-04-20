@@ -1,16 +1,14 @@
-"use client";
 import { Data } from "@/types";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 
 import { useEffect, useState } from "react";
 
-export default function usePage() {
+export default function useHome() {
   const [data, setData] = useState([]);
   const [user, setUser] = useState([]);
   const { data: session } = useSession();
-  console.log(session);
-  console.log(session?.user?.email);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -25,7 +23,6 @@ export default function usePage() {
       const res = await axios.get("http://localhost:3000/api/register", {});
 
       const responseData = await res.data.data;
-      console.log(responseData);
 
       const user = responseData.filter(
         (userData: Data) => userData.email === session?.user?.email
@@ -40,9 +37,17 @@ export default function usePage() {
     showdata();
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [fetchData]);
+
   return {
     data,
     fetchData,
     user,
+    isLoading,
   };
 }

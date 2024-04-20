@@ -4,10 +4,12 @@ import axios from "axios";
 import { Item } from "@/types";
 import toast from "react-hot-toast";
 
-const useList = ({ params }: { params: { id: string } }) => {
+const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
   const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
+
   const color = searchParams.get("color");
   const text = searchParams.get("text");
   const border = searchParams.get("border");
@@ -74,6 +76,13 @@ const useList = ({ params }: { params: { id: string } }) => {
     fetchList();
   }, [fetchList]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [fetchList]);
+
   return {
     title,
     setTitle,
@@ -85,7 +94,8 @@ const useList = ({ params }: { params: { id: string } }) => {
     checkedItems,
     handleToggleCheck,
     removeTopic,
+    isLoading,
   };
 };
 
-export default useList;
+export default useAddList;

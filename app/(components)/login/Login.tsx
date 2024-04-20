@@ -7,6 +7,8 @@ import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
 import { signIn } from "next-auth/react";
 import useLogin from "./useLogin";
+import Link from "next/link";
+
 export default function Login() {
   const { email, setEmail, password, setPassword, handler } = useLogin();
 
@@ -32,14 +34,17 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <div className="flex justify-center ml-[130px]">
-            <h1 className=" text-20px text-white mt-4 ml-[120px]">
-              Forget Password
-            </h1>
+            <Link href={"/changePassword"}>
+              <h1 className=" text-20px text-white mt-4 ml-[120px]">
+                Forget Password
+              </h1>
+            </Link>
           </div>
           <GoogleButton
             title="Sign In with Google"
             onClick={() => signIn("google", { callbackUrl: "/" })}
           />
+
           <Button title="Sign In" onClick={handler} />
         </div>
         <div className="absolute   right-0 pt-[20px] flex  mr-2 text-100px text-white">
