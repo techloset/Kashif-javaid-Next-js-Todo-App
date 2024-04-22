@@ -1,5 +1,7 @@
 import { URL } from "@/app/constance/url";
-import { Data } from "@/types";
+import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
+import { ALLdata, Data } from "@/types";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 
@@ -10,14 +12,20 @@ export default function useHome() {
   const [user, setUser] = useState([]);
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useAppDispatch();
+  const fetch: ALLdata[] = useAppSelector((state) => state.fetch.data);
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${URL}/api/createtodo`, {});
-      const responseData = res.data.response;
-      setData(responseData);
-    } catch (error) {}
+      dispatch(FetchTodo());
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const showdata = async () => {
     try {
@@ -50,5 +58,6 @@ export default function useHome() {
     fetchData,
     user,
     isLoading,
+    fetch,
   };
 }

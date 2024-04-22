@@ -7,9 +7,9 @@ import setting from "../../../public/setting.png";
 import Loader from "../loader/Loader";
 import useHome from "./useHome";
 import { signOut } from "next-auth/react";
-import { Item, TodoItem } from "@/types";
+import { ALLdata, Item, TodoItem } from "@/types";
 export default function Home() {
-  const { data, user, isLoading } = useHome();
+  const { user, isLoading, fetch } = useHome();
   return (
     <>
       {isLoading ? (
@@ -54,8 +54,8 @@ export default function Home() {
             <div className="ml-[295px] text-64px ">
               <div>
                 <div className="w-auto flex flex-col">
-                  {data &&
-                    data.map((item: TodoItem, index: number) => {
+                  {fetch &&
+                    fetch.map((item: ALLdata, index: number) => {
                       return (
                         <div key={index} className="w-fit  h-[83px]">
                           <Link

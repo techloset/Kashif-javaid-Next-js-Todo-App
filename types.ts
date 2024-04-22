@@ -49,9 +49,16 @@ export interface CreateState {
 }
 
 export interface FetchState {
+  data: ALLdata[];
+  loading: "idle" | "pending" | "fulfilled" | "rejected";
+  error: string | null;
+}
+
+export interface ALLdata {
   todo: null;
-  isLoading: false;
-  error: null;
-  data: string;
-  setData: string;
+  id: number;
+  title: string;
+  color: string;
+  textColor: string;
+  borderColor: string;
 }
