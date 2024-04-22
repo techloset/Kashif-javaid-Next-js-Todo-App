@@ -38,26 +38,12 @@ export interface AuthState {
   isLoading: false;
   error: null;
 }
-// type APP = {
-//   TODO_LIST: LIST[]
-//   USER: {}
-// }
-
-// type LIST = {
-//   id: string
-//   uid: string
-//   TITLE: string
-//   THEME: {
-//     PRIMARY_COLOR: string
-//     SECONDARY_COLOR: string
-//     ACCENT_COLOR: string
-//   }
-//   TASKS: TASK[]
-// }
-
-// type TASK = {
-//   id: string
-//   listId: string
-//   title: string
-//   isCompleted: boolean
-// }
+export interface CreateState {
+  todo: null;
+  isLoading: false;
+  error: null;
+  title: string;
+  color: string;
+  textColor: string;
+  borderColor: string;
+}

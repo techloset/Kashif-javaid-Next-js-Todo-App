@@ -4,6 +4,8 @@ import { OnSelectColor } from "@/types";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { URL } from "@/app/constance/url";
+import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { CreateTodo } from "@/app/store/slices/createTodo/todoCreate";
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
@@ -13,7 +15,8 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const [selectedColor, setSelectedColor] = useState("");
 
   const router = useRouter();
-
+  const dispatch = useAppDispatch();
+  const create = useAppSelector((state) => state.create.todo);
   const handleColorSelect = (
     color: string,
     customBorders: string,
@@ -45,12 +48,9 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     }
 
     try {
-      await axios.post(`${URL}/api/createtodo`, {
-        title,
-        color: selectedColor,
-        textColor,
-        borderColor,
-      });
+      dispatch(
+        CreateTodo({ title, color: selectedColor, textColor, borderColor })
+      );
       toast.success("successfully created");
       router.push("/");
     } catch (error) {}
@@ -80,17 +80,6 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     "custom-todo9",
   ];
 
-  // const customColors = [
-  //   "bg-custom-todo1",
-  //   "bg-custom-todo2",
-  //   "bg-custom-todo3",
-  //   "bg-custom-todo4",
-  //   "bg-custom-todo5",
-  //   "bg-custom-todo6",
-  //   "bg-custom-todo7",
-  //   "bg-custom-todo8",
-  //   "bg-custom-todo9",
-  // ];
   const customTexts = [
     "Vintage Garden",
     "Cosmic Symphony",
