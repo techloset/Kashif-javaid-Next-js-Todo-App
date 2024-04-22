@@ -44,16 +44,6 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
       return null;
     }
 
-    if (!textColor) {
-      toast.error("Please select a text color");
-      return null;
-    }
-
-    if (!borderColor) {
-      toast.error("Please select a border color");
-      return;
-    }
-
     try {
       await axios.post(`${URL}/api/createtodo`, {
         title,
@@ -89,6 +79,18 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     "custom-todo8",
     "custom-todo9",
   ];
+
+  // const customColors = [
+  //   "bg-custom-todo1",
+  //   "bg-custom-todo2",
+  //   "bg-custom-todo3",
+  //   "bg-custom-todo4",
+  //   "bg-custom-todo5",
+  //   "bg-custom-todo6",
+  //   "bg-custom-todo7",
+  //   "bg-custom-todo8",
+  //   "bg-custom-todo9",
+  // ];
   const customTexts = [
     "Vintage Garden",
     "Cosmic Symphony",

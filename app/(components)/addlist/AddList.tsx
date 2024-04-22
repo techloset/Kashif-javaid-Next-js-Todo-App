@@ -79,15 +79,18 @@ export default function AddList({
                     onChange={() => handleToggleCheck(item.id)}
                   />
                   <h1
-                    className={`flex  w-fit h-[20px]  border-b-8 ${
+                    className={`flex  w-fit h-[20px]   border-b-8 ${
                       checkedItems.includes(item.id)
                         ? border
                         : "border-transparent"
                     }`}
                   >
                     <div className="ml-[24px]">
-                      <h1 className="text-64px relative bottom-10 right-2 ">
-                        <h1 className={`${text} `}> {item.title}</h1>
+                      <h1 className="text-64px relative bottom-10  ">
+                        <h1 className={`${text} text-balance`}>
+                          {" "}
+                          {item.title}
+                        </h1>
                       </h1>
                     </div>
                   </h1>

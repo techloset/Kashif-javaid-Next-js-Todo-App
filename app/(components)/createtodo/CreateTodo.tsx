@@ -17,6 +17,7 @@ export default function Page() {
     customTextColors,
     customTexts,
   } = useCreate();
+  console.log(customColors);
 
   return (
     <div
@@ -42,7 +43,7 @@ export default function Page() {
         {customColors.map((color, index: number) => (
           <div
             key={index}
-            className={`w-[277px] h-[58px] rounded-full text-center cursor-pointer pt-2 px-2 font-medium text-28px bg-${color} ${customTexts[index]} ${customBorders[index]} ${customTextColors[index]}`}
+            className={`w-[277px] h-[58px] rounded-full text-center cursor-pointer pt-2 px-2 font-medium text-28px bg-${customColors[index]} ${customTextColors[index]} border-4 ${customBorders[index]}`}
             onClick={() =>
               handleColorSelect(
                 color,
