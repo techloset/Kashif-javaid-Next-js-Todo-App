@@ -33,6 +33,11 @@ export interface Item {
   todoId: string;
 }
 
+export interface AuthState {
+  user: null;
+  isLoading: false;
+  error: null;
+}
 // type APP = {
 //   TODO_LIST: LIST[]
 //   USER: {}

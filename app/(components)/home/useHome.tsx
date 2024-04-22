@@ -28,7 +28,6 @@ export default function useHome() {
       const user = responseData.filter(
         (userData: Data) => userData.email === session?.user?.email
       );
-      console.log(user);
 
       setUser(user);
     } catch (error) {}
