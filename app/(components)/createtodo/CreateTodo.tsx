@@ -17,7 +17,6 @@ export default function Page() {
     customTextColors,
     customTexts,
   } = useCreate();
-  console.log(customColors);
 
   return (
     <div

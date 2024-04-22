@@ -47,3 +47,11 @@ export interface CreateState {
   textColor: string;
   borderColor: string;
 }
+
+export interface FetchState {
+  todo: null;
+  isLoading: false;
+  error: null;
+  data: string;
+  setData: string;
+}

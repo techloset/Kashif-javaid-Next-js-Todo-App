@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
-import { CreateTodo } from "@/app/store/slices/createTodo/todoCreate";
+import { CreateTodo } from "@/app/store/slices/createTodoSlice/todoCreate";
+import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
@@ -58,10 +59,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${URL}/api/createtodo`, {});
-
-      const responseData = res.data.response;
-      setData(responseData);
+      dispatch(FetchTodo);
     } catch (error) {}
   };
 
