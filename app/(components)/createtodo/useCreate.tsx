@@ -1,9 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
-import axios from "axios";
 import { OnSelectColor } from "@/types";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
 import { CreateTodo } from "@/app/store/slices/createTodoSlice/todoCreate";
 import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
@@ -67,15 +65,15 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     fetchData();
   }, []);
   const customColors = [
-    "custom-todo1",
-    "custom-todo2",
-    "custom-todo3",
-    "custom-todo4",
-    "custom-todo5",
-    "custom-todo6",
-    "custom-todo7",
-    "custom-todo8",
-    "custom-todo9",
+    "bg-custom-todo1",
+    "bg-custom-todo2",
+    "bg-custom-todo3",
+    "bg-custom-todo4",
+    "bg-custom-todo5",
+    "bg-custom-todo6",
+    "bg-custom-todo7",
+    "bg-custom-todo8",
+    "bg-custom-todo9",
   ];
 
   const customTexts = [

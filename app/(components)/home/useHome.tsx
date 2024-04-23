@@ -1,12 +1,11 @@
 import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
 import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
+import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
 import { ALLdata, Data } from "@/types";
-import axios from "axios";
+
 import { useSession } from "next-auth/react";
-
 import { useEffect, useState } from "react";
-
 export default function useHome() {
   const [data, setData] = useState([]);
   const [user, setUser] = useState([]);
@@ -14,36 +13,33 @@ export default function useHome() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
   const fetch: ALLdata[] = useAppSelector((state) => state.fetch.data);
+  const userFetch = useAppSelector((state) => state.userFetch.data);
+
+  useEffect(() => {
+    const showdata = async () => {
+      try {
+        dispatch(FetchUser());
+      } catch (error) {}
+    };
+
+    showdata();
+  }, [dispatch]);
+
+  useEffect(() => {
+    const filteredUser = userFetch.filter(
+      (userData: Data) => userData.email === session?.user?.email
+    );
+    setUser(filteredUser as []);
+  }, [userFetch]);
 
   const fetchData = async () => {
     try {
       dispatch(FetchTodo());
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const showdata = async () => {
-    try {
-      const res = await axios.get(`${URL}/api/register`, {});
-
-      const responseData = await res.data.data;
-
-      const user = responseData.filter(
-        (userData: Data) => userData.email === session?.user?.email
-      );
-
-      setUser(user);
     } catch (error) {}
   };
 
   useEffect(() => {
     fetchData();
-    showdata();
   }, []);
 
   useEffect(() => {
@@ -59,5 +55,6 @@ export default function useHome() {
     user,
     isLoading,
     fetch,
+    setData,
   };
 }

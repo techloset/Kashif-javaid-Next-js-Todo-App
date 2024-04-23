@@ -1,43 +1,44 @@
 import { URL } from "@/app/constance/url";
-import { ALLdata, FetchState } from "@/types";
+import { ALLUser, UserState } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-const initialState: FetchState = {
+const initialState: UserState = {
   data: [],
   loading: "idle",
   error: null,
 };
-export const FetchTodo = createAsyncThunk("todo", async () => {
+export const FetchUser = createAsyncThunk("users", async () => {
   try {
-    const res = await axios.get(`${URL}/api/createtodo`, {});
-    const responseData: ALLdata[] = res.data.response;
+    const res = await axios.get(`${URL}/api/register`, {});
+    const responseData: ALLUser[] = await res.data.data;
     return responseData;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 });
 
-const dataSlice = createSlice({
-  name: "data",
+export const UserSlice = createSlice({
+  name: "userFetch",
+
   initialState,
   reducers: {},
 
   extraReducers: (builder) => {
     builder
-      .addCase(FetchTodo.pending, (state) => {
+      .addCase(FetchUser.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(FetchTodo.fulfilled, (state, action) => {
+      .addCase(FetchUser.fulfilled, (state, action) => {
         state.loading = "fulfilled";
         state.data = action.payload;
       })
-      .addCase(FetchTodo.rejected, (state, action) => {
+      .addCase(FetchUser.rejected, (state, action) => {
         state.loading = "rejected";
         state.error = action.error.message || "Something went wrong";
       });
   },
 });
 
-export const {} = dataSlice.actions;
-export default dataSlice.reducer;
+export const {} = UserSlice.actions;
+
+export default UserSlice.reducer;

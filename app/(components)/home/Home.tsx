@@ -7,7 +7,7 @@ import setting from "../../../public/setting.png";
 import Loader from "../loader/Loader";
 import useHome from "./useHome";
 import { signOut } from "next-auth/react";
-import { ALLdata, Item, TodoItem } from "@/types";
+import { ALLdata, Item } from "@/types";
 export default function Home() {
   const { user, isLoading, fetch } = useHome();
   return (

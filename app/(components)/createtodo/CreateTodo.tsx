@@ -2,7 +2,6 @@
 import Image from "next/image";
 import navbar from "../../../public/Lists.png";
 import header from "../../../public/header.png";
-
 import InputField from "@/app/(components)/inputField/InputField";
 import AddButton from "@/app/(components)/addButton/AddButton";
 import useCreate from "./useCreate";
@@ -42,7 +41,7 @@ export default function Page() {
         {customColors.map((color, index: number) => (
           <div
             key={index}
-            className={`w-[277px] h-[58px] rounded-full text-center cursor-pointer pt-2 px-2 font-medium text-28px bg-${customColors[index]} ${customTextColors[index]} border-4 ${customBorders[index]}`}
+            className={`w-[277px] h-[58px] rounded-full text-center cursor-pointer pt-2 px-2 font-medium text-28px ${customColors[index]} ${customTextColors[index]} border-4 ${customBorders[index]}`}
             onClick={() =>
               handleColorSelect(
                 color,

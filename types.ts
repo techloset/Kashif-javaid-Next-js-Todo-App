@@ -62,3 +62,14 @@ export interface ALLdata {
   textColor: string;
   borderColor: string;
 }
+
+export interface UserState {
+  data: ALLUser[];
+  loading: "idle" | "pending" | "fulfilled" | "rejected";
+  error: string | null;
+}
+
+export interface ALLUser {
+  id: number;
+  email: string;
+}
