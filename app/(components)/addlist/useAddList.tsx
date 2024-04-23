@@ -5,7 +5,7 @@ import { Item } from "@/types";
 import toast from "react-hot-toast";
 import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
-import { AddData } from "@/app/store/slices/addListSlice/addDataSlice";
+import { AddData } from "@/app/store/slices/addListSlice/addDataListSlice";
 
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
