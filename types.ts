@@ -81,3 +81,11 @@ export interface AddListState {
   title: string;
   todoId: string;
 }
+
+export interface EditListState {
+  data: null;
+  loading: false;
+  error: null;
+  id: string;
+  title: string;
+}
