@@ -73,6 +73,9 @@ export interface ALLUser {
   id: number;
   email: string;
 }
+export interface Data1 {
+  email: string;
+}
 
 export interface AddListState {
   data: null;

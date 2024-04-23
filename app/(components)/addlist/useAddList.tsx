@@ -36,6 +36,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
       }
     };
     fetchList();
+    console.log(fetchList);
   }, [params.id, dispatch]);
 
   const fetchData = async () => {

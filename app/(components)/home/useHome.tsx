@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
 import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
 import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
-import { ALLdata, Data } from "@/types";
+import { ALLdata, Data, Data1 } from "@/types";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 export default function useHome() {
@@ -26,8 +26,11 @@ export default function useHome() {
 
   useEffect(() => {
     const filteredUser = userFetch.filter(
-      (userData: Data) => userData.email === session?.user?.email
+      (userData: Data1) => userData.email === session?.user?.email
     );
+
+    console.log(filteredUser);
+
     setUser(filteredUser as []);
   }, [userFetch]);
 
