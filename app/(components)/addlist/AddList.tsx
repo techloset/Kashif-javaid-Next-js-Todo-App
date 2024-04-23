@@ -1,11 +1,9 @@
 "use client";
-
 import Image from "next/image";
 import icon from "../../../public/icon.png";
 import removeicon from "../../../public/remove.svg";
 import editicon from "../../../public/edit.svg";
 import setting from "../../../public/Tune.png";
-
 import Link from "next/link";
 import { List } from "@/types";
 import AddButton from "@/app/(components)/addButton/AddButton";
@@ -34,7 +32,7 @@ export default function AddList({
   return (
     <>
       <div
-        className={`bg-${color} bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px] flex justify-between `}
+        className={`${color} bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px] flex justify-between `}
       >
         <Image
           src={icon}
@@ -50,7 +48,7 @@ export default function AddList({
         </Link>
       </div>
       <div
-        className={`bg-${color} h-screen bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
+        className={`${color} h-screen bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
           <h1 className={`text-124px ${text}`}>Home List</h1>
@@ -63,7 +61,7 @@ export default function AddList({
             placeholder="Add List"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className={` bg-${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
+            className={`${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
           />
         </div>
         <div className="mt-[49px] ml-[350px] py-[14px] flex flex-col">

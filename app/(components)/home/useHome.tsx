@@ -11,6 +11,7 @@ export default function useHome() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
   const fetch: ALLdata[] = useAppSelector((state) => state.fetch.data);
+
   const userFetch = useAppSelector((state) => state.userFetch.data);
 
   useEffect(() => {

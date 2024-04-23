@@ -33,7 +33,6 @@ export const CreateTodo = createAsyncThunk(
         textColor,
         borderColor,
       });
-      toast.success("successfully created");
     } catch (error) {}
   }
 );

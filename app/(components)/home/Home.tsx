@@ -22,7 +22,7 @@ export default function Home() {
             <Image
               src={icon}
               alt="Not found"
-              className="w-[48px] pt-[24px] ml-[24px]"
+              className="w-[48px] h-[48px] mt-[24px] ml-[24px] "
             />
             {user.map((user: Item, index) => (
               <div key={index} className="w-fit h-[83px]">
@@ -70,7 +70,7 @@ export default function Home() {
                           >
                             <div className="text-white ">
                               <h1
-                                className={`text-white h-[18px] my-2  bg-${item.color}`}
+                                className={`text-white h-[18px] my-2  ${item.color}`}
                               >
                                 <div>
                                   <h1 className="inline-block relative bottom-14 right-2">
