@@ -3,6 +3,7 @@
     "alertmessage",
     "deleteicon",
     "editdata",
+    "fetchdata",
     "fetchtodos",
     "hasspassword"
   ]

@@ -25,6 +25,7 @@ export default function AddList({
     checkedItems,
     handleToggleCheck,
     removeTopic,
+    fetchdata,
   } = useAddList({
     params: { id: params.id },
   });
@@ -48,7 +49,9 @@ export default function AddList({
         </Link>
       </div>
       <div
-        className={`${color} h-screen bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
+        className={`${color} ${
+          fetchdata.length ? "h-fit" : "h-screen"
+        } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
           <h1 className={`text-124px ${text}`}>Home List</h1>
@@ -65,8 +68,8 @@ export default function AddList({
           />
         </div>
         <div className="mt-[49px] ml-[350px] py-[14px] flex flex-col">
-          {data &&
-            data.map((item: List, index: number) => (
+          {fetchdata &&
+            fetchdata.map((item: List, index: number) => (
               <div key={index} className="flex flex-col ">
                 <div className="flex">
                   <input

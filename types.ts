@@ -82,10 +82,14 @@ export interface AddListState {
   todoId: string;
 }
 
-export interface EditListState {
-  data: null;
+export interface FetchDataState {
+  data: Data[];
   loading: false;
   error: null;
+
+  title: string;
+}
+export interface Data {
   id: string;
   title: string;
 }
