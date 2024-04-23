@@ -1,9 +1,7 @@
-import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
 import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
 import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
 import { ALLdata, Data } from "@/types";
-
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 export default function useHome() {

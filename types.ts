@@ -73,3 +73,11 @@ export interface ALLUser {
   id: number;
   email: string;
 }
+
+export interface AddListState {
+  data: null;
+  loading: false;
+  error: null;
+  title: string;
+  todoId: string;
+}

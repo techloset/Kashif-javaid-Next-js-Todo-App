@@ -4,6 +4,8 @@ import axios from "axios";
 import { Item } from "@/types";
 import toast from "react-hot-toast";
 import { URL } from "@/app/constance/url";
+import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { AddData } from "@/app/store/slices/addListSlice/addDataSlice";
 
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
@@ -22,6 +24,8 @@ const useAddList = ({ params }: { params: { id: string } }) => {
       setCheckedItems([...checkedItems, itemId]);
     }
   };
+  const dispatch = useAppDispatch();
+  const add = useAppSelector((state) => state.add.data);
 
   const fetchData = async () => {
     try {
@@ -29,10 +33,8 @@ const useAddList = ({ params }: { params: { id: string } }) => {
         return null;
       }
 
-      const res = await axios.post(`${URL}/api/list`, {
-        title,
-        todoId: params.id,
-      });
+      const todoId = params.id;
+      dispatch(AddData({ title, params: { id: todoId } }));
       toast.success("Successfully List Created");
       setTitle("");
     } catch (error) {
@@ -40,9 +42,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(() => {}, [AddData]);
 
   const fetchList = async () => {
     try {
