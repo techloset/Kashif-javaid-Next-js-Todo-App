@@ -5,6 +5,7 @@ const initialState: EditState = {
   data: null,
   loading: false,
   error: null,
+  title: "",
 };
 
 export const editSlice = createSlice({

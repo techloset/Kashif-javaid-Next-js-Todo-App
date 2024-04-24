@@ -107,4 +107,5 @@ export interface EditState {
   data: null;
   loading: false;
   error: null;
+  title: string;
 }
