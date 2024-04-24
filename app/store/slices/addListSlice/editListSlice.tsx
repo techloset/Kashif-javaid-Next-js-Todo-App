@@ -1,6 +1,5 @@
 import { EditState } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: EditState = {
   data: null,
