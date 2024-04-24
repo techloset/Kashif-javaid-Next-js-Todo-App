@@ -1,6 +1,8 @@
+import { URL } from "@/app/constance/url";
 import { RemoveListState } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialState: RemoveListState = {
   data: null,
@@ -10,13 +12,8 @@ const initialState: RemoveListState = {
 
 export const RemoveList = createAsyncThunk("remove", async (id: string) => {
   try {
-    const confirmed = confirm("Are you sure you want to remove?");
-    if (confirmed) {
-      await axios.delete(`${URL}/api/list/?id=${id}`);
-    }
-  } catch (error) {
-    console.log(error);
-  }
+    await axios.delete(`${URL}/api/list/?id=${id}`);
+  } catch (error) {}
 });
 export const removeSlice = createSlice({
   name: "removeList",

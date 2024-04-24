@@ -1,11 +1,10 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
-import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
 import { AddData } from "@/app/store/slices/addListSlice/addDataListSlice";
 import { FetchList } from "@/app/store/slices/addListSlice/fetchDataList";
+import { RemoveList } from "@/app/store/slices/addListSlice/removeTodoSlice";
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
@@ -25,6 +24,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   const dispatch = useAppDispatch();
   const add = useAppSelector((state) => state.add.data);
   const fetchdata = useAppSelector((state) => state.fetchdata.data);
+  const remove = useAppSelector((state) => state.removeList.data);
 
   const fetchList = async () => {
     try {
@@ -55,14 +55,13 @@ const useAddList = ({ params }: { params: { id: string } }) => {
     try {
       const confirmed = confirm("Are you sure you want to remove?");
       if (confirmed) {
-        await axios.delete(`${URL}/api/list/?id=${id}`);
+        dispatch(RemoveList(id));
         toast.success("Successfully removed");
-        fetchData();
       } else {
         toast.error("Removal cancelled");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Removal failed");
     }
   };
 
