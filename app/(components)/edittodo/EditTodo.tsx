@@ -43,7 +43,7 @@ export default function EditTodo({
             className="bg-orange-500 w-[210px] h-[63px] rounded-full"
             onClick={handleEdit}
           >
-            <h1 className="font-medium text-3xl">Edit List.</h1>
+            <h1 className="font-medium text-30px">Edit List.</h1>
           </button>
         </div>
       </div>

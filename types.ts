@@ -104,8 +104,12 @@ export interface RemoveListState {
 }
 
 export interface EditState {
-  data: null;
+  data: Edit[];
   loading: false;
   error: null;
+}
+
+export interface Edit {
+  id: string;
   title: string;
 }

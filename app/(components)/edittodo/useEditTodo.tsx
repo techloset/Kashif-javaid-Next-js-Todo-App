@@ -4,32 +4,21 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { URL } from "@/app/constance/url";
+import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { editList } from "@/app/store/slices/addListSlice/editListSlice";
 
 const useEditTodo = ({ id, title }: { id: string; title: string }) => {
   const [topicTitle, setTopicTitle] = useState("");
-  const router = useRouter();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${URL}/api/createtodo/${id}`);
-        setTopicTitle(res.data.title);
-      } catch (error) {
-        console.error("Error fetching topic:", error);
-      }
-    };
 
-    fetchData();
-  }, [id]);
+  const dispatch = useAppDispatch();
+  const edit = useAppSelector((state) => state.editLists.data);
+  const router = useRouter();
 
   const handleEdit = async () => {
     try {
-      const res = await axios.put(`${URL}/api/list/${id}`, {
-        title: topicTitle,
-      });
-      toast.success("Successfully updated topic");
-    } catch (error) {
-      console.error("Error editing todo:", error);
-    }
+      dispatch(editList({ id, title: topicTitle }));
+      await toast.success("Successfully updated topic");
+    } catch (error) {}
     router.back();
   };
 
