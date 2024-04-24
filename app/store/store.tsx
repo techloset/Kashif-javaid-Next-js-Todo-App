@@ -5,6 +5,7 @@ import dataReducer from "../store/slices/createTodoSlice/fetchTodoSlice";
 import UserReducer from "../store/slices/createTodoSlice/fetchUserSlice";
 import addListReducer from "./slices/addListSlice/addDataListSlice";
 import fetchReducer from "./slices/addListSlice/fetchDataList";
+import removeReducer from "../store/slices/addListSlice/removeTodoSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -13,6 +14,7 @@ export const store = configureStore({
     userFetch: UserReducer,
     add: addListReducer,
     fetchdata: fetchReducer,
+    removeList: removeReducer,
   },
 });
 
