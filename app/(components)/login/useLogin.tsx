@@ -28,17 +28,17 @@ export default function useLogin() {
     }
   };
 
-  const showdata = async () => {
-    try {
-      const res = await axios.get(`${URL}/api/register`, {});
-      const responseData = await res.data.data;
-      setUser(responseData);
-    } catch (error) {}
-  };
+  // const showdata = async () => {
+  //   try {
+  //     const res = await axios.get(`${URL}/api/register`, {});
+  //     const responseData = await res.data.data;
+  //     setUser(responseData);
+  //   } catch (error) {}
+  // };
 
-  useEffect(() => {
-    showdata();
-  }, [setUser]);
+  // useEffect(() => {
+  //   showdata();
+  // }, [setUser]);
   return {
     email,
     setEmail,

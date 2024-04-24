@@ -2,21 +2,15 @@
 import Image from "next/image";
 import navbar from "../../../public/Lists.png";
 import header from "../../../public/header.png";
-
 import useEditTodo from "./useEditTodo";
 import InputField from "../inputField/InputField";
-
 export default function EditTodo({
   params,
 }: {
   params: { id: string; title: string };
 }) {
   const { id, title } = params;
-
-  console.log(params.title);
-
   const { setTopicTitle, handleEdit } = useEditTodo(params);
-
   return (
     <>
       <div

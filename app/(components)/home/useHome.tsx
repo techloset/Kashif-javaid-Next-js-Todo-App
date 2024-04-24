@@ -28,9 +28,6 @@ export default function useHome() {
     const filteredUser = userFetch.filter(
       (userData: Data1) => userData.email === session?.user?.email
     );
-
-    console.log(filteredUser);
-
     setUser(filteredUser as []);
   }, [userFetch]);
 
