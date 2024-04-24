@@ -88,10 +88,7 @@ export default function AddList({
                   >
                     <div className="ml-[24px]">
                       <h1 className="text-64px relative bottom-10  ">
-                        <h1 className={`${text} text-balance`}>
-                          {" "}
-                          {item.title}
-                        </h1>
+                        <h1 className={`${text} text-balance`}>{item.title}</h1>
                       </h1>
                     </div>
                   </h1>

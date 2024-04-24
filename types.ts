@@ -102,3 +102,9 @@ export interface RemoveListState {
   loading: false;
   error: null;
 }
+
+export interface EditState {
+  data: null;
+  loading: false;
+  error: null;
+}

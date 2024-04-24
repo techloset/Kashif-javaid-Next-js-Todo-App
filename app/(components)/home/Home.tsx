@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-
 import icon from "../../../public/icon.png";
 import setting from "../../../public/setting.png";
 import Loader from "../loader/Loader";
@@ -37,7 +36,11 @@ export default function Home() {
             ))}
           </div>
 
-          <div className=" h-fit py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]">
+          <div
+            className={`${
+              fetch.length ? "h-fit" : "h-screen"
+            } py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
+          >
             <button
               className="ml-5 text-white text-20px border-[3px] px-2 py-1 border-orange-600 rounded-full"
               onClick={() => signOut({ callbackUrl: "/login" })}
