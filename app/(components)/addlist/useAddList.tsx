@@ -26,25 +26,22 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   const add = useAppSelector((state) => state.add.data);
   const fetchdata = useAppSelector((state) => state.fetchdata.data);
 
+  const fetchList = async () => {
+    try {
+      const todoId = params.id;
+      dispatch(FetchList({ params: { id: todoId }, todoId }));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   useEffect(() => {
-    const fetchList = async () => {
-      try {
-        const todoId = params.id;
-        dispatch(FetchList({ params: { id: todoId }, todoId }));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
     fetchList();
-    console.log(fetchList);
-  }, [params.id, dispatch]);
-
+  });
   const fetchData = async () => {
     try {
       if (!title) {
         return null;
       }
-
       const todoId = params.id;
       dispatch(AddData({ title, params: { id: todoId } }));
       toast.success("Successfully List Created");
@@ -53,12 +50,6 @@ const useAddList = ({ params }: { params: { id: string } }) => {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    if (add) {
-      fetchData();
-    }
-  }, [add, fetchData, dispatch, params.id]);
 
   const removeTopic = async (id: string) => {
     try {

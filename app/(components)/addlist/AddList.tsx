@@ -50,7 +50,7 @@ export default function AddList({
       </div>
       <div
         className={`${color} ${
-          fetchdata.length ? "h-fit" : "h-screen"
+          fetchdata.length ? "h-fit" : "h-[800px]"
         } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">

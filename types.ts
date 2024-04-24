@@ -96,3 +96,9 @@ export interface Data {
   id: string;
   title: string;
 }
+
+export interface RemoveListState {
+  data: null;
+  loading: false;
+  error: null;
+}
