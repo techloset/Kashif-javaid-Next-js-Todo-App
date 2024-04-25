@@ -5,7 +5,10 @@ import { Item, SettingData } from "@/types";
 import { URL } from "@/app/constance/url";
 import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
 import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
-import { updateSetting } from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
+import {
+  resetState,
+  updateSetting,
+} from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
 
 export default function useSetting({ params }: { params: { id: string } }) {
   const [name, setName] = useState<string>("");
@@ -36,7 +39,7 @@ export default function useSetting({ params }: { params: { id: string } }) {
     e.preventDefault();
 
     const id = params.id;
-    dispatch(
+    await dispatch(
       updateSetting({
         params: { id: id },
         image: image,
@@ -45,6 +48,8 @@ export default function useSetting({ params }: { params: { id: string } }) {
         imageUrl: imageUrl,
       })
     );
+    toast.success("Update Success");
+    await dispatch(resetState());
   };
 
   return {

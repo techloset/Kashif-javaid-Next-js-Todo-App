@@ -1,8 +1,7 @@
 import { URL } from "@/app/constance/url";
-import { SettingState } from "@/types";
+import { Setting, SettingData, SettingState, UserUpdate } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import toast from "react-hot-toast";
 
 const initialState: SettingState = {
   data: [],
@@ -30,7 +29,7 @@ export const updateSetting = createAsyncThunk(
     imageUrl: string;
   }) => {
     try {
-      let updatedImageUrl = imageUrl;
+      let updatedImageUrl = "";
       if (image) {
         const cloud = "dk48g8htz";
         const UPLOAD_PRESET = "todo-app";
@@ -51,15 +50,15 @@ export const updateSetting = createAsyncThunk(
         updatedImageUrl = uploadRes.data.secure_url;
       }
 
-      const updateData: any = {};
+      const updateData: UserUpdate = {};
       if (name) {
         updateData.name = name;
       }
       if (email) {
         updateData.email = email;
       }
-      if (imageUrl) {
-        updateData.updatedImageUrl = updatedImageUrl;
+      if (updatedImageUrl) {
+        updateData.imageUrl = updatedImageUrl;
       }
 
       const updateRes = await axios.put(
@@ -77,7 +76,14 @@ export const updateSetting = createAsyncThunk(
 export const settingSlice = createSlice({
   name: "settingPage",
   initialState,
-  reducers: {},
+  reducers: {
+    resetState: (state) => {
+      state.imageUrl = "";
+      state.name = "";
+      state.email = "";
+      state.image = "";
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(updateSetting.pending, (state) => {
@@ -95,4 +101,5 @@ export const settingSlice = createSlice({
   },
 });
 
+export const { resetState } = settingSlice.actions;
 export default settingSlice.reducer;

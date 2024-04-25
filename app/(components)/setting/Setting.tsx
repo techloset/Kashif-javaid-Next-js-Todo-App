@@ -5,7 +5,7 @@ import logout from "../../../public/Logout.png";
 import profileimage from "../../../public/profile .png";
 
 import useSetting from "./useSetting";
-import { ALLUser, Item, SettingData, Settings } from "@/types";
+import { Settings } from "@/types";
 import { signOut } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
