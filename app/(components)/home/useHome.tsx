@@ -13,7 +13,6 @@ export default function useHome() {
   const fetch: ALLdata[] = useAppSelector((state) => state.fetch.data);
 
   const userFetch = useAppSelector((state) => state.userFetch.data);
-  console.log(userFetch);
 
   useEffect(() => {
     const showdata = async () => {

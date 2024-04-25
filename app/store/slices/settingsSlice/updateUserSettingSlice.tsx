@@ -11,6 +11,7 @@ const initialState: SettingState = {
   name: "",
   email: "",
   image: "",
+  imageUrl: "",
 };
 
 export const updateSetting = createAsyncThunk(
@@ -20,14 +21,16 @@ export const updateSetting = createAsyncThunk(
     image,
     name,
     email,
+    imageUrl,
   }: {
     params: { id: string };
     image: File | null;
     name: string;
     email: string;
+    imageUrl: string;
   }) => {
     try {
-      let imageUrl = "";
+      let updatedImageUrl = imageUrl;
       if (image) {
         const cloud = "dk48g8htz";
         const UPLOAD_PRESET = "todo-app";
@@ -45,7 +48,7 @@ export const updateSetting = createAsyncThunk(
           }
         );
 
-        imageUrl = uploadRes.data.secure_url;
+        updatedImageUrl = uploadRes.data.secure_url;
       }
 
       const updateData: any = {};
@@ -56,7 +59,7 @@ export const updateSetting = createAsyncThunk(
         updateData.email = email;
       }
       if (imageUrl) {
-        updateData.image = imageUrl;
+        updateData.updatedImageUrl = updatedImageUrl;
       }
 
       const updateRes = await axios.put(
@@ -84,6 +87,7 @@ export const settingSlice = createSlice({
       .addCase(updateSetting.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        console.log(state.data);
       })
       .addCase(updateSetting.rejected, (state, action) => {
         state.loading = false;

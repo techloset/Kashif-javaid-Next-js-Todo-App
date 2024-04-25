@@ -139,9 +139,11 @@ export interface SettingState {
   name: string;
   email: string;
   image: string;
+  imageUrl: string;
 }
 export interface SettingData {
   name: string;
   email: string;
   image: string;
+  imageUrl: string;
 }
