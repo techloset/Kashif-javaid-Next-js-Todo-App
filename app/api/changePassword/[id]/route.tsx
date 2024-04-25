@@ -1,5 +1,6 @@
 import { prisma } from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+
 export const PUT = async (
   request: NextRequest,
   { params }: { params: { id: string } }
@@ -7,35 +8,19 @@ export const PUT = async (
   try {
     const { id } = params;
     const { password } = await request.json();
-
-    const data = await prisma.user.update({
-      where: {
-        id: id,
-        password: password,
-      },
-      data: {},
+    const updatedUser = await prisma.user.update({
+      where: { id },
+      data: { password },
     });
+    console.log("upadte", updatedUser);
 
-    return NextResponse.json({ message: "success", data });
-  } catch (error) {
-    return NextResponse.json({ message: "error" });
-  }
-};
-
-export const GET = async (
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) => {
-  try {
-    const { id } = params;
-    const imageUrl = await prisma.user.findUnique({
-      where: {
-        id: id,
-      },
+    return NextResponse.json({
+      message: "Password updated successfully",
     });
-
-    return NextResponse.json({ imageUrl });
   } catch (error) {
-    return NextResponse.json({ error });
+    return NextResponse.json(
+      { message: "Error updating password", error },
+      { status: 500 }
+    );
   }
 };

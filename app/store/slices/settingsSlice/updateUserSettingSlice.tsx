@@ -11,6 +11,7 @@ const initialState: SettingState = {
   email: "",
   image: "",
   imageUrl: "",
+  password: "",
 };
 
 export const updateSetting = createAsyncThunk(
@@ -20,12 +21,14 @@ export const updateSetting = createAsyncThunk(
     image,
     name,
     email,
+    password,
   }: {
     params: { id: string };
     image: File | null;
     name: string;
     email: string;
     imageUrl: string;
+    password: string;
   }) => {
     try {
       let updatedImageUrl = "";
@@ -60,6 +63,10 @@ export const updateSetting = createAsyncThunk(
         updateData.imageUrl = updatedImageUrl;
       }
 
+      if (password) {
+        updateData.password = password;
+      }
+
       const updateRes = await axios.put(
         `${URL}/api/register/${params.id}`,
         updateData
@@ -81,6 +88,7 @@ export const settingSlice = createSlice({
       state.name = "";
       state.email = "";
       state.image = "";
+      state.password = "";
     },
   },
   extraReducers: (builder) => {

@@ -130,6 +130,7 @@ export interface UserUpdate {
   name?: string;
   email?: string;
   imageUrl?: string;
+  password?: string;
 }
 
 export interface SettingState {
@@ -140,10 +141,12 @@ export interface SettingState {
   email: string;
   image: string;
   imageUrl: string;
+  password: string;
 }
 export interface SettingData {
   name: string;
   email: string;
   image: string;
   imageUrl: string;
+  password: string;
 }

@@ -1,13 +1,14 @@
 import { prisma } from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 export const PUT = async (
   request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
   try {
     const { id } = params;
-    const { imageUrl, name, email } = await request.json();
-
+    const { imageUrl, name, email, password } = await request.json();
+    const hashedPassword = await bcrypt.hash(password, 10);
     const data = await prisma.user.update({
       where: {
         id: id,
@@ -16,6 +17,7 @@ export const PUT = async (
         imageUrl,
         name: name,
         email: email,
+        password: hashedPassword,
       },
     });
 
