@@ -1,5 +1,5 @@
 import { URL } from "@/app/constance/url";
-import { Setting, SettingData, SettingState, UserUpdate } from "@/types";
+import { SettingState, UserUpdate } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -20,7 +20,6 @@ export const updateSetting = createAsyncThunk(
     image,
     name,
     email,
-    imageUrl,
   }: {
     params: { id: string };
     image: File | null;
@@ -93,9 +92,8 @@ export const settingSlice = createSlice({
       .addCase(updateSetting.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
-        console.log(state.data);
       })
-      .addCase(updateSetting.rejected, (state, action) => {
+      .addCase(updateSetting.rejected, (state) => {
         state.loading = false;
       });
   },
