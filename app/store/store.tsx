@@ -7,6 +7,7 @@ import addListReducer from "./slices/addListSlice/addDataListSlice";
 import fetchReducer from "./slices/addListSlice/fetchDataList";
 import removeReducer from "../store/slices/addListSlice/removeTodoSlice";
 import editReducer from "../store/slices/addListSlice/editListSlice";
+import settingReducer from "../store/slices/settingsSlice/updateUserSettingSlice";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -17,6 +18,7 @@ export const store = configureStore({
     fetchdata: fetchReducer,
     removeList: removeReducer,
     editLists: editReducer,
+    settingPage: settingReducer,
   },
 });
 

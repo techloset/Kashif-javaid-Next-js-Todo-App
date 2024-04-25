@@ -138,10 +138,10 @@ export interface SettingState {
   error: null;
   name: string;
   email: string;
-  imageUrl: string;
+  image: string;
 }
 export interface SettingData {
   name: string;
   email: string;
-  imageUrl: string;
+  image: string;
 }

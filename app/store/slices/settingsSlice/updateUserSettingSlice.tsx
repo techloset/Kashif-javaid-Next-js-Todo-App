@@ -1,5 +1,8 @@
+import { URL } from "@/app/constance/url";
 import { SettingState } from "@/types";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialState: SettingState = {
   data: [],
@@ -7,14 +10,85 @@ const initialState: SettingState = {
   error: null,
   name: "",
   email: "",
-  imageUrl: "",
+  image: "",
 };
 
-export const counterSlice = createSlice({
-  name: "counter",
+export const updateSetting = createAsyncThunk(
+  "updateSetting",
+  async ({
+    params,
+    image,
+    name,
+    email,
+  }: {
+    params: { id: string };
+    image: File | null;
+    name: string;
+    email: string;
+  }) => {
+    try {
+      let imageUrl = "";
+      if (image) {
+        const cloud = "dk48g8htz";
+        const UPLOAD_PRESET = "todo-app";
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", UPLOAD_PRESET);
 
+        const uploadRes = await axios.post(
+          `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        imageUrl = uploadRes.data.secure_url;
+      }
+
+      const updateData: any = {};
+      if (name) {
+        updateData.name = name;
+      }
+      if (email) {
+        updateData.email = email;
+      }
+      if (imageUrl) {
+        updateData.image = imageUrl;
+      }
+
+      const updateRes = await axios.put(
+        `${URL}/api/register/${params.id}`,
+        updateData
+      );
+
+      return updateRes.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const settingSlice = createSlice({
+  name: "settingPage",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateSetting.pending, (state) => {
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(updateSetting.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(updateSetting.rejected, (state, action) => {
+        state.loading = false;
+      });
+  },
 });
 
-export default counterSlice.reducer;
+export default settingSlice.reducer;
