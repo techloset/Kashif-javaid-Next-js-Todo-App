@@ -5,7 +5,7 @@ import logout from "../../../public/Logout.png";
 import profileimage from "../../../public/profile .png";
 
 import useSetting from "./useSetting";
-import { ALLUser, Item, SettingData } from "@/types";
+import { ALLUser, Item, SettingData, Settings } from "@/types";
 import { signOut } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
@@ -63,7 +63,7 @@ export default function Setting({ params }: { params: { id: string } }) {
             />
           </div>
           {!fetch.some(
-            (user: SettingData) => user.id === params.id && user.imageUrl
+            (user: Settings) => user.id === params.id && user.imageUrl
           ) ? (
             <form className=" w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color ">
               <input
@@ -74,7 +74,7 @@ export default function Setting({ params }: { params: { id: string } }) {
               />
             </form>
           ) : (
-            fetch.map((user: SettingData, index: number) => {
+            fetch.map((user: Settings, index: number) => {
               if (user.id === params.id) {
                 return (
                   <div key={index} className="flex justify-center">

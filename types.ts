@@ -114,7 +114,7 @@ export interface Edit {
   title: string;
 }
 
-export interface SettingData {
+export interface Settings {
   id: string;
   email: string;
   imageUrl: string;
@@ -130,4 +130,18 @@ export interface UserUpdate {
   name?: string;
   email?: string;
   imageUrl?: string;
+}
+
+export interface SettingState {
+  data: SettingData[];
+  loading: false;
+  error: null;
+  name: string;
+  email: string;
+  imageUrl: string;
+}
+export interface SettingData {
+  name: string;
+  email: string;
+  imageUrl: string;
 }
