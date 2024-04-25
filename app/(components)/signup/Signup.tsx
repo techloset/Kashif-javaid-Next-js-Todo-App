@@ -10,8 +10,6 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 
 export default function Signup(params: { title: string }) {
-  console.log(params);
-
   const {
     name,
     setName,
@@ -22,7 +20,6 @@ export default function Signup(params: { title: string }) {
     confirmpassword,
     setConfirmPassword,
     formHandle,
-    user,
   } = useSignup();
 
   return (

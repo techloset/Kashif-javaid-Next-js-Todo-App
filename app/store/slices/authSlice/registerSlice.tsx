@@ -18,7 +18,6 @@ export const SignUp = createAsyncThunk(
     name: string;
     email: string;
     password: string;
-    confirmpassword: string;
   }) => {
     try {
       const res = await axios.post(`${URL}/api/userexist`, {
@@ -54,7 +53,7 @@ const authSlice = createSlice({
       .addCase(SignUp.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(SignUp.rejected, (state, action) => {
+      .addCase(SignUp.rejected, (state) => {
         state.isLoading = false;
       });
   },

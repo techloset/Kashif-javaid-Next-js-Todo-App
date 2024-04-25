@@ -9,6 +9,7 @@ import { Settings } from "@/types";
 import { signOut } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
+import Link from "next/link";
 export default function Setting({ params }: { params: { id: string } }) {
   const {
     data,
@@ -112,12 +113,14 @@ export default function Setting({ params }: { params: { id: string } }) {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className="text-orange-600 flex justify-center mt-[69px]  ">
-            <button
-              className="border-4 text-30px font-medium border-orange-600 rounded-full h-[63.73px]  py-[5px] 
+            <Link href={`/updatePassword/${params.id}`}>
+              <button
+                className="border-4 text-30px font-medium border-orange-600 rounded-full h-[63.73px]  py-[5px] 
             w-[318.1px] px-[24px]"
-            >
-              Change Password
-            </button>
+              >
+                Change Password
+              </button>
+            </Link>
           </div>
           <div
             className="flex justify-center mt-[36.27px]"

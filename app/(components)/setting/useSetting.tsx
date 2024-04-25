@@ -41,13 +41,13 @@ export default function useSetting({ params }: { params: { id: string } }) {
         imageUrl: imageUrl,
       })
     );
-
+    toast.success(" Updated successfully");
     await dispatch(resetState());
   };
 
   useEffect(() => {
     imageUrl;
-  }, [dispatch, imageUrl, updateSetting]);
+  }, [dispatch, imageUrl, updateSetting, setting]);
 
   return {
     name,
