@@ -9,7 +9,6 @@ export const POST = async (request: NextRequest) => {
       data: { name, email, password: hashedPassword, imageUrl: "" },
     });
     const userId = createdUser.id;
-    console.log(userId);
 
     return NextResponse.json({ message: "success", userId });
   } catch (error) {
