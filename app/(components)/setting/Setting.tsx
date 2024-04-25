@@ -5,15 +5,23 @@ import logout from "../../../public/Logout.png";
 import profileimage from "../../../public/profile .png";
 
 import useSetting from "./useSetting";
-import { Item } from "@/types";
+import { ALLUser, Item, SettingData } from "@/types";
 import { signOut } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
 export default function Setting({ params }: { params: { id: string } }) {
-  const { data, name, setName, email, setEmail, setImage, handleSubmit } =
-    useSetting({
-      params: { id: params.id },
-    });
+  const {
+    data,
+    name,
+    setName,
+    email,
+    setEmail,
+    setImage,
+    handleSubmit,
+    fetch,
+  } = useSetting({
+    params: { id: params.id },
+  });
 
   return (
     <>
@@ -54,8 +62,8 @@ export default function Setting({ params }: { params: { id: string } }) {
               className="relative top-[125px] left-[140px] "
             />
           </div>
-          {!data.some(
-            (user: Item) => user.id === params.id && user.imageUrl
+          {!fetch.some(
+            (user: SettingData) => user.id === params.id && user.imageUrl
           ) ? (
             <form className=" w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color ">
               <input
@@ -66,7 +74,7 @@ export default function Setting({ params }: { params: { id: string } }) {
               />
             </form>
           ) : (
-            data.map((user: Item, index: number) => {
+            fetch.map((user: SettingData, index: number) => {
               if (user.id === params.id) {
                 return (
                   <div key={index} className="flex justify-center">

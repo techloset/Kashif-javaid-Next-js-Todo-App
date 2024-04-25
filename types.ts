@@ -70,8 +70,9 @@ export interface UserState {
 }
 
 export interface ALLUser {
-  id: number;
+  id: string;
   email: string;
+  imageUrl: string;
 }
 export interface Data1 {
   email: string;
@@ -89,7 +90,6 @@ export interface FetchDataState {
   data: Data[];
   loading: false;
   error: null;
-
   title: string;
 }
 export interface Data {
@@ -112,4 +112,22 @@ export interface EditState {
 export interface Edit {
   id: string;
   title: string;
+}
+
+export interface SettingData {
+  id: string;
+  email: string;
+  imageUrl: string;
+}
+
+export interface Setting {
+  id: string;
+  email: string;
+  name: string;
+  imageUrl: string;
+}
+export interface UserUpdate {
+  name?: string;
+  email?: string;
+  imageUrl?: string;
 }
