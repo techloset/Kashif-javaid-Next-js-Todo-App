@@ -40,5 +40,9 @@ export default function useUpdate({ params }: { params: { id: string } }) {
     handleSubmit,
     password,
     setPassword,
+    setEmail,
+    setName,
+    setImage,
+    setImageUrl,
   };
 }

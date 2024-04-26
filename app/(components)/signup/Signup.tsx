@@ -61,7 +61,10 @@ export default function Signup(params: { title: string }) {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <GoogleButton title="Sign Up with Google" onClick={() => signIn()} />
+        <GoogleButton
+          title="Sign Up with Google"
+          onClick={() => signIn("google", { callbackUrl: "/" })}
+        />
         <Button title="Sign Up" onClick={formHandle} />
         <div className="flex justify-center mr-[90px] mt-[18px]">
           <h1 className="text-white font-medium text-20px mt-2">
