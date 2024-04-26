@@ -27,7 +27,7 @@ export default function Signup(params: { title: string }) {
       <div className="bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px]">
         <Image src={navbarImage} alt="image not found"></Image>
         <div className="mt-[64px]"></div>
-        <div>
+        <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%]  mx-auto px-3">
           <LabelText name="Name" />
           <InputField
             type="text"
@@ -42,7 +42,7 @@ export default function Signup(params: { title: string }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <div className="ml-16">
+          <div className="">
             <LabelText name="Password" />
           </div>
           <InputField
@@ -51,7 +51,7 @@ export default function Signup(params: { title: string }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <h1 className="flex justify-center mr-[140px] text-30px text-white mb-2">
+          <h1 className="flex ml-[20px] text-30px text-white mb-2">
             Confirm Password
           </h1>
           <InputField
@@ -60,13 +60,15 @@ export default function Signup(params: { title: string }) {
             value={confirmpassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+          <GoogleButton
+            title="Sign Up with Google"
+            onClick={() => signIn("google", { callbackUrl: "/" })}
+          />
+
+          <Button title="Sign Up" onClick={formHandle} />
         </div>
-        <GoogleButton
-          title="Sign Up with Google"
-          onClick={() => signIn("google", { callbackUrl: "/" })}
-        />
-        <Button title="Sign Up" onClick={formHandle} />
-        <div className="flex justify-center mr-[90px] mt-[18px]">
+
+        <div className="flex justify-center flex-wrap mr-[90px] mt-[18px]">
           <h1 className="text-white font-medium text-20px mt-2">
             Already have an account?
           </h1>

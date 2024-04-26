@@ -14,11 +14,11 @@ const InputField: React.FC<InputType> = ({
           type={type}
           spellCheck={false}
           onChange={onChange}
-          className="w-[447px]
-           h-[58px]
+          className="
+          w-full
            rounded-full
             bg-custom-input
-        
+            h-[58]
              border-orange-500
              border-4
             outline-none
