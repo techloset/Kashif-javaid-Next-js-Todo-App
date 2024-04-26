@@ -41,13 +41,6 @@ export default function Home() {
               fetch.length ? "h-fit" : "h-screen"
             } py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
           >
-            <button
-              className="ml-5 text-white text-20px border-[3px] px-2 py-1 border-orange-600 rounded-full"
-              onClick={() => signOut({ callbackUrl: "/login" })}
-            >
-              Signout
-            </button>
-
             <div className="flex justify-center">
               <h1 className="text-white mt-[16px] text-124px font-normal ">
                 Todo Lists
@@ -68,6 +61,7 @@ export default function Home() {
                                 color: item.color,
                                 border: item.textColor,
                                 text: item.borderColor,
+                                title: item.title,
                               },
                             }}
                           >

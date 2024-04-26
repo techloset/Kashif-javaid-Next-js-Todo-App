@@ -18,7 +18,7 @@ export default function AddList({
     color,
     text,
     setTitle,
-    title,
+    title1,
     border,
     fetchData,
     data,
@@ -26,6 +26,7 @@ export default function AddList({
     handleToggleCheck,
     removeTopic,
     fetchdata,
+    title,
   } = useAddList({
     params: { id: params.id },
   });
@@ -54,7 +55,7 @@ export default function AddList({
         } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
-          <h1 className={`text-124px ${text}`}>Home List</h1>
+          <h1 className={`text-124px ${text}`}>{`${title}`}</h1>
           <h1 className={`text-124px h-1  ${text} `}>.</h1>
         </div>
         <div className={`mx-auto w-[597px] `}>
@@ -62,7 +63,7 @@ export default function AddList({
             type="text"
             name="text"
             placeholder="Add List"
-            value={title}
+            value={title1}
             onChange={(e) => setTitle(e.target.value)}
             className={`${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
           />

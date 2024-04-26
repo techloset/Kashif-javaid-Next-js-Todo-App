@@ -3,10 +3,9 @@ import Image from "next/image";
 import icon from "../../../public/icon.png";
 import logout from "../../../public/Logout.png";
 import profileimage from "../../../public/profile .png";
-
 import useSetting from "./useSetting";
 import { Settings } from "@/types";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
 import Link from "next/link";
@@ -23,7 +22,7 @@ export default function Setting({ params }: { params: { id: string } }) {
   } = useSetting({
     params: { id: params.id },
   });
-
+  const { data: session } = useSession();
   return (
     <>
       <div className="bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_-5px)] [background-size:10px_10px] h-full">

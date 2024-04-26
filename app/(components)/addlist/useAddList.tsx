@@ -7,12 +7,13 @@ import { FetchList } from "@/app/store/slices/addListSlice/fetchDataList";
 import { RemoveList } from "@/app/store/slices/addListSlice/removeTodoSlice";
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
-  const [title, setTitle] = useState("");
+  const [title1, setTitle] = useState("");
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const color = searchParams.get("color");
   const text = searchParams.get("text");
   const border = searchParams.get("border");
+  const title = searchParams.get("title");
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
   const handleToggleCheck = (itemId: string) => {
     if (checkedItems.includes(itemId)) {
@@ -66,7 +67,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   };
 
   return {
-    title,
+    title1,
     setTitle,
     color,
     text,
@@ -78,6 +79,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
     removeTopic,
     isLoading,
     fetchdata,
+    title,
   };
 };
 
