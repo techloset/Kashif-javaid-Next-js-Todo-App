@@ -55,23 +55,23 @@ export default function AddList({
         } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
-          <h1 className={`text-124px ${text}`}>{`${title}`}</h1>
-          <h1 className={`text-124px h-1  ${text} `}>.</h1>
+          <h1 className={`text-64px sm:text-124px ${text}`}>{`${title}`}</h1>
+          <h1 className={` text-64px sm:text-124px h-1  ${text} `}>.</h1>
         </div>
-        <div className={`mx-auto w-[597px] `}>
+        <div className={` w-full flex justify-center px-3 `}>
           <input
             type="text"
             name="text"
             placeholder="Add List"
             value={title1}
             onChange={(e) => setTitle(e.target.value)}
-            className={`${color} text-30px pl-4 rounded-2xl ${border} border-4 outline-none w-[597px]  h-[58px] `}
+            className={`${color} text-30px pl-4 rounded-2xl ${border} w-[100%] sm:w-[50%] md:w-[40%] lg:w-[35%] border-4 outline-none h-[58px] `}
           />
         </div>
-        <div className="mt-[49px] ml-[350px] py-[14px] flex flex-col">
+        <div className="mt-[49px] ml-[100px] sm:ml-[350px]  py-[14px]  flex flex-col">
           {fetchdata &&
             fetchdata.map((item: List, index: number) => (
-              <div key={index} className="flex flex-col ">
+              <div key={index} className="flex flex-col justify-center ">
                 <div className="flex">
                   <input
                     type="checkbox"
@@ -87,19 +87,24 @@ export default function AddList({
                         : "border-transparent"
                     }`}
                   >
-                    <div className="ml-[24px]">
-                      <h1 className="text-64px relative bottom-10  ">
-                        <h1 className={`${text} text-balance`}>{item.title}</h1>
+                    <div className="">
+                      <h1 className="text-64px sm:relative sm:bottom-10  ">
+                        <h1
+                          className={`${text} text-balance relative bottom-10 sm:bottom-0 sm:top-1`}
+                        >
+                          {item.title}
+                        </h1>
                       </h1>
                     </div>
                   </h1>
                 </div>
-                <div className="flex  w-[700px] ">
+
+                <div className="flex flex-row  sm:w-[700px] mt-2  sm:mt-0 sm:ml-0 md:relative md:bottom-20">
                   <Link href={`/edittodo/${item.id}`}>
                     <Image
                       src={editicon}
                       alt="not"
-                      className=" relative ml-[500px] bottom-16"
+                      className=" sm:relative md:flex ml-0 sm:top-3 sm:bottom-16 md:bottom-0 lg:ml-[500px]  "
                     />
                   </Link>
 
@@ -107,7 +112,7 @@ export default function AddList({
                     <Image
                       src={removeicon}
                       alt="Remove"
-                      className="relative right-2 bottom-16"
+                      className="sm:relative  sm:right-2 sm:top-3  sm:bottom-16"
                     />
                   </button>
                 </div>

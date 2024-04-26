@@ -5,7 +5,6 @@ import icon from "../../../public/icon.png";
 import setting from "../../../public/setting.png";
 import Loader from "../loader/Loader";
 import useHome from "./useHome";
-import { signOut } from "next-auth/react";
 import { ALLdata, Item } from "@/types";
 export default function Home() {
   const { user, isLoading, fetch } = useHome();
@@ -42,14 +41,14 @@ export default function Home() {
             } py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
           >
             <div className="flex justify-center">
-              <h1 className="text-white mt-[16px] text-64px md:text-124px font-normal ">
+              <h1 className="text-white mt-[16px]  text-25px md:text-124px font-normal ">
                 Todo Lists
               </h1>
               <h1 className="text-orange-600 text-64px md:text-124px font-normal">
                 .
               </h1>
             </div>
-            <div className="ml-[30px] sm:ml-[295px] text-64px mt-[40px] sm:mt-0">
+            <div className="ml-[30px] sm:ml-[295px] md:ml-10 lg:ml-[295px] text-64px mt-[40px] md:mt-[70px] sm:mt-0">
               <div>
                 <div className="w-auto flex flex-col">
                   {fetch &&
@@ -87,7 +86,11 @@ export default function Home() {
             </div>
 
             <div className="flex h-fit">
-              <div className="flex mt-[18px] text-white ml-[20px] sm:ml-[295px] ">
+              <div
+                className="flex mt-[18px] text-white   md:ml-10
+                sm:ml-[295px] lg:ml-[295px]
+              "
+              >
                 <div className="border-custom-border5 border-b-[16px] flex text-64px ">
                   <div className="flex ">
                     <h1 className="mr-3 relative right-2 top-10">+</h1>
