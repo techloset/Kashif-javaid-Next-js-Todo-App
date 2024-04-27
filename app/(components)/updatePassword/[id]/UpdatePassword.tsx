@@ -33,7 +33,7 @@ export default function UpdatePassword({ params }: { params: { id: string } }) {
         </div>
 
         <div className="h-screen bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px] ">
-          <div className="py-36">
+          <div className="py-36 w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[35%] px-2">
             <div className="ml-16 ">
               <LabelText name="Password" />
             </div>
