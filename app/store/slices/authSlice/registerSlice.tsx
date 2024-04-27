@@ -32,6 +32,7 @@ export const SignUp = createAsyncThunk(
         email,
         password,
       });
+      toast.success("User Login successfully");
     } catch (error) {
       console.log("error: ", error);
       toast.error("error");

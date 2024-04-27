@@ -9,7 +9,15 @@ import { signIn } from "next-auth/react";
 import useLogin from "./useLogin";
 import Link from "next/link";
 export default function Login() {
-  const { email, setEmail, password, setPassword, handler } = useLogin();
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handler,
+    bademail,
+    badpassword,
+  } = useLogin();
 
   return (
     <>
@@ -23,6 +31,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          {bademail && <p className="text-red-500">{bademail}</p>}
           <div className="">
             <LabelText name="Password" />
           </div>
@@ -32,6 +41,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {badpassword && <p className="text-red-500">{badpassword}</p>}
           <div className="flex justify-end   ">
             <Link href={"/changePassword"} className=" ">
               <h1 className=" text-20px text-white mt-4  ">Forget Password</h1>
