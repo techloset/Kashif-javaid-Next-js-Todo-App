@@ -44,8 +44,12 @@ export default function Setting({ params }: { params: { id: string } }) {
         </div>
 
         <div className="flex justify-center mt-[60px]">
-          <h1 className="text-white text-64px sm:text-124px">Settings</h1>
-          <h1 className="text-orange-500 text-64px sm:text-124px">.</h1>
+          <h1 className="text-white text-64px sm:text-124px font-Stint_Ultra_Condensed font-normal">
+            Settings
+          </h1>
+          <h1 className="text-orange-500 text-64px sm:text-124px font-Stint_Ultra_Condensed font-normal">
+            .
+          </h1>
         </div>
 
         <div className=" mx-auto mt-4">
@@ -92,7 +96,7 @@ export default function Setting({ params }: { params: { id: string } }) {
           )}
         </div>
 
-        <h1 className="flex justify-center mt-[11px] text-white font-normal text-30px">
+        <h1 className="flex justify-center mt-[11px] text-white font-normal font-IBM_Plex_Mono text-30px">
           Profile Photo
         </h1>
 
@@ -115,7 +119,7 @@ export default function Setting({ params }: { params: { id: string } }) {
             <Link href={`/updatePassword/${params.id}`}>
               <button
                 className="border-4 text-30px font-medium border-orange-600 rounded-full h-[63.73px]  py-[5px] 
-            w-[318.1px] px-[24px]"
+            w-[318.1px] px-[24px] font-IBM_Plex_Mono "
               >
                 Change Password
               </button>
@@ -125,7 +129,7 @@ export default function Setting({ params }: { params: { id: string } }) {
             className="flex justify-center mt-[36.27px]"
             onClick={handleSubmit}
           >
-            <button className="w-[318px] h-[63px] border border-orange-600 bg-orange-600 rounded-full font-medium text-30px px-[24px]  py-[5px] mb-4 sm:mb-2 ">
+            <button className="w-[318px] h-[63px] border border-orange-600 bg-orange-600 rounded-full font-medium text-30px px-[24px]  py-[5px] mb-4 sm:mb-2  font-IBM_Plex_Mono">
               Save Changes
             </button>
           </div>
