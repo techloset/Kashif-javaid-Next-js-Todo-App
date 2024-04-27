@@ -7,7 +7,7 @@ const InputField: React.FC<InputType> = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col  justify-center items-center mb-2 font-IBM_Plex_Mono font-medium">
+      <div className="flex flex-col justify-center items-center mb-2 font-IBM_Plex_Mono font-medium">
         <input
           placeholder={placeholder}
           value={value}

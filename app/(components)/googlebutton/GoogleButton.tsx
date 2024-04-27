@@ -9,7 +9,7 @@ export default function GoogleButton(props: {
     <>
       <div className="flex justify-center mt-[64px]  ">
         <button
-          className="flex w-[100%] items-center  px-4 py-[12px]  lg:px-10 border-orange-500
+          className="flex w-[100%] items-center  px-4 py-[12px]  lg:px-8 border-orange-500
              border-4 rounded-full text-center"
           onClick={props.onClick}
         >
