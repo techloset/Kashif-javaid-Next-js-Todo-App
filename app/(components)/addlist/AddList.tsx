@@ -55,17 +55,25 @@ export default function AddList({
         } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
-          <h1 className={`text-64px sm:text-124px ${text}`}>{`${title}`}</h1>
-          <h1 className={` text-64px sm:text-124px h-1  ${text} `}>.</h1>
+          <h1
+            className={`text-64px sm:text-124px font-Stint_Ultra_Condensed font-normal ${text}`}
+          >{`${title}`}</h1>
+          <h1
+            className={` text-64px sm:text-124px h-1 font-Stint_Ultra_Condensed font-normal ${text} `}
+          >
+            .
+          </h1>
         </div>
-        <div className={` w-full flex justify-center px-3 `}>
+        <div
+          className={` w-full flex justify-center px-3 font-IBM_Plex_Mono font-medium `}
+        >
           <input
             type="text"
             name="text"
             placeholder="Add List"
             value={title1}
             onChange={(e) => setTitle(e.target.value)}
-            className={`${color} text-30px pl-4 rounded-2xl ${border} w-[100%] sm:w-[50%] md:w-[40%] lg:w-[35%] border-4 outline-none h-[58px] `}
+            className={`${color} text-30px pl-4 rounded-2xl font-IBM_Plex_Mono font-medium  ${border} w-[100%] sm:w-[50%] md:w-[40%] lg:w-[35%] border-4 outline-none h-[58px] `}
           />
         </div>
         <div className="mt-[49px] ml-[100px] sm:ml-[350px]  py-[14px]  flex flex-col">
@@ -87,10 +95,10 @@ export default function AddList({
                         : "border-transparent"
                     }`}
                   >
-                    <div className="">
-                      <h1 className="text-64px sm:relative sm:bottom-10  ">
+                    <div className="font-IBM_Plex_Mono font-medium ">
+                      <h1 className="text-64px sm:relative sm:bottom-10  font-IBM_Plex_Mono font-medium ">
                         <h1
-                          className={`${text} text-balance relative bottom-10 sm:bottom-0 sm:top-1`}
+                          className={`${text} font-IBM_Plex_Mono font-medium text-balance relative bottom-10 sm:bottom-0 sm:top-1`}
                         >
                           {item.title}
                         </h1>
