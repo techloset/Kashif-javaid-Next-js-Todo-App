@@ -69,7 +69,7 @@ export default function Signup(params: { title: string }) {
         </div>
 
         <div className="flex justify-center flex-wrap mr-[90px] mt-[18px]">
-          <h1 className="text-white font-medium text-20px mt-2">
+          <h1 className="text-white font-medium text-20px mt-2 font-IBM_Plex_Mono ">
             Already have an account?
           </h1>
           <Link href="/login">
