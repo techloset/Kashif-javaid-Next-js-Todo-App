@@ -9,12 +9,71 @@ export default function useSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
+  const [badusername, setBadusername] = useState(false);
+  const [bademail, setBademail] = useState(false);
+  const [badpassword, setBadpassword] = useState(false);
+  const [badconfirmpass, setBadconfirmpass] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth.user);
+
+  const validate = () => {
+    let isValid = true;
+
+    if (name === "") {
+      setBadusername(true);
+      toast.error("Name is required");
+      isValid = false;
+    }
+    if (email === "") {
+      setBademail(true);
+      toast.error("Email is required");
+      isValid = false;
+    } else if (
+      !email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    ) {
+      setBademail(true);
+      toast.error("Email is invalid");
+      isValid = false;
+    } else {
+      setBademail(false);
+    }
+
+    if (password === "") {
+      setBadpassword(true);
+      toast.error("Password is required");
+      isValid = false;
+    } else if (password.length < 8) {
+      setBadpassword(true);
+      toast.error("Password must be at least 8 characters");
+      isValid = false;
+    } else {
+      setBadpassword(false);
+    }
+
+    if (confirmpassword === "") {
+      setBadconfirmpass(true);
+      toast.error("Confirm Password is required");
+      isValid = false;
+    } else if (confirmpassword !== password) {
+      setBadconfirmpass(true);
+      toast.error("Passwords do not match");
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
   const formHandle = async (e: FormEvent) => {
     e.preventDefault();
     try {
+      if (!validate()) {
+        return;
+      }
       if (!name || !email || !password || !confirmpassword) {
         toast.error("Please fill in all fields");
         return;
@@ -53,5 +112,9 @@ export default function useSignup() {
     confirmpassword,
     setConfirmPassword,
     formHandle,
+    badusername,
+    badpassword,
+    bademail,
+    badconfirmpass,
   };
 }
