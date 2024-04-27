@@ -62,7 +62,6 @@ export const authOptions: AuthOptions = {
                 password: "",
               },
             });
-            console.log(newUser);
           } catch (error) {
             console.log("Error creating user:", error);
           }

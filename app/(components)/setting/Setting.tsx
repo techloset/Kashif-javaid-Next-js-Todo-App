@@ -100,7 +100,7 @@ export default function Setting({ params }: { params: { id: string } }) {
           Profile Photo
         </h1>
 
-        <div className=" w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[35%] px-2">
+        <div className=" w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[33%] px-2">
           <LabelText name="Name" />
           <InputField
             type="text"

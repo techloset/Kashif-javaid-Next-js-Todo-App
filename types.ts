@@ -150,3 +150,11 @@ export interface SettingData {
   imageUrl: string;
   password: string;
 }
+
+export interface UsersTypes {
+  req: any;
+  id: string;
+  email: string;
+  password: string;
+  imageUrl: string;
+}
