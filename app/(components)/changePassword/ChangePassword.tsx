@@ -1,14 +1,12 @@
 "use client";
 import Image from "next/image";
-import NavbarImage from "../../../../public/navbar.png";
-import ListImage from "../../../../public/Lists.png";
+import NavbarImage from "../../../public/navbar.png";
+import ListImage from "../../../public/Lists.png";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import InputField from "@/app/(components)/inputField/InputField";
-import { useState } from "react";
 import AddButton from "@/app/(components)/addButton/AddButton";
-import axios from "axios";
 import useChangePassword from "./useChangePassword";
-export default function page() {
+export default function ChangePassword() {
   const { email, setEmail, handlerForget } = useChangePassword();
   return (
     <>
