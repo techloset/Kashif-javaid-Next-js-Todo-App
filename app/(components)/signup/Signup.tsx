@@ -3,7 +3,7 @@ import Image from "next/image";
 import navbarImage from "../../../public/navbar.png";
 import InputField from "@/app/(components)/inputField/InputField";
 import LabelText from "@/app/(components)/labelText/LabelText";
-import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
+import GoogleButton from "@/app/(components)/googleButton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
 import useSignup from "./useSignup";
 import Link from "next/link";

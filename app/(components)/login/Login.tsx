@@ -3,7 +3,7 @@ import Image from "next/image";
 import NavbarImage from "../../../public/navbar.png";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import InputField from "@/app/(components)/inputField/InputField";
-import GoogleButton from "@/app/(components)/googlebutton/GoogleButton";
+import GoogleButton from "@/app/(components)/googleButton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
 import { signIn } from "next-auth/react";
 import useLogin from "./useLogin";
