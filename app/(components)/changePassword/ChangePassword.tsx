@@ -7,20 +7,9 @@ import InputField from "@/app/(components)/inputField/InputField";
 import { useState } from "react";
 import AddButton from "@/app/(components)/addButton/AddButton";
 import axios from "axios";
+import useChangePassword from "./useChangePassword";
 export default function page() {
-  const [email, setEmail] = useState("");
-  const handlerForget = async () => {
-    try {
-      const res = await axios.post("http://localhost:3000/api/forgetpassword", {
-        email,
-      });
-      if (res.status === 400) {
-        alert("Email already exists");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { email, setEmail, handlerForget } = useChangePassword();
   return (
     <>
       <div

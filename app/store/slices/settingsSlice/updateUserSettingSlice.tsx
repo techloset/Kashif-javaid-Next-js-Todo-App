@@ -59,15 +59,12 @@ export const updateSetting = createAsyncThunk(
       };
       if (name) {
         updateData.name = name;
-        console.log(name);
       }
       if (email) {
         updateData.email = email;
-        console.log(email);
       }
       if (updatedImageUrl) {
         updateData.imageUrl = updatedImageUrl;
-        console.log("abc", updatedImageUrl);
       }
 
       const updateRes = await axios.put(
