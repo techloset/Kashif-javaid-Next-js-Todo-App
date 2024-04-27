@@ -8,7 +8,6 @@ import Button from "@/app/(components)/button/Button";
 import { signIn } from "next-auth/react";
 import useLogin from "./useLogin";
 import Link from "next/link";
-
 export default function Login() {
   const { email, setEmail, password, setPassword, handler } = useLogin();
 
