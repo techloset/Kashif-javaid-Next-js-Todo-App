@@ -94,7 +94,7 @@ export default function Home() {
                 <div className="border-custom-border5 border-b-[16px] flex text-64px ">
                   <div className="flex ">
                     <h1 className="mr-3 relative right-2 top-10">+</h1>
-                    <h1 className="relative right-3 top-10">
+                    <h1 className="relative right-3 top-10 font-IBM_Plex_Mono font-medium">
                       <Link href={"/createtodo"}>Add List.</Link>
                     </h1>
                   </div>

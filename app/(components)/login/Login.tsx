@@ -15,7 +15,7 @@ export default function Login() {
     <>
       <div className="h-[900px] bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px]">
         <Image src={NavbarImage} alt="Image Not Found" />
-        <div className="mt-[60px] w-[100%] sm:w-[60%] md:w-[50%] lg:w-[30%]  px-3  mx-auto">
+        <div className="mt-[60px] w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] xl:w-[30%]  px-3  mx-auto">
           <LabelText name="Email" />
           <InputField
             placeholder="Email"
@@ -32,11 +32,9 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div className="flex justify-center sm:ml-[40%] ">
-            <Link href={"/changePassword"}>
-              <h1 className=" text-20px text-white mt-4 ml-[120px]">
-                Forget Password
-              </h1>
+          <div className="flex justify-end   ">
+            <Link href={"/changePassword"} className=" ">
+              <h1 className=" text-20px text-white mt-4  ">Forget Password</h1>
             </Link>
           </div>
           <GoogleButton
