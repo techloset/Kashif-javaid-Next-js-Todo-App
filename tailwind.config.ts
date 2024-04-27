@@ -1,3 +1,4 @@
+import { IBM_Plex_Mono } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -7,6 +8,10 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      Stint_Ultra_Condensed: ["Stint Ultra Condensed", "serif"],
+      IBM_Plex_Mono: ["IBM Plex Mono", "monospace"],
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -55,7 +60,6 @@ const config: Config = {
         "custom-border-todo8": "#005874",
         "custom-border-todo9": "#2C3333",
       },
-      fontFamily: {},
     },
     fontSize: {
       "10px": "10px",

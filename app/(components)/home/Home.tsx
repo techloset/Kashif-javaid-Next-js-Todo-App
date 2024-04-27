@@ -41,10 +41,10 @@ export default function Home() {
             } py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
           >
             <div className="flex justify-center">
-              <h1 className="text-white mt-[16px]  text-25px md:text-124px font-normal ">
+              <h1 className="text-white mt-[16px]  text-25px md:text-124px font-normal font-Stint_Ultra_Condensed ">
                 Todo Lists
               </h1>
-              <h1 className="text-orange-600 text-64px md:text-124px font-normal">
+              <h1 className="text-orange-600 text-64px md:text-124px font-normal font-Stint_Ultra_Condensed">
                 .
               </h1>
             </div>
@@ -68,7 +68,7 @@ export default function Home() {
                           >
                             <div className="text-white ">
                               <h1
-                                className={`text-white h-[18px] my-2  ${item.color}`}
+                                className={`text-white h-[18px] my-2 font-IBM_Plex_Mono ${item.color}`}
                               >
                                 <div>
                                   <h1 className="inline-block relative bottom-14 right-2">
