@@ -31,7 +31,7 @@ export default function Setting({ params }: { params: { id: string } }) {
             <Image
               src={icon}
               alt="not"
-              className="w-[48px] h-[48px] mt-[24px] ml-[24px]"
+              className="w-[48px]  h-[48px] mt-[24px] ml-[24px]"
             />
 
             <Image
@@ -44,11 +44,11 @@ export default function Setting({ params }: { params: { id: string } }) {
         </div>
 
         <div className="flex justify-center mt-[60px]">
-          <h1 className="text-white text-124px">Settings</h1>
-          <h1 className="text-orange-500  text-124px">.</h1>
+          <h1 className="text-white text-64px sm:text-124px">Settings</h1>
+          <h1 className="text-orange-500 text-64px sm:text-124px">.</h1>
         </div>
 
-        <div className="flex justify-center mt-4">
+        <div className=" mx-auto mt-4">
           <div>
             <input
               type="file"
@@ -59,13 +59,13 @@ export default function Setting({ params }: { params: { id: string } }) {
             <Image
               src={profileimage}
               alt="not found"
-              className="relative top-[125px] left-[140px] "
+              className="relative top-[155px] left-10 mx-auto"
             />
           </div>
           {!fetch.some(
             (user: Settings) => user.id === params.id && user.imageUrl
           ) ? (
-            <form className=" w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color ">
+            <form className=" w-[156px] h-[156px] mx-auto rounded-full border-2 bg-custom-background-color ">
               <input
                 type="file"
                 name="file"
@@ -96,7 +96,7 @@ export default function Setting({ params }: { params: { id: string } }) {
           Profile Photo
         </h1>
 
-        <div>
+        <div className=" w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[35%] px-2">
           <LabelText name="Name" />
           <InputField
             type="text"
@@ -125,7 +125,7 @@ export default function Setting({ params }: { params: { id: string } }) {
             className="flex justify-center mt-[36.27px]"
             onClick={handleSubmit}
           >
-            <button className="w-[318px] h-[63px] border border-orange-600 bg-orange-600 rounded-full font-medium text-30px px-[24px]  py-[5px]">
+            <button className="w-[318px] h-[63px] border border-orange-600 bg-orange-600 rounded-full font-medium text-30px px-[24px]  py-[5px] mb-4 sm:mb-2 ">
               Save Changes
             </button>
           </div>
