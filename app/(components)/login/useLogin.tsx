@@ -1,4 +1,3 @@
-"use client";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -11,11 +10,12 @@ export default function useLogin() {
   const [badpassword, setBadpassword] = useState(false);
 
   const router = useRouter();
+
   const validate = () => {
     let isValid = true;
-    if (email === "") {
+
+    if (!email) {
       setBademail(true);
-      toast.error("Email is required");
       isValid = false;
     } else if (
       !email
@@ -25,22 +25,19 @@ export default function useLogin() {
         )
     ) {
       setBademail(true);
-      toast.error("Email is invalid");
       isValid = false;
     } else {
-      setBademail(false);
+      return setBademail(false);
     }
 
-    if (password === "") {
+    if (!password) {
       setBadpassword(true);
-      toast.error("Password is required");
       isValid = false;
     } else if (password.length < 8) {
       setBadpassword(true);
-      toast.error("Password must be at least 8 characters");
       isValid = false;
     } else {
-      setBadpassword(false);
+      return setBadpassword(false);
     }
 
     return isValid;
@@ -57,6 +54,12 @@ export default function useLogin() {
         });
 
         router.push("/");
+      } else {
+        if (bademail) {
+          toast.error("Email is required");
+        } else if (badpassword) {
+          toast.error("Password is required");
+        }
       }
     } catch (error) {}
   };

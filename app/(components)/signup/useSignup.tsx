@@ -20,15 +20,18 @@ export default function useSignup() {
   const validate = () => {
     let isValid = true;
 
-    if (name === "") {
+    if (!name) {
       setBadusername(true);
       toast.error("Name is required");
       isValid = false;
+      return isValid;
     }
-    if (email === "") {
+
+    if (!email) {
       setBademail(true);
       toast.error("Email is required");
       isValid = false;
+      return isValid;
     } else if (
       !email
         .toLowerCase()
@@ -39,30 +42,31 @@ export default function useSignup() {
       setBademail(true);
       toast.error("Email is invalid");
       isValid = false;
-    } else {
-      setBademail(false);
+      return isValid;
     }
 
-    if (password === "") {
+    if (!password) {
       setBadpassword(true);
       toast.error("Password is required");
       isValid = false;
+      return isValid;
     } else if (password.length < 8) {
       setBadpassword(true);
       toast.error("Password must be at least 8 characters");
       isValid = false;
-    } else {
-      setBadpassword(false);
+      return isValid;
     }
 
-    if (confirmpassword === "") {
+    if (!confirmpassword) {
       setBadconfirmpass(true);
       toast.error("Confirm Password is required");
       isValid = false;
+      return isValid;
     } else if (confirmpassword !== password) {
       setBadconfirmpass(true);
       toast.error("Passwords do not match");
       isValid = false;
+      return isValid;
     }
 
     return isValid;
@@ -115,6 +119,5 @@ export default function useSignup() {
     badusername,
     badpassword,
     bademail,
-    badconfirmpass,
   };
 }
