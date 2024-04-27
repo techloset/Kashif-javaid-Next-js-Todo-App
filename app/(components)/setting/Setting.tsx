@@ -53,19 +53,23 @@ export default function Setting({ params }: { params: { id: string } }) {
         </div>
 
         <div className=" mx-auto mt-4">
-          <div>
-            <input
-              type="file"
-              name="file"
-              onChange={(e) => setImage(e.target.files?.[0] || null)}
-              className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer "
-            />
-            <Image
-              src={profileimage}
-              alt="not found"
-              className="relative top-[155px] left-10 mx-auto"
-            />
+          <div className="">
+            <label htmlFor="fileInput" className="cursor-pointer">
+              <input
+                id="fileInput"
+                type="file"
+                name="file"
+                onChange={(e) => setImage(e.target.files?.[0] || null)}
+                className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color"
+              />
+              <Image
+                src={profileimage}
+                alt="not found"
+                className="relative top-[155px] left-10 mx-auto cursor-pointer"
+              />
+            </label>
           </div>
+
           {!fetch.some(
             (user: Settings) => user.id === params.id && user.imageUrl
           ) ? (
@@ -100,7 +104,7 @@ export default function Setting({ params }: { params: { id: string } }) {
           Profile Photo
         </h1>
 
-        <div className=" w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[33%] px-2">
+        <div className=" w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[33%]  px-2">
           <LabelText name="Name" />
           <InputField
             type="text"

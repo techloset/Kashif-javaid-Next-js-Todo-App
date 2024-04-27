@@ -43,13 +43,13 @@ export default function useSetting({ params }: { params: { id: string } }) {
         password: password,
       })
     );
+    console.log("user", name);
+    console.log("user email", email);
     toast.success(" Updated successfully");
     await dispatch(resetState());
+    setName("");
+    setEmail("");
   };
-
-  useEffect(() => {
-    imageUrl;
-  }, [dispatch, imageUrl, updateSetting, setting]);
 
   return {
     name,

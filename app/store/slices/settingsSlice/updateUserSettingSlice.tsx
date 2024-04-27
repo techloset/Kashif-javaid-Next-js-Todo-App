@@ -21,6 +21,7 @@ export const updateSetting = createAsyncThunk(
     image,
     name,
     email,
+    imageUrl,
     password,
   }: {
     params: { id: string };
@@ -52,19 +53,21 @@ export const updateSetting = createAsyncThunk(
         updatedImageUrl = uploadRes.data.secure_url;
       }
 
-      const updateData: UserUpdate = {};
+      const updateData: UserUpdate = {
+        imageUrl: updatedImageUrl || imageUrl,
+        password,
+      };
       if (name) {
         updateData.name = name;
+        console.log(name);
       }
       if (email) {
         updateData.email = email;
+        console.log(email);
       }
       if (updatedImageUrl) {
         updateData.imageUrl = updatedImageUrl;
-      }
-
-      if (password) {
-        updateData.password = password;
+        console.log("abc", updatedImageUrl);
       }
 
       const updateRes = await axios.put(
