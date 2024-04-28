@@ -1,7 +1,7 @@
+import AxiosInstance from "@/app/constance/AxiosInstance";
 import { URL } from "@/app/constance/url";
 import { SettingState, UserUpdate } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const initialState: SettingState = {
   data: [],
@@ -40,7 +40,7 @@ export const updateSetting = createAsyncThunk(
         formData.append("file", image);
         formData.append("upload_preset", UPLOAD_PRESET);
 
-        const uploadRes = await axios.post(
+        const uploadRes = await AxiosInstance.post(
           `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
           formData,
           {
@@ -67,7 +67,7 @@ export const updateSetting = createAsyncThunk(
         updateData.imageUrl = updatedImageUrl;
       }
 
-      const updateRes = await axios.put(
+      const updateRes = await AxiosInstance.put(
         `${URL}/api/register/${params.id}`,
         updateData
       );

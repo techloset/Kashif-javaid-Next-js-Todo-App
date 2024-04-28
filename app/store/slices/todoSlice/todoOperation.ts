@@ -1,3 +1,4 @@
+import AxiosInstance from "@/app/constance/AxiosInstance";
 import { URL } from "@/app/constance/url";
 import { ALLUser, ALLdata, CreateState } from "@/types";
 
@@ -27,7 +28,7 @@ export const CreateTodo = createAsyncThunk(
     borderColor: string;
   }) => {
     try {
-      await axios.post(`${URL}/api/createtodo`, {
+      await AxiosInstance.post(`${URL}/api/createtodo`, {
         title,
         color,
         textColor,
@@ -39,7 +40,7 @@ export const CreateTodo = createAsyncThunk(
 
 export const fetchTodo = createAsyncThunk("todo", async () => {
   try {
-    const res = await axios.get(`${URL}/api/createtodo`, {});
+    const res = await AxiosInstance.get(`${URL}/api/createtodo`, {});
     const responseData: ALLdata[] = res.data.response;
     return responseData;
   } catch (error) {
@@ -73,7 +74,6 @@ const addSlice = createSlice({
       .addCase(fetchTodo.fulfilled, (state, action) => {
         state.isLoading = false;
         state.data = action.payload;
-        console.log(state.data);
       })
       .addCase(fetchTodo.rejected, (state, action) => {
         state.isLoading = false;

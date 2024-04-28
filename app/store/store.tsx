@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice/registerSlice";
 import addReducer from "./slices/todoSlice/todoOperation";
-import UserReducer from "./slices/todoSlice/fetchUserSlice";
+import UserReducer from "./slices/todoSlice/readUser";
 import addListReducer from "./slices/taskSlice/taskOperation";
 import fetchReducer from "./slices/taskSlice/readTask";
 import settingReducer from "./slices/settingsSlice/updateUserSettingSlice";

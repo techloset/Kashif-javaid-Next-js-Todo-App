@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import { ParamsList } from "@/types";
 import { editList } from "@/app/store/slices/taskSlice/taskOperation";
-const useEditTodo = ({ id, title }: ParamsList) => {
+const useEditTodo = ({ id }: ParamsList) => {
   const [topicTitle, setTopicTitle] = useState("");
 
   const dispatch = useAppDispatch();

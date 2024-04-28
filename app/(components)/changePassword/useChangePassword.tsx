@@ -1,13 +1,17 @@
 import { useState } from "react";
 
 import axios from "axios";
+import AxiosInstance from "@/app/constance/AxiosInstance";
 export default function useChangePassword() {
   const [email, setEmail] = useState("");
   const handlerForget = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/api/forgetpassword", {
-        email,
-      });
+      const res = await AxiosInstance.post(
+        "http://localhost:3000/api/forgetpassword",
+        {
+          email,
+        }
+      );
       if (res.status === 400) {
         alert("Email already exists");
       }

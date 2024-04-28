@@ -1,3 +1,4 @@
+import AxiosInstance from "@/app/constance/AxiosInstance";
 import { URL } from "@/app/constance/url";
 import { ALLUser, UserState } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -9,7 +10,7 @@ const initialState: UserState = {
 };
 export const fetchUser = createAsyncThunk("users", async () => {
   try {
-    const res = await axios.get(`${URL}/api/register`, {});
+    const res = await AxiosInstance.get(`${URL}/api/register`, {});
     const responseData: ALLUser[] = await res.data.data;
     return responseData;
   } catch (error) {

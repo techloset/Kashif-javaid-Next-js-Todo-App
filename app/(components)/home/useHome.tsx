@@ -1,10 +1,9 @@
-import { fetchUser } from "@/app/store/slices/todoSlice/fetchUserSlice";
+import { fetchUser } from "@/app/store/slices/todoSlice/readUser";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { ALLdata, Data1 } from "@/types";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { fetchTodo } from "@/app/store/slices/todoSlice/todoOperation";
-// import { fetchTodo } from "@/app/store/slices/todoSlice/fetchTodoSlice";
 export default function useHome() {
   const [data, setData] = useState([]);
   const [user, setUser] = useState([]);
@@ -12,7 +11,7 @@ export default function useHome() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
   const fetch: ALLdata[] = useAppSelector((state) => state.create.data);
-  console.log(fetch);
+
   const userFetch = useAppSelector((state) => state.userFetch.data);
 
   useEffect(() => {

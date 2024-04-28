@@ -1,3 +1,4 @@
+import AxiosInstance from "@/app/constance/AxiosInstance";
 import { URL } from "@/app/constance/url";
 import { AuthState } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -20,7 +21,7 @@ export const SignUp = createAsyncThunk(
     password: string;
   }) => {
     try {
-      const res = await axios.post(`${URL}/api/userexist`, {
+      const res = await AxiosInstance.post(`${URL}/api/userexist`, {
         email,
       });
       if (res.status !== 200) {

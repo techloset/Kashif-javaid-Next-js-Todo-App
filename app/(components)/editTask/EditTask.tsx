@@ -2,11 +2,10 @@
 import Image from "next/image";
 import navbar from "../../../public/Lists.png";
 import header from "../../../public/header.png";
-import useEditTodo from "./useEditTodo";
+import useEditTodo from "./useEditTask";
 import InputField from "../inputField/InputField";
 import { ParamsList } from "@/types";
 export default function EditTodo({ params }: { params: ParamsList }) {
-  const { id, title } = params;
   const { setTopicTitle, handleEdit } = useEditTodo(params);
   return (
     <>
@@ -21,7 +20,7 @@ export default function EditTodo({ params }: { params: ParamsList }) {
       >
         <Image src={header} alt="Logo Image" />
 
-        <div className="mt-[125px]">
+        <div className="mt-[125px] w-full sm:w-[60%] md:w-[50%] lg:w-[30%]  mx-auto px-3">
           <InputField
             type="text"
             placeholder="Edit Todo"

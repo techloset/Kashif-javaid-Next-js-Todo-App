@@ -1,11 +1,8 @@
-import AddList from "@/app/(components)/addList/AddList";
+import AddList from "@/app/(components)/createTask/CreateTask";
+import { ParamsList } from "@/types";
 import React from "react";
 
-export default function page({
-  params,
-}: {
-  params: { id: string; title: string; todoId: string };
-}) {
+export default function page({ params }: { params: ParamsList }) {
   return (
     <div>
       <>

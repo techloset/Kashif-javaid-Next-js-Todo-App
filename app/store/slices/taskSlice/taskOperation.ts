@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { URL } from "@/app/constance/url";
-import { AddListState, Edit } from "@/types";
+import { AddListState, Edit, paramsType } from "@/types";
+import AxiosInstance from "@/app/constance/AxiosInstance";
 
 const initialState: AddListState = {
   data: null,
@@ -15,7 +15,7 @@ const initialState: AddListState = {
 export const addData = createAsyncThunk(
   "list",
   async ({ params, title }: { params: { id: string }; title: string }) => {
-    const res = await axios.post(`${URL}/api/list`, {
+    const res = await AxiosInstance.post(`${URL}/api/list`, {
       title,
       todoId: params.id,
     });
@@ -26,8 +26,8 @@ export const addData = createAsyncThunk(
 
 export const editList = createAsyncThunk(
   "edit",
-  async ({ id, title }: { id: string; title: string }) => {
-    const res: Edit[] = await axios.put(`${URL}/api/list/${id}`, {
+  async ({ id, title }: paramsType) => {
+    const res: Edit[] = await AxiosInstance.put(`${URL}/api/list/${id}`, {
       title: title,
     });
 
@@ -37,7 +37,7 @@ export const editList = createAsyncThunk(
 
 export const removeList = createAsyncThunk("remove", async (id: string) => {
   try {
-    await axios.delete(`${URL}/api/list/?id=${id}`);
+    await AxiosInstance.delete(`${URL}/api/list/?id=${id}`);
   } catch (error) {}
 });
 
@@ -59,25 +59,25 @@ export const addListSlice = createSlice({
         state.data = action.payload;
       })
 
-      .addCase(addData.rejected, (state, action) => {
+      .addCase(addData.rejected, (state) => {
         state.loading = false;
         state.error = null;
       })
       .addCase(editList.pending, (state) => {
         state.loading = false;
       })
-      .addCase(editList.fulfilled, (state, action) => {
+      .addCase(editList.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })
-      .addCase(editList.rejected, (state, action) => {
+      .addCase(editList.rejected, (state) => {
         state.loading = false;
         state.error = null;
       })
       .addCase(removeList.pending, (state) => {
         state.loading = false;
       })
-      .addCase(removeList.fulfilled, (state, action) => {
+      .addCase(removeList.fulfilled, (state) => {
         state.loading = false;
         state.error = null;
       })

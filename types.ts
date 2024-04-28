@@ -170,3 +170,8 @@ export interface ParamsList {
   id: string;
   todoId: string;
 }
+
+export interface paramsType {
+  id: string;
+  title: string;
+}

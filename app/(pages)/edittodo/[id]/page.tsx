@@ -1,11 +1,8 @@
-import EditTodo from "@/app/(components)/editTodo/EditTodo";
+import EditTodo from "@/app/(components)/editTask/EditTask";
+import { ParamsList } from "@/types";
 import React from "react";
 
-export default function page({
-  params,
-}: {
-  params: { id: string; title: string };
-}) {
+export default function page({ params }: { params: ParamsList }) {
   return (
     <div>
       <>

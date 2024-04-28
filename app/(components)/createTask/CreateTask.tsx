@@ -7,7 +7,7 @@ import setting from "../../../public/Tune.png";
 import Link from "next/link";
 import { List, ParamsList } from "@/types";
 import AddButton from "@/app/(components)/addButton/AddButton";
-import useAddList from "./useAddList";
+import useAddList from "./useCreateTask";
 
 export default function AddList({ params }: { params: ParamsList }) {
   const {
@@ -80,7 +80,7 @@ export default function AddList({ params }: { params: ParamsList }) {
                     type="checkbox"
                     id={`checkbox-${index}`}
                     className={`h-[48px] mr-3 py-[10px] w-[48px] rounded-lg ${text} ring-2 ring-${border} ${color} border-none cursor-auto appearance-none checked:appearance-auto  relative 
-                    bottom-2`}
+                    bottom-2  `}
                     onChange={() => handleToggleCheck(item.id)}
                   />
                   <h1
@@ -102,12 +102,12 @@ export default function AddList({ params }: { params: ParamsList }) {
                   </h1>
                 </div>
 
-                <div className="flex flex-row  sm:w-[700px] mt-2  sm:mt-0 sm:ml-0 md:relative md:bottom-20">
+                <div className="flex flex-row  ">
                   <Link href={`/edittodo/${item.id}`}>
                     <Image
                       src={editicon}
                       alt="not"
-                      className=" sm:relative md:flex ml-0 sm:top-3 sm:bottom-16 md:bottom-0 lg:ml-[500px]  "
+                      className="lg:ml-[500px] relative bottom-3 lg:relative lg:bottom-16 "
                     />
                   </Link>
 
@@ -115,7 +115,7 @@ export default function AddList({ params }: { params: ParamsList }) {
                     <Image
                       src={removeicon}
                       alt="Remove"
-                      className="sm:relative  sm:right-2 sm:top-3  sm:bottom-16"
+                      className="sm:relative  relative bottom-3 lg:relative lg:bottom-16"
                     />
                   </button>
                 </div>
