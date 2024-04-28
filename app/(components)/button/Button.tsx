@@ -1,7 +1,6 @@
-export default function Button(props: {
-  title: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}) {
+import { ButtonTypes } from "@/types";
+
+export default function Button(props: ButtonTypes) {
   return (
     <div className="flex justify-center mt-[19px]  ">
       <button
