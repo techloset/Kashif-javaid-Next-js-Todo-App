@@ -1,9 +1,7 @@
+import { ButtonTypes } from "@/types";
 import React from "react";
 
-export default function AddButton(props: {
-  title: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}) {
+export default function AddButton(props: ButtonTypes) {
   return (
     <>
       <div className="flex justify-center items-center mt-[91px] ">

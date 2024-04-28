@@ -159,3 +159,8 @@ export interface UsersTypes {
   password: string;
   imageUrl: string;
 }
+
+export interface ButtonTypes {
+  title: string;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
