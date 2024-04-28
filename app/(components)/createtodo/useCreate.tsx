@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { OnSelectColor } from "@/types";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { CreateTodo } from "@/app/store/slices/createTodoSlice/todoCreate";
 import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
 const useCreate = (onSelectColor?: OnSelectColor) => {
@@ -109,6 +109,8 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     "text-custom-text-todo8",
     "text-custom-text-todo9",
   ];
+
+  // [{ id: "rustic-charm", border: "rusti" }, {}];
 
   return {
     title,

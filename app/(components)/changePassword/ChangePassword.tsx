@@ -18,7 +18,7 @@ export default function ChangePassword() {
           width: "100%",
         }}
       >
-        <Image src={NavbarImage} alt="Not Image found" />
+        <Image src={NavbarImage} alt="Navbar Logo" />
         <div className="mt-[181px]  w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[33%]  px-2">
           <LabelText name="Email" />
           <InputField

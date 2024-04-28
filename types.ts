@@ -84,6 +84,7 @@ export interface AddListState {
   error: null;
   title: string;
   todoId: string;
+  id: string;
 }
 
 export interface FetchDataState {

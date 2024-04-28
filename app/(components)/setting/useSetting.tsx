@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Item, Settings } from "@/types";
-import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
 import {
   resetState,

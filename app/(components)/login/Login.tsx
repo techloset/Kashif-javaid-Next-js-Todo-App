@@ -9,19 +9,11 @@ import { signIn } from "next-auth/react";
 import useLogin from "./useLogin";
 import Link from "next/link";
 export default function Login() {
-  const {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    handler,
-    bademail,
-    badpassword,
-  } = useLogin();
+  const { email, setEmail, password, setPassword, handler } = useLogin();
 
   return (
     <>
-      <div className="h-[900px] bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px]">
+      <div className="h-[900px] bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px] ">
         <Image src={NavbarImage} alt="Image Not Found" />
         <div className="mt-[60px] w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] xl:w-[30%]  px-3  mx-auto">
           <LabelText name="Email" />
@@ -31,7 +23,7 @@ export default function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {bademail && <p className="text-red-500">{bademail}</p>}
+
           <div className="">
             <LabelText name="Password" />
           </div>
@@ -41,7 +33,7 @@ export default function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {badpassword && <p className="text-red-500">{badpassword}</p>}
+
           <div className="flex justify-end   ">
             <Link href={"/changePassword"} className=" ">
               <h1 className=" text-20px text-white mt-4  ">Forget Password</h1>

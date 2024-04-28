@@ -18,15 +18,16 @@ export default function AddList({
     color,
     text,
     setTitle,
-    title1,
+    title,
     border,
-    fetchData,
+    addList,
+
     data,
     checkedItems,
     handleToggleCheck,
     removeTopic,
     fetchdata,
-    title,
+    heading,
   } = useAddList({
     params: { id: params.id },
   });
@@ -57,7 +58,7 @@ export default function AddList({
         <div className="flex justify-center pt-[48px] ">
           <h1
             className={`text-64px sm:text-124px font-Stint_Ultra_Condensed font-normal ${text}`}
-          >{`${title}`}</h1>
+          >{`${heading}`}</h1>
           <h1
             className={` text-64px sm:text-124px h-1 font-Stint_Ultra_Condensed font-normal ${text} `}
           >
@@ -71,7 +72,7 @@ export default function AddList({
             type="text"
             name="text"
             placeholder="Add List"
-            value={title1}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             className={`${color} text-30px pl-4 rounded-2xl font-IBM_Plex_Mono font-medium  ${border} w-[100%] sm:w-[50%] md:w-[40%] lg:w-[35%] border-4 outline-none h-[58px] `}
           />
@@ -128,7 +129,7 @@ export default function AddList({
             ))}
         </div>
 
-        <AddButton title="Add List" onClick={fetchData} />
+        <AddButton title="Add List" onClick={addList} />
       </div>
     </>
   );

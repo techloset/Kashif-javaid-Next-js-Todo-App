@@ -1,19 +1,23 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
-import { AddData } from "@/app/store/slices/addListSlice/addDataListSlice";
-import { FetchList } from "@/app/store/slices/addListSlice/fetchDataList";
-import { RemoveList } from "@/app/store/slices/addListSlice/removeTodoSlice";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import {
+  addData,
+  removeList,
+  resetState,
+} from "@/app/store/slices/listsSlice/listOperations";
+import { FetchList } from "@/app/store/slices/listsSlice/readList";
+
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);
-  const [title1, setTitle] = useState("");
+  const [title, setTitle] = useState("");
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const color = searchParams.get("color");
   const text = searchParams.get("text");
   const border = searchParams.get("border");
-  const title = searchParams.get("title");
+  const heading = searchParams.get("title");
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
   const handleToggleCheck = (itemId: string) => {
     if (checkedItems.includes(itemId)) {
@@ -25,7 +29,7 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   const dispatch = useAppDispatch();
   const add = useAppSelector((state) => state.add.data);
   const fetchdata = useAppSelector((state) => state.fetchdata.data);
-  const remove = useAppSelector((state) => state.removeList.data);
+  const remove = useAppSelector((state) => state.add.data);
 
   const fetchList = async () => {
     try {
@@ -38,25 +42,26 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     fetchList();
   });
-  const fetchData = async () => {
+
+  const addList = async () => {
     try {
       if (!title) {
         return null;
       }
       const todoId = params.id;
-      dispatch(AddData({ title, params: { id: todoId } }));
+      dispatch(addData({ title, params: { id: todoId } }));
       toast.success("Successfully List Created");
+      await dispatch(resetState());
       setTitle("");
     } catch (error) {
       console.error(error);
     }
   };
-
   const removeTopic = async (id: string) => {
     try {
       const confirmed = confirm("Are you sure you want to remove?");
       if (confirmed) {
-        dispatch(RemoveList(id));
+        dispatch(removeList(id));
         toast.success("Successfully removed");
       } else {
         toast.error("Removal cancelled");
@@ -67,19 +72,21 @@ const useAddList = ({ params }: { params: { id: string } }) => {
   };
 
   return {
-    title1,
+    title,
     setTitle,
     color,
     text,
     border,
-    fetchData,
+    addList,
     data,
     checkedItems,
     handleToggleCheck,
     removeTopic,
     isLoading,
     fetchdata,
-    title,
+    heading,
+    setData,
+    setIsLoading,
   };
 };
 

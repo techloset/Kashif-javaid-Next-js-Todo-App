@@ -3,11 +3,11 @@ import authReducer from "../store/slices/authSlice/registerSlice";
 import addReducer from "./slices/createTodoSlice/todoCreate";
 import dataReducer from "../store/slices/createTodoSlice/fetchTodoSlice";
 import UserReducer from "../store/slices/createTodoSlice/fetchUserSlice";
-import addListReducer from "./slices/addListSlice/addDataListSlice";
-import fetchReducer from "./slices/addListSlice/fetchDataList";
-import removeReducer from "../store/slices/addListSlice/removeTodoSlice";
-import editReducer from "../store/slices/addListSlice/editListSlice";
+import addListReducer from "./slices/listsSlice/listOperations";
+import fetchReducer from "./slices/listsSlice/readList";
 import settingReducer from "../store/slices/settingsSlice/updateUserSettingSlice";
+import { useDispatch, useSelector } from "react-redux";
+import type { TypedUseSelectorHook } from "react-redux";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
@@ -16,8 +16,7 @@ export const store = configureStore({
     userFetch: UserReducer,
     add: addListReducer,
     fetchdata: fetchReducer,
-    removeList: removeReducer,
-    editLists: editReducer,
+
     settingPage: settingReducer,
   },
 });
@@ -25,3 +24,5 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

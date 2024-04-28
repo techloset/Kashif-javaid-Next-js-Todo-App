@@ -26,7 +26,7 @@ export default function Page() {
             <Image
               src={icon}
               alt="Not"
-              className="w-[48px] h-[48px] mt-[24px] ml-[24px]"
+              className="w-12 h-[48px] mt-6 ml-[24px]"
             />
             <Link href={"/"}>
               <Image
@@ -37,7 +37,7 @@ export default function Page() {
             </Link>
           </div>
         </div>
-        <div className="mt-[125px] w-[100%] mx-auto sm:w-[60%] md:w-[50%] lg:w-[33%] px-3">
+        <div className="mt-[125px] w-full mx-auto sm:w-[60%] md:w-1/2 lg:w-1/3 px-3">
           <InputField
             type="text"
             placeholder="Add Todo"
@@ -46,7 +46,7 @@ export default function Page() {
           />
         </div>
         <div
-          className={`w-[60%] md:w-[70%] lg:w-[60%]   sm:gap-10  lg:gap-x-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mx-auto gap-[21px] mt-[56px] `}
+          className={`w-[60%] md:w-[70%] lg:w-[60%] sm:gap-10  lg:gap-x-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 mx-auto gap-[21px] mt-[56px] `}
         >
           {customColors.map((color, index: number) => (
             <div

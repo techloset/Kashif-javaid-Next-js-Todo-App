@@ -94,7 +94,6 @@ export default function useSignup() {
         setConfirmPassword("");
         router.push("/login");
       } else {
-        toast.success("Successfully registered");
         setName("");
         setEmail("");
         setPassword("");

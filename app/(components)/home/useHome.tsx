@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
 import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
 import { ALLdata, Data, Data1 } from "@/types";
@@ -15,13 +15,7 @@ export default function useHome() {
   const userFetch = useAppSelector((state) => state.userFetch.data);
 
   useEffect(() => {
-    const showdata = async () => {
-      try {
-        dispatch(FetchUser());
-      } catch (error) {}
-    };
-
-    showdata();
+    dispatch(FetchUser());
   }, [dispatch]);
 
   useEffect(() => {

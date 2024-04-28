@@ -12,7 +12,6 @@ export const PUT = async (
       where: { id },
       data: { password },
     });
-    console.log("upadte", updatedUser);
 
     return NextResponse.json({
       message: "Password updated successfully",
