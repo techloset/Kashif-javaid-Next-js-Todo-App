@@ -7,7 +7,7 @@ import {
   removeList,
   resetState,
 } from "@/app/store/slices/listsSlice/listOperations";
-import { FetchList } from "@/app/store/slices/listsSlice/readList";
+import { FetchList } from "@/app/store/slices/taskSlice/readTask";
 
 const useAddList = ({ params }: { params: { id: string } }) => {
   const [data, setData] = useState([]);

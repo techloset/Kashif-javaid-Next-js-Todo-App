@@ -39,7 +39,7 @@ export interface AuthState {
   error: null;
 }
 export interface CreateState {
-  todo: null;
+  data: ALLdata[];
   isLoading: false;
   error: null;
   title: string;

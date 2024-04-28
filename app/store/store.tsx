@@ -1,22 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../store/slices/authSlice/registerSlice";
-import addReducer from "./slices/createTodoSlice/todoCreate";
-import dataReducer from "../store/slices/createTodoSlice/fetchTodoSlice";
-import UserReducer from "../store/slices/createTodoSlice/fetchUserSlice";
-import addListReducer from "./slices/listsSlice/listOperations";
-import fetchReducer from "./slices/listsSlice/readList";
-import settingReducer from "../store/slices/settingsSlice/updateUserSettingSlice";
+import authReducer from "./slices/authSlice/registerSlice";
+import addReducer from "./slices/todoSlice/todoOperation";
+import UserReducer from "./slices/todoSlice/fetchUserSlice";
+import addListReducer from "./slices/taskSlice/taskOperation";
+import fetchReducer from "./slices/taskSlice/readTask";
+import settingReducer from "./slices/settingsSlice/updateUserSettingSlice";
 import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     create: addReducer,
-    fetch: dataReducer,
     userFetch: UserReducer,
     add: addListReducer,
     fetchdata: fetchReducer,
-
     settingPage: settingReducer,
   },
 });

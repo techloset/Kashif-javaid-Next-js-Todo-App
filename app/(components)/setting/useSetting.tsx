@@ -7,7 +7,7 @@ import {
   resetState,
   updateSetting,
 } from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
-import { fetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
+import { fetchUser } from "@/app/store/slices/todoSlice/fetchUserSlice";
 
 export default function useSetting({ params }: { params: { id: string } }) {
   const [name, setName] = useState<string>("");

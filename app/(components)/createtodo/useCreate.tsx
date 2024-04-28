@@ -3,8 +3,10 @@ import { OnSelectColor } from "@/types";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { CreateTodo } from "@/app/store/slices/createTodoSlice/todoCreate";
-import { fetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
+import {
+  CreateTodo,
+  fetchTodo,
+} from "@/app/store/slices/todoSlice/todoOperation";
 
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
@@ -16,7 +18,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
 
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const create = useAppSelector((state) => state.create.todo);
+  const create = useAppSelector((state) => state.create.data);
   const handleColorSelect = (
     color: string,
     customBorders: string,
