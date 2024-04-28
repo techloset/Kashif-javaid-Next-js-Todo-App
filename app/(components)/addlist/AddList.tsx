@@ -5,15 +5,11 @@ import removeicon from "../../../public/remove.svg";
 import editicon from "../../../public/edit.svg";
 import setting from "../../../public/Tune.png";
 import Link from "next/link";
-import { List } from "@/types";
+import { List, ParamsList } from "@/types";
 import AddButton from "@/app/(components)/addButton/AddButton";
 import useAddList from "./useAddList";
 
-export default function AddList({
-  params,
-}: {
-  params: { title: string; id: string; todoId: string };
-}) {
+export default function AddList({ params }: { params: ParamsList }) {
   const {
     color,
     text,
@@ -21,8 +17,6 @@ export default function AddList({
     title,
     border,
     addList,
-
-    data,
     checkedItems,
     handleToggleCheck,
     removeTopic,

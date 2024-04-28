@@ -164,3 +164,9 @@ export interface ButtonTypes {
   title: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
+
+export interface ParamsList {
+  title: string;
+  id: string;
+  todoId: string;
+}
