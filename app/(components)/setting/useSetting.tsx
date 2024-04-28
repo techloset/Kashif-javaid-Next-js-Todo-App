@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Item, Settings } from "@/types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { FetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
+
 import {
   resetState,
   updateSetting,
 } from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
+import { fetchUser } from "@/app/store/slices/createTodoSlice/fetchUserSlice";
 
 export default function useSetting({ params }: { params: { id: string } }) {
   const [name, setName] = useState<string>("");
@@ -19,7 +20,7 @@ export default function useSetting({ params }: { params: { id: string } }) {
   const fetch = useAppSelector((state) => state.userFetch.data);
   const setting = useAppSelector((state) => state.settingPage.data);
   useEffect(() => {
-    dispatch(FetchUser());
+    dispatch(fetchUser());
   }, [dispatch]);
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function useSetting({ params }: { params: { id: string } }) {
     );
     toast.success(" Updated successfully");
     await dispatch(resetState());
-    dispatch(FetchUser());
+    dispatch(fetchUser());
     setName("");
     setEmail("");
   };
@@ -60,5 +61,6 @@ export default function useSetting({ params }: { params: { id: string } }) {
     data,
     imageUrl,
     fetch,
+    setData,
   };
 }

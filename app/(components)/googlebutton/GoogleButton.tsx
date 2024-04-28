@@ -1,10 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import GoogleImage from "../../../public/google.png";
-export default function GoogleButton(props: {
-  title: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}) {
+import { ButtonTypes } from "@/types";
+export default function GoogleButton(props: ButtonTypes) {
   return (
     <>
       <div className="flex justify-center mt-[64px]  ">

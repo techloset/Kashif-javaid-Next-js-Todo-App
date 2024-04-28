@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { editList } from "@/app/store/slices/listsSlice/listOperations";
-// import { editList } from "@/app/store/slices/addListSlice/editListSlice";
-const useEditTodo = ({ id, title }: { id: string; title: string }) => {
+import { ParamsList } from "@/types";
+const useEditTodo = ({ id, title }: ParamsList) => {
   const [topicTitle, setTopicTitle] = useState("");
 
   const dispatch = useAppDispatch();

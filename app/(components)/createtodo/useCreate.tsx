@@ -4,7 +4,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { CreateTodo } from "@/app/store/slices/createTodoSlice/todoCreate";
-import { FetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
+import { fetchTodo } from "@/app/store/slices/createTodoSlice/fetchTodoSlice";
+
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
@@ -57,7 +58,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
 
   const fetchData = async () => {
     try {
-      dispatch(FetchTodo);
+      dispatch(fetchTodo);
     } catch (error) {}
   };
 
@@ -110,13 +111,12 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     "text-custom-text-todo9",
   ];
 
-  // [{ id: "rustic-charm", border: "rusti" }, {}];
-
   return {
     title,
     setTitle,
     fetchData,
     data,
+    setData,
     addlist,
     handleColorSelect,
     onSelectColor,

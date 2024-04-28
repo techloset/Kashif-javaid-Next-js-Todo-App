@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import { useAppDispatch, useAppSelector } from "@/app/store/hook/hook";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import {
   resetState,

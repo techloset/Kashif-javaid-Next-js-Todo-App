@@ -7,7 +7,7 @@ const initialState: UserState = {
   loading: "idle",
   error: null,
 };
-export const FetchUser = createAsyncThunk("users", async () => {
+export const fetchUser = createAsyncThunk("users", async () => {
   try {
     const res = await axios.get(`${URL}/api/register`, {});
     const responseData: ALLUser[] = await res.data.data;
@@ -25,14 +25,14 @@ export const UserSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(FetchUser.pending, (state) => {
+      .addCase(fetchUser.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(FetchUser.fulfilled, (state, action) => {
+      .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = "fulfilled";
         state.data = action.payload;
       })
-      .addCase(FetchUser.rejected, (state, action) => {
+      .addCase(fetchUser.rejected, (state, action) => {
         state.loading = "rejected";
         state.error = action.error.message || "Something went wrong";
       });

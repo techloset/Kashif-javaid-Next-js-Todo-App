@@ -10,18 +10,10 @@ import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
 import Link from "next/link";
 export default function Setting({ params }: { params: { id: string } }) {
-  const {
-    data,
-    name,
-    setName,
-    email,
-    setEmail,
-    setImage,
-    handleSubmit,
-    fetch,
-  } = useSetting({
-    params: { id: params.id },
-  });
+  const { name, setName, email, setEmail, setImage, handleSubmit, fetch } =
+    useSetting({
+      params: { id: params.id },
+    });
   const { data: session } = useSession();
   return (
     <>

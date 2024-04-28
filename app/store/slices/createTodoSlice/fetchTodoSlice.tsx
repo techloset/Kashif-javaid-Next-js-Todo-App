@@ -7,7 +7,7 @@ const initialState: FetchState = {
   loading: "idle",
   error: null,
 };
-export const FetchTodo = createAsyncThunk("todo", async () => {
+export const fetchTodo = createAsyncThunk("todo", async () => {
   try {
     const res = await axios.get(`${URL}/api/createtodo`, {});
     const responseData: ALLdata[] = res.data.response;
@@ -25,14 +25,14 @@ const dataSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(FetchTodo.pending, (state) => {
+      .addCase(fetchTodo.pending, (state) => {
         state.loading = "pending";
       })
-      .addCase(FetchTodo.fulfilled, (state, action) => {
+      .addCase(fetchTodo.fulfilled, (state, action) => {
         state.loading = "fulfilled";
         state.data = action.payload;
       })
-      .addCase(FetchTodo.rejected, (state, action) => {
+      .addCase(fetchTodo.rejected, (state, action) => {
         state.loading = "rejected";
         state.error = action.error.message || "Something went wrong";
       });

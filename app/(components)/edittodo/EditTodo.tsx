@@ -4,11 +4,8 @@ import navbar from "../../../public/Lists.png";
 import header from "../../../public/header.png";
 import useEditTodo from "./useEditTodo";
 import InputField from "../inputField/InputField";
-export default function EditTodo({
-  params,
-}: {
-  params: { id: string; title: string };
-}) {
+import { ParamsList } from "@/types";
+export default function EditTodo({ params }: { params: ParamsList }) {
   const { id, title } = params;
   const { setTopicTitle, handleEdit } = useEditTodo(params);
   return (
@@ -22,7 +19,7 @@ export default function EditTodo({
           height: "100vh",
         }}
       >
-        <Image src={header} alt="Image Not found" />
+        <Image src={header} alt="Logo Image" />
 
         <div className="mt-[125px]">
           <InputField
