@@ -4,7 +4,7 @@ import { SignUp } from "@/app/store/slices/authSlice/registerSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import toast from "react-hot-toast";
 
-export default function useSignup() {
+export default function useSignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -1,9 +1,10 @@
-import Signup from "@/app/(components)/signUp/Signup";
+import SignUp from "@/app/(components)/signUp/SignUp";
+import Link from "next/link";
 
 export default function page() {
   return (
     <>
-      <Signup title="Signup" />
+      <SignUp title="signUp" />
     </>
   );
 }

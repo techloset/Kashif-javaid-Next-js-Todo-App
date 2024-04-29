@@ -9,7 +9,7 @@ import { List, ParamsList } from "@/types";
 import AddButton from "@/app/(components)/addButton/AddButton";
 import useAddList from "./useCreateTask";
 
-export default function AddList({ params }: { params: ParamsList }) {
+export default function CreateTask({ params }: { params: ParamsList }) {
   const {
     color,
     text,
@@ -103,7 +103,7 @@ export default function AddList({ params }: { params: ParamsList }) {
                 </div>
 
                 <div className="flex flex-row  ">
-                  <Link href={`/edittodo/${item.id}`}>
+                  <Link href={`/editTask/${item.id}`}>
                     <Image
                       src={editicon}
                       alt="not"

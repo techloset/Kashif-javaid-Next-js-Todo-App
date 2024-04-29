@@ -17,7 +17,7 @@ export default function Setting({ params }: { params: { id: string } }) {
   const { data: session } = useSession();
   return (
     <>
-      <div className=" bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px] h-full">
+      <div className="">
         <div className="bg-black  bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px]">
           <div className="flex justify-between">
             <Image

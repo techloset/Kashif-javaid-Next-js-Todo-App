@@ -13,9 +13,7 @@ export default function Home() {
       {isLoading ? (
         <Loader />
       ) : (
-        <div
-          className={`bg-black bg-[radial-gradient(#818181_1px,transparent_6px)] [background-size:16px_16px]`}
-        >
+        <div>
           <div className="flex justify-between h-[96px] ">
             <Image
               src={icon}
@@ -35,11 +33,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div
-            className={`${
-              fetch.length ? "h-fit" : "h-screen"
-            } py-10  bg-black bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
-          >
+          <div className={`${fetch.length ? "h-fit" : "h-screen"} py-10 `}>
             <div className="flex justify-center">
               <h1 className="text-white mt-[16px]  text-25px md:text-124px font-normal font-Stint_Ultra_Condensed ">
                 Todo Lists
@@ -57,7 +51,7 @@ export default function Home() {
                         <div key={index} className="w-fit  h-[83px]">
                           <Link
                             href={{
-                              pathname: `list/${item.id}`,
+                              pathname: `createTask/${item.id}`,
                               query: {
                                 color: item.color,
                                 border: item.textColor,
@@ -95,7 +89,7 @@ export default function Home() {
                   <div className="flex ">
                     <h1 className="mr-3 relative right-2 top-10">+</h1>
                     <h1 className="relative right-3 top-10 font-IBM_Plex_Mono font-medium">
-                      <Link href={"/createtodo"}>Add List.</Link>
+                      <Link href={"/createTodo"}>Add List.</Link>
                     </h1>
                   </div>
                 </div>

@@ -5,11 +5,12 @@ import InputField from "@/app/(components)/inputField/InputField";
 import LabelText from "@/app/(components)/labelText/LabelText";
 import GoogleButton from "@/app/(components)/googleButton/GoogleButton";
 import Button from "@/app/(components)/button/Button";
-import useSignup from "./useSignup";
+
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import useSignUp from "./useSignUp";
 
-export default function Signup(params: { title: string }) {
+export default function SignUp(params: { title: string }) {
   const {
     name,
     setName,
@@ -20,7 +21,7 @@ export default function Signup(params: { title: string }) {
     confirmpassword,
     setConfirmPassword,
     formHandle,
-  } = useSignup();
+  } = useSignUp();
 
   return (
     <>

@@ -25,7 +25,6 @@ export default function useHome() {
     setUser(filteredUser as []);
   }, [userFetch]);
 
-  // fetch todo
   const fetchData = async () => {
     try {
       dispatch(fetchTodo());
