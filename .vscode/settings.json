@@ -5,6 +5,7 @@
     "editdata",
     "fetchdata",
     "fetchtodos",
-    "hasspassword"
+    "hasspassword",
+    "Sigin"
   ]
 }

@@ -9,7 +9,8 @@ import { signIn } from "next-auth/react";
 import useLogin from "./useLogin";
 import Link from "next/link";
 export default function Login() {
-  const { email, setEmail, password, setPassword, handler } = useLogin();
+  const { email, setEmail, password, setPassword, handler, loading } =
+    useLogin();
 
   return (
     <>
@@ -42,8 +43,9 @@ export default function Login() {
           <GoogleButton
             title="Sign In with Google"
             onClick={() => signIn("google", { callbackUrl: "/" })}
+            isLoading
           />
-          <Button title="Sign In" onClick={handler} />
+          <Button title="Sign In" onClick={handler} isLoading={loading} />
         </div>
         <div className="absolute   right-0 pt-[20px] flex  mr-2 text-100px text-white">
           <h1 className="text-100px pt-2"> Sign In</h1>

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   resetState,
   updateSetting,
-} from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
+} from "@/app/store/slices/settingsSlice/updateUserSetting";
 import { fetchUser } from "@/app/store/slices/todoSlice/readUser";
 
 export default function useSetting({ params }: { params: paramsId }) {

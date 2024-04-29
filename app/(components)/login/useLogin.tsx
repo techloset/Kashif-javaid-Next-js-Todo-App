@@ -8,12 +8,14 @@ export default function useLogin() {
   const [password, setPassword] = useState("");
   const [bademail, setBademail] = useState(false);
   const [badpassword, setBadpassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
   const handler = async (e: FormEvent) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await signIn("credentials", {
         email,
         password,
@@ -21,6 +23,7 @@ export default function useLogin() {
       });
 
       router.push("/");
+      setLoading(false);
     } catch (error) {}
 
     if (bademail) {
@@ -43,5 +46,6 @@ export default function useLogin() {
     badpassword,
     setBadpassword,
     setBademail,
+    loading,
   };
 }

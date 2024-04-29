@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   resetState,
   updateSetting,
-} from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
+} from "@/app/store/slices/settingsSlice/updateUserSetting";
 import { useRouter } from "next/navigation";
 import { paramsId } from "@/types";
 

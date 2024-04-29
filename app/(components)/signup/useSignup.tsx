@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { SignUp } from "@/app/store/slices/authSlice/registerSlice";
+import { SignUp } from "@/app/store/slices/authSlice/register";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import toast from "react-hot-toast";
 export default function useSignUp() {

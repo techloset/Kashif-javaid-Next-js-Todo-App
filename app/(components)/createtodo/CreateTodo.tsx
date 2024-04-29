@@ -16,6 +16,7 @@ export default function CreateTodo() {
     customColors,
     customTextColors,
     customTexts,
+    loading,
   } = useCreate();
 
   return (
@@ -65,7 +66,7 @@ export default function CreateTodo() {
           ))}
         </div>
 
-        <AddButton title="Add List" onClick={addlist} />
+        <AddButton title="Add List" onClick={addlist} isLoading={loading} />
       </div>
     </>
   );

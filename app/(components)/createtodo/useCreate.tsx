@@ -15,7 +15,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const [borderColor, setBorderColor] = useState("");
   const [data, setData] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
-
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const create = useAppSelector((state) => state.create.data);
@@ -38,14 +38,16 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
 
   const addlist = async (e: FormEvent) => {
     e.preventDefault();
-
+    setLoading(true);
     if (!title) {
       toast.error("Please select a title");
+      setLoading(false);
       return null;
     }
 
     if (!selectedColor) {
       toast.error("Please select a color");
+      setLoading(false);
       return null;
     }
 
@@ -55,6 +57,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
       );
       toast.success("successfully created");
       router.push("/");
+      setLoading(true);
     } catch (error) {}
   };
 
@@ -132,6 +135,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     textColor,
     setBorderColor,
     borderColor,
+    loading,
   };
 };
 

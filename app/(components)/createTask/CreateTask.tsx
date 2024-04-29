@@ -29,7 +29,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
   return (
     <>
       <div
-        className={`${color} bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px] flex justify-between opacity-100`}
+        className={`${color} bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px] flex justify-between `}
       >
         <Image
           src={icon}
@@ -46,8 +46,8 @@ export default function CreateTask({ params }: { params: ParamsList }) {
       </div>
       <div
         className={`${color} ${
-          fetchdata.length ? "h-fit" : "h-[800px]"
-        } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px] `}
+          fetchdata?.length ? "h-fit" : "h-[800px]"
+        } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
       >
         <div className="flex justify-center pt-[48px] ">
           <h1
@@ -68,7 +68,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
             placeholder="Add List"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className={`${color} text-30px pl-4 rounded-2xl font-IBM_Plex_Mono font-medium  ${border} w-[100%] sm:w-[50%] md:w-[40%] lg:w-[35%] border-4 outline-none h-[58px] `}
+            className={`placeholder-${border} ${color} text-${text} text-30px pl-4 rounded-2xl font-IBM_Plex_Mono font-medium  ${border} w-[100%] sm:w-[50%] md:w-[40%] lg:w-[35%] border-4 outline-none h-[58px]   `}
           />
         </div>
         <div className="mt-[49px] ml-[100px] sm:ml-[350px]  py-[14px]  flex flex-col">
@@ -123,7 +123,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
             ))}
         </div>
 
-        <AddButton title="Add List" onClick={addList} />
+        <AddButton title="Add List" onClick={addList} isLoading />
       </div>
     </>
   );

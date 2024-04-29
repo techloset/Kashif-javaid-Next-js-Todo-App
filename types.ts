@@ -163,6 +163,7 @@ export interface UsersTypes {
 export interface ButtonTypes {
   title: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isLoading: boolean;
 }
 
 export interface ParamsList {
@@ -179,3 +180,14 @@ export interface paramsType {
 export interface paramsId {
   id: string;
 }
+
+export interface UserCrediention {
+  email: string;
+  password: string;
+}
+
+// export interface CredentialsTypes {
+//   userSignIn: UserSignIn[];
+//   email: string;
+//   password: string;
+// }
