@@ -12,6 +12,7 @@ export default function useSignUp() {
   const [bademail, setBademail] = useState(false);
   const [badpassword, setBadpassword] = useState(false);
   const [badconfirmpass, setBadconfirmpass] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth.user);
@@ -22,6 +23,7 @@ export default function useSignUp() {
       setBadusername(true);
       toast.error("Name is required");
       isValid = false;
+      setLoading(false);
       return isValid;
     }
 
@@ -29,6 +31,7 @@ export default function useSignUp() {
       setBademail(true);
       toast.error("Email is required");
       isValid = false;
+      setLoading(false);
       return isValid;
     } else if (
       !email
@@ -40,6 +43,7 @@ export default function useSignUp() {
       setBademail(true);
       toast.error("Email is invalid");
       isValid = false;
+      setLoading(false);
       return isValid;
     }
 
@@ -47,6 +51,7 @@ export default function useSignUp() {
       setBadpassword(true);
       toast.error("Password is required");
       isValid = false;
+      setLoading(false);
       return isValid;
     } else if (password.length < 8) {
       setBadpassword(true);
@@ -59,6 +64,7 @@ export default function useSignUp() {
       setBadconfirmpass(true);
       toast.error("Confirm Password is required");
       isValid = false;
+      setLoading(false);
       return isValid;
     } else if (confirmpassword !== password) {
       setBadconfirmpass(true);
@@ -72,6 +78,7 @@ export default function useSignUp() {
 
   const formHandle = async (e: FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (!validate()) {
         return;
@@ -98,6 +105,7 @@ export default function useSignUp() {
         setConfirmPassword("");
         router.push("/login");
       }
+      setLoading(false);
     } catch (error) {
       toast.error("Error registering");
     }
@@ -116,5 +124,6 @@ export default function useSignUp() {
     badusername,
     badpassword,
     bademail,
+    loading,
   };
 }

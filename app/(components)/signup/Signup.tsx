@@ -21,6 +21,7 @@ export default function SignUp(params: { title: string }) {
     confirmpassword,
     setConfirmPassword,
     formHandle,
+    loading,
   } = useSignUp();
 
   return (
@@ -64,9 +65,10 @@ export default function SignUp(params: { title: string }) {
           <GoogleButton
             title="Sign Up with Google"
             onClick={() => signIn("google", { callbackUrl: "/" })}
+            isLoading={loading}
           />
 
-          <Button title="Sign Up" onClick={formHandle} />
+          <Button title="Sign Up" onClick={formHandle} isLoading={loading} />
         </div>
 
         <div className="flex justify-center flex-wrap mr-[90px] mt-[18px]">
