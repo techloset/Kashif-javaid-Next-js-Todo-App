@@ -81,7 +81,7 @@ export const addListSlice = createSlice({
         state.loading = false;
         state.error = null;
       })
-      .addCase(removeList.rejected, (state, action) => {
+      .addCase(removeList.rejected, (state) => {
         state.loading = false;
         state.error = null;
       });

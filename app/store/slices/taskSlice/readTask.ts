@@ -11,7 +11,7 @@ const initialState: FetchDataState = {
 };
 export const FetchList = createAsyncThunk(
   "editList",
-  async ({ params, todoId }: { params: { id: string }; todoId: string }) => {
+  async ({ todoId }: { params: { id: string }; todoId: string }) => {
     try {
       const res = await AxiosInstance.get(`${URL}/api/list/${todoId}`);
       const responseData = res.data.result.filter(
@@ -36,7 +36,7 @@ export const fetchSlice = createSlice({
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(FetchList.rejected, (state, action) => {
+      .addCase(FetchList.rejected, (state) => {
         state.loading = false;
         state.error = null;
       });

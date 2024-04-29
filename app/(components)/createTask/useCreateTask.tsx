@@ -2,7 +2,6 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-
 import { FetchList } from "@/app/store/slices/taskSlice/readTask";
 import {
   addData,

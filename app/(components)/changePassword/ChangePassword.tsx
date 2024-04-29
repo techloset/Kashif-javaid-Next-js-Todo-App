@@ -28,7 +28,7 @@ export default function ChangePassword() {
           <h1 className="flex justify-center mr-[260px] text-white mb-2"></h1>
         </div>
         <div className="flex justify-center mt-[64px] ">
-          <AddButton title="submit" onClick={handlerForget} />
+          <AddButton title="submit" onClick={handlerForget} isLoading />
         </div>
       </div>
     </>
