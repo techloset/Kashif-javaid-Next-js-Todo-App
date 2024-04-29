@@ -180,14 +180,3 @@ export interface paramsType {
 export interface paramsId {
   id: string;
 }
-
-export interface UserCrediention {
-  email: string;
-  password: string;
-}
-
-// export interface CredentialsTypes {
-//   userSignIn: UserSignIn[];
-//   email: string;
-//   password: string;
-// }

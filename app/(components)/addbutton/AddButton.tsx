@@ -4,9 +4,9 @@ import React from "react";
 export default function AddButton(props: ButtonTypes) {
   return (
     <>
-      <div className="flex justify-center items-center mt-[91px] ">
+      <div className="flex justify-center items-center mt-[91px]">
         <button
-          className="bg-orange-500 hover:bg-black hover:text-white  w-[210px] h-[63px] rounded-full"
+          className="bg-orange-500 hover:bg-orange-600 text-white transition-colors duration-300 ease-in-out w-[210px] h-[63px] rounded-full"
           onClick={props.onClick}
           disabled={props.isLoading}
         >

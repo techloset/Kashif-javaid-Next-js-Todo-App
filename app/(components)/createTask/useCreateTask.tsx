@@ -15,12 +15,12 @@ const useAddList = ({ params }: { params: paramsId }) => {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
   const searchParams = useSearchParams();
-  const [isLoading, setIsLoading] = useState(true);
   const color = searchParams.get("color");
   const text = searchParams.get("text");
   const border = searchParams.get("border");
   const heading = searchParams.get("title");
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
   const handleToggleCheck = (itemId: string) => {
     if (checkedItems.includes(itemId)) {
       setCheckedItems(checkedItems.filter((id) => id !== itemId));
@@ -48,17 +48,23 @@ const useAddList = ({ params }: { params: paramsId }) => {
   const addList = async () => {
     try {
       if (!title) {
+        toast.error("Please Enter a title");
         return null;
       }
+      setLoading(true);
       const todoId = params.id;
       dispatch(addData({ title, params: { id: todoId } }));
-      toast.success("Successfully List Created");
+      toast.success("Successfully Task Created");
+
       await dispatch(resetState());
       setTitle("");
+
+      setLoading(false);
     } catch (error) {
       console.error(error);
     }
   };
+
   const removeTopic = async (id: string) => {
     try {
       const confirmed = confirm("Are you sure you want to remove?");
@@ -84,11 +90,10 @@ const useAddList = ({ params }: { params: paramsId }) => {
     checkedItems,
     handleToggleCheck,
     removeTopic,
-    isLoading,
     fetchdata,
     heading,
     setData,
-    setIsLoading,
+    loading,
   };
 };
 

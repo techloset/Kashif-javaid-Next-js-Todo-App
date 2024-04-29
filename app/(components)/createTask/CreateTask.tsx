@@ -22,6 +22,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
     removeTopic,
     fetchdata,
     heading,
+    loading,
   } = useAddList({
     params: { id: params.id },
   });
@@ -123,7 +124,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
             ))}
         </div>
 
-        <AddButton title="Add List" onClick={addList} isLoading />
+        <AddButton title="Add List" onClick={addList} isLoading={loading} />
       </div>
     </>
   );
