@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Item, Settings } from "@/types";
+import { Item, Settings, paramsId } from "@/types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import {
@@ -9,7 +9,7 @@ import {
 } from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
 import { fetchUser } from "@/app/store/slices/todoSlice/readUser";
 
-export default function useSetting({ params }: { params: { id: string } }) {
+export default function useSetting({ params }: { params: paramsId }) {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

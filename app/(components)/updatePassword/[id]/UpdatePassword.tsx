@@ -8,7 +8,8 @@ import LabelText from "../../labelText/LabelText";
 import InputField from "../../inputField/InputField";
 import AddButton from "../../addButton/AddButton";
 import useUpdate from "../useUpdatePassword";
-export default function UpdatePassword({ params }: { params: { id: string } }) {
+import { paramsId } from "@/types";
+export default function UpdatePassword({ params }: { params: paramsId }) {
   const { handleSubmit, password, setPassword } = useUpdate({
     params: { id: params.id },
   });

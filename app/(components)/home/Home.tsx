@@ -38,7 +38,7 @@ export default function Home() {
               <h1 className="text-white mt-[16px]  text-25px md:text-124px font-normal font-Stint_Ultra_Condensed ">
                 Todo Lists
               </h1>
-              <h1 className="text-orange-600 text-64px md:text-124px font-normal font-Stint_Ultra_Condensed">
+              <h1 className="text-orange-500 mt-[16px]  text-25px md:text-124px font-normal font-Stint_Ultra_Condensed">
                 .
               </h1>
             </div>

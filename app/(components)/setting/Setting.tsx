@@ -4,12 +4,12 @@ import icon from "../../../public/icon.png";
 import logout from "../../../public/Logout.png";
 import profileimage from "../../../public/profile .png";
 import useSetting from "./useSetting";
-import { Settings } from "@/types";
+import { Settings, paramsId } from "@/types";
 import { signOut, useSession } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
 import Link from "next/link";
-export default function Setting({ params }: { params: { id: string } }) {
+export default function Setting({ params }: { params: paramsId }) {
   const { name, setName, email, setEmail, setImage, handleSubmit, fetch } =
     useSetting({
       params: { id: params.id },

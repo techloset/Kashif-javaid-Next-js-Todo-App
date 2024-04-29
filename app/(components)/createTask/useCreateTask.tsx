@@ -9,8 +9,9 @@ import {
   removeList,
   resetState,
 } from "@/app/store/slices/taskSlice/taskOperation";
+import { paramsId } from "@/types";
 
-const useAddList = ({ params }: { params: { id: string } }) => {
+const useAddList = ({ params }: { params: paramsId }) => {
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
   const searchParams = useSearchParams();

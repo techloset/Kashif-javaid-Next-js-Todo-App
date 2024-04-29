@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-import axios from "axios";
 import AxiosInstance from "@/app/constance/AxiosInstance";
 export default function useChangePassword() {
   const [email, setEmail] = useState("");

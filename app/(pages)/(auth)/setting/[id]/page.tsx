@@ -1,8 +1,9 @@
 import Setting from "@/app/(components)/setting/Setting";
+import { paramsId } from "@/types";
 
 import React from "react";
 
-export default function page({ params }: { params: { id: string } }) {
+export default function page({ params }: { params: paramsId }) {
   return (
     <>
       <div>

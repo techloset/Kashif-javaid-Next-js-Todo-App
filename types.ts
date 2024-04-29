@@ -175,3 +175,7 @@ export interface paramsType {
   id: string;
   title: string;
 }
+
+export interface paramsId {
+  id: string;
+}

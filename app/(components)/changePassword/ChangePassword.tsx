@@ -11,7 +11,6 @@ export default function ChangePassword() {
   return (
     <>
       <div
-        className="h-screen"
         style={{
           backgroundImage: `url(${ListImage.src})`,
           backgroundSize: "cover",

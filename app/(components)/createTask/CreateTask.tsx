@@ -29,7 +29,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
   return (
     <>
       <div
-        className={`${color} bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px] flex justify-between `}
+        className={`${color} bg-[radial-gradient(#F9F5EB_1px,transparent_6px)] [background-size:30px_30px] h-[96px] flex justify-between opacity-100`}
       >
         <Image
           src={icon}
@@ -47,7 +47,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
       <div
         className={`${color} ${
           fetchdata.length ? "h-fit" : "h-[800px]"
-        } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px]`}
+        } bg-[radial-gradient(#F9F5EB_1px,transparent_4px)] [background-size:16px_16px] `}
       >
         <div className="flex justify-center pt-[48px] ">
           <h1

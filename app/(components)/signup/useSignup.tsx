@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import { SignUp } from "@/app/store/slices/authSlice/registerSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import toast from "react-hot-toast";
-
 export default function useSignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +15,6 @@ export default function useSignUp() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth.user);
-
   const validate = () => {
     let isValid = true;
 

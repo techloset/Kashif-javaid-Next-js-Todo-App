@@ -8,8 +8,9 @@ import {
   updateSetting,
 } from "@/app/store/slices/settingsSlice/updateUserSettingSlice";
 import { useRouter } from "next/navigation";
+import { paramsId } from "@/types";
 
-export default function useUpdate({ params }: { params: { id: string } }) {
+export default function useUpdate({ params }: { params: paramsId }) {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
