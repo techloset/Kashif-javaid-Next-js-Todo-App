@@ -44,7 +44,11 @@ export default function UpdatePassword({ params }: { params: paramsId }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <AddButton title="Change password" onClick={handleSubmit} />
+            <AddButton
+              title="Change password"
+              onClick={handleSubmit}
+              isLoading={false}
+            />
           </div>
         </div>
       </div>

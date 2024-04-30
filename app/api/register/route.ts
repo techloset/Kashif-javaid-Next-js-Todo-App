@@ -19,7 +19,6 @@ export const POST = async (request: NextRequest) => {
 export const GET = async (req: NextRequest) => {
   try {
     const email = req.nextUrl.searchParams.get("email");
-    console.log(email);
 
     if (email === null) {
       return NextResponse.json({ message: "error" });
@@ -30,7 +29,6 @@ export const GET = async (req: NextRequest) => {
       },
       include: { todo: true },
     });
-    console.log(data);
 
     return NextResponse.json({ message: "success", data });
   } catch (error) {

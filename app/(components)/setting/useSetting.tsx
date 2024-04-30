@@ -58,7 +58,8 @@ export default function useSetting({ params }: { params: paramsId }) {
     imageUrl,
     fetch,
     setData,
-
+    setPassword,
     userFetch,
+    setting,
   };
 }

@@ -210,3 +210,7 @@ export interface paramsId {
 export interface user {
   id: string;
 }
+
+export interface ProviderTypes {
+  children?: React.ReactNode;
+}

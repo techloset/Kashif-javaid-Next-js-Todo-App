@@ -1,10 +1,8 @@
 import AxiosInstance from "@/app/constance/AxiosInstance";
 import { URL } from "@/app/constance/url";
-import { ALLUser, ALLdata, CreateState } from "@/types";
+import { ALLdata, CreateState } from "@/types";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
 const initialState: CreateState = {
   data: [],
   isLoading: false,
@@ -68,7 +66,7 @@ const addSlice = createSlice({
       .addCase(CreateTodo.fulfilled, (state) => {
         state.isLoading = false;
       })
-      .addCase(CreateTodo.rejected, (state, action) => {
+      .addCase(CreateTodo.rejected, (state) => {
         state.isLoading = false;
       })
 
@@ -80,7 +78,7 @@ const addSlice = createSlice({
         state.isLoading = false;
         state.data = action.payload;
       })
-      .addCase(fetchTodo.rejected, (state, action) => {
+      .addCase(fetchTodo.rejected, (state) => {
         state.isLoading = false;
       });
   },

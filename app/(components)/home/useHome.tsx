@@ -1,6 +1,6 @@
 import { fetchUser } from "@/app/store/slices/todoSlice/readUser";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { ALLdata, Data1, Data2, Settings, paramsId, user } from "@/types";
+import { ALLdata, user } from "@/types";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { fetchTodo } from "@/app/store/slices/todoSlice/todoOperation";

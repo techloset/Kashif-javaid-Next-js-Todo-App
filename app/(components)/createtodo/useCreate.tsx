@@ -21,7 +21,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { data: session } = useSession();
-  console.log(session?.user?.email);
+
   const create = useAppSelector((state) => state.create.data);
 
   const handleColorSelect = (
