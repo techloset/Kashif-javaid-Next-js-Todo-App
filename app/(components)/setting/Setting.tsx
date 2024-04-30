@@ -2,19 +2,28 @@
 import Image from "next/image";
 import icon from "../../../public/icon.png";
 import logout from "../../../public/Logout.png";
+import profile from "../../../public/profile (2).png";
 import profileimage from "../../../public/profile .png";
 import useSetting from "./useSetting";
-import { Settings, paramsId } from "@/types";
+import { paramsId } from "@/types";
 import { signOut, useSession } from "next-auth/react";
 import InputField from "../inputField/InputField";
 import LabelText from "../labelText/LabelText";
 import Link from "next/link";
 export default function Setting({ params }: { params: paramsId }) {
-  const { name, setName, email, setEmail, setImage, handleSubmit, fetch } =
-    useSetting({
-      params: { id: params.id },
-    });
-  const { data: session } = useSession();
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    setImage,
+    handleSubmit,
+    fetch,
+    userFetch,
+  } = useSetting({
+    params: { id: params.id },
+  });
+
   return (
     <>
       <div className="">
@@ -61,34 +70,22 @@ export default function Setting({ params }: { params: paramsId }) {
               />
             </label>
           </div>
-
-          {!fetch.some(
-            (user: Settings) => user.id === params.id && user.imageUrl
-          ) ? (
-            <form className=" w-[156px] h-[156px] mx-auto rounded-full border-2 bg-custom-background-color ">
-              <input
-                type="file"
-                name="file"
-                onChange={(e) => setImage(e.target.files?.[0] || null)}
-                className="opacity-0 absolute w-[156px] h-[156px] rounded-full border-2 bg-custom-background-color flex justify-center items-center cursor-pointer "
+          {userFetch.imageUrl ? (
+            <div className="flex justify-center">
+              <Image
+                src={userFetch.imageUrl}
+                alt="Profile image"
+                width={200}
+                height={200}
+                className="w-[156px] h-[150px] rounded-full bg-cover"
               />
-            </form>
+            </div>
           ) : (
-            fetch.map((user: Settings, index: number) => {
-              if (user.id === params.id) {
-                return (
-                  <div key={index} className="flex justify-center">
-                    <Image
-                      src={user.imageUrl}
-                      alt="User Image"
-                      width={200}
-                      height={200}
-                      className="w-[156px] h-[150px] rounded-full bg-cover"
-                    />
-                  </div>
-                );
-              }
-            })
+            <Image
+              src={profile}
+              alt="not"
+              className="w-[156px] mx-auto mb-10"
+            />
           )}
         </div>
 

@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Item, Settings, paramsId } from "@/types";
+import { Item, paramsId } from "@/types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-
 import {
   resetState,
   updateSetting,
 } from "@/app/store/slices/settingsSlice/updateUserSetting";
-import { fetchUser } from "@/app/store/slices/todoSlice/readUser";
 
 export default function useSetting({ params }: { params: paramsId }) {
   const [name, setName] = useState<string>("");
@@ -17,20 +15,8 @@ export default function useSetting({ params }: { params: paramsId }) {
   const [data, setData] = useState<Item[]>([]);
   const [imageUrl, setImageUrl] = useState("");
   const dispatch = useAppDispatch();
-  const fetch = useAppSelector((state) => state.userFetch.data);
   const setting = useAppSelector((state) => state.settingPage.data);
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
-
-  useEffect(() => {
-    const id = params.id;
-    const currentUser = fetch.find((user: Settings) => user.id === id);
-
-    if (currentUser) {
-      setImageUrl(currentUser.imageUrl);
-    }
-  }, [fetch, params.id]);
+  const userFetch = useAppSelector((state) => state.userFetch.user);
 
   const handleSubmit = async () => {
     const id = params.id;
@@ -44,12 +30,22 @@ export default function useSetting({ params }: { params: paramsId }) {
         password: password,
       })
     );
+
     toast.success(" Updated successfully");
+
     await dispatch(resetState());
-    dispatch(fetchUser());
+
     setName("");
     setEmail("");
   };
+
+  useEffect(() => {
+    if (userFetch) {
+      setName(userFetch.name);
+      setEmail(userFetch.email);
+      setImageUrl(userFetch.imageUrl);
+    }
+  }, [userFetch, imageUrl]);
 
   return {
     name,
@@ -62,5 +58,7 @@ export default function useSetting({ params }: { params: paramsId }) {
     imageUrl,
     fetch,
     setData,
+
+    userFetch,
   };
 }

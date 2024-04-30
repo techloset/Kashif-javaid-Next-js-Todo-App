@@ -3,9 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
   try {
-    const { title, color, textColor, borderColor } = await request.json();
+    const { title, color, textColor, borderColor, email } =
+      await request.json();
     const data = await prisma.todo.create({
-      data: { title, color, textColor, borderColor },
+      data: { title, color, textColor, borderColor, userEmail: email },
     });
 
     return NextResponse.json({ data });
@@ -16,7 +17,12 @@ export const POST = async (request: NextRequest) => {
 
 export const GET = async () => {
   try {
-    const response = await prisma.todo.findMany();
+    const response = await prisma.todo.findMany({
+      include: {
+        user: true,
+      },
+    });
+
     return NextResponse.json({ response });
   } catch (error) {
     return NextResponse.json({ error });

@@ -1,54 +1,44 @@
 import { fetchUser } from "@/app/store/slices/todoSlice/readUser";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { ALLdata, Data1 } from "@/types";
+import { ALLdata, Data1, Data2, Settings, paramsId, user } from "@/types";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { fetchTodo } from "@/app/store/slices/todoSlice/todoOperation";
 export default function useHome() {
   const [data, setData] = useState([]);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState<user>();
   const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useAppDispatch();
   const fetch: ALLdata[] = useAppSelector((state) => state.create.data);
+  const userFetch = useAppSelector((state) => state.userFetch.user);
 
-  const userFetch = useAppSelector((state) => state.userFetch.data);
+  const todoFetch = useAppSelector((state) => state.userFetch.todos);
 
+  const email = session?.user?.email || "";
   useEffect(() => {
-    dispatch(fetchUser());
+    dispatch(fetchUser(email));
   }, [dispatch]);
 
   useEffect(() => {
-    const filteredUser = userFetch.filter(
-      (userData: Data1) => userData.email === session?.user?.email
-    );
-    setUser(filteredUser as []);
-  }, [userFetch]);
-
-  const fetchData = async () => {
-    try {
-      dispatch(fetchTodo());
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    fetchData();
-    dispatch(fetchTodo());
-  }, []);
+    todoFetch;
+  }, [todoFetch]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
+    todoFetch;
     return () => clearTimeout(timer);
-  }, [fetchData]);
+  }, [fetchUser, fetchTodo]);
 
   return {
     data,
-    fetchData,
+    userFetch,
     user,
     isLoading,
     fetch,
     setData,
+    todoFetch,
   };
 }

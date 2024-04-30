@@ -46,6 +46,7 @@ export interface CreateState {
   color: string;
   textColor: string;
   borderColor: string;
+  email: string;
 }
 
 export interface FetchState {
@@ -61,10 +62,25 @@ export interface ALLdata {
   color: string;
   textColor: string;
   borderColor: string;
+  userEmail: string;
 }
-
+export interface UserData {
+  id: string;
+  name: string;
+  email: string;
+  imageUrl: string;
+}
+export interface TodoData {
+  id: string;
+  title: string;
+  color: string;
+  textColor: string;
+  borderColor: string;
+  userEmail: string;
+}
 export interface UserState {
-  data: ALLUser[];
+  user: UserData;
+  todos: TodoData[];
   loading: "idle" | "pending" | "fulfilled" | "rejected";
   error: string | null;
 }
@@ -73,8 +89,18 @@ export interface ALLUser {
   id: string;
   email: string;
   imageUrl: string;
+  todo: TodoItem[];
 }
+
 export interface Data1 {
+  email: string;
+}
+export interface Data2 {
+  userEmail: string;
+}
+
+export interface Data3 {
+  id: string;
   email: string;
 }
 
@@ -178,5 +204,9 @@ export interface paramsType {
 }
 
 export interface paramsId {
+  id: string;
+}
+
+export interface user {
   id: string;
 }

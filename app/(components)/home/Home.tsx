@@ -5,35 +5,34 @@ import icon from "../../../public/icon.png";
 import setting from "../../../public/setting.png";
 import Loader from "../loader/Loader";
 import useHome from "./useHome";
-import { ALLdata, Item } from "@/types";
+import { TodoData } from "@/types";
 export default function Home() {
-  const { user, isLoading, fetch } = useHome();
+  const { isLoading, todoFetch, userFetch } = useHome();
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="h-auto">
           <div className="flex justify-between h-[96px] ">
             <Image
               src={icon}
               alt="Not found"
               className="w-[48px] h-[48px] mt-[24px] ml-[24px] "
             />
-            {user.map((user: Item, index) => (
-              <div key={index} className="w-fit h-[83px]">
-                <Link href={`/setting/${user.id}`}>
-                  <Image
-                    src={setting}
-                    alt="Not Found"
-                    className="w-[48px]  pt-[24px] mr-[24px]"
-                  />
-                </Link>
-              </div>
-            ))}
+
+            <div className="w-fit h-[83px]">
+              <Link href={`/setting/${userFetch.id}`}>
+                <Image
+                  src={setting}
+                  alt="Not Found"
+                  className="w-[48px]  pt-[24px] mr-[24px]"
+                />
+              </Link>
+            </div>
           </div>
 
-          <div className={`${fetch.length ? "h-fit" : "h-screen"} py-10 `}>
+          <div className={`${todoFetch.length ? "h-auto" : "h-screen"} py-10 `}>
             <div className="flex justify-center">
               <h1 className="text-white mt-[16px]  text-25px md:text-124px font-normal font-Stint_Ultra_Condensed ">
                 Todo Lists
@@ -45,8 +44,8 @@ export default function Home() {
             <div className="ml-[30px] sm:ml-[295px] md:ml-10 lg:ml-[295px] text-64px mt-[40px] md:mt-[70px] sm:mt-0">
               <div>
                 <div className="w-auto flex flex-col">
-                  {fetch &&
-                    fetch.map((item: ALLdata, index: number) => {
+                  {todoFetch &&
+                    todoFetch.map((item: TodoData, index: number) => {
                       return (
                         <div key={index} className="w-fit  h-[83px]">
                           <Link

@@ -18,6 +18,7 @@ model User {
     resetToken        String?
     resetTokenExpires DateTime?
     sessions          Session[]
+    todo              Todo[]
 
     @@map("users")
 }
@@ -28,6 +29,8 @@ model Todo {
     color         String
     textColor     String
     borderColor   String
+    userEmail     String    @unique
+    user          User      @relation(fields: [userEmail], references: [email])
     createdAt     DateTime  @default(now())
     emailVerified DateTime? @map("verifiedAt")
 

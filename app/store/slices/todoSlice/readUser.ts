@@ -1,18 +1,35 @@
 import AxiosInstance from "@/app/constance/AxiosInstance";
 import { URL } from "@/app/constance/url";
-import { ALLUser, UserState } from "@/types";
+import { UserData, UserState } from "@/types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+
 const initialState: UserState = {
-  data: [],
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    imageUrl: "",
+  },
+  todos: [],
   loading: "idle",
   error: null,
 };
-export const fetchUser = createAsyncThunk("users", async () => {
+export const fetchUser = createAsyncThunk("users", async (email: string) => {
   try {
-    const res = await AxiosInstance.get(`${URL}/api/register`, {});
-    const responseData: ALLUser[] = await res.data.data;
-    return responseData;
+    const res = await AxiosInstance.get(
+      `${URL}/api/register/?email=${email}`,
+      {}
+    );
+    const responseData = await res.data.data;
+
+    const user: UserData = {
+      id: responseData.id,
+      name: responseData.name,
+      email: responseData.email,
+      imageUrl: responseData.imageUrl,
+    };
+    const todos = responseData.todo;
+    return { user, todos };
   } catch (error) {
     throw error;
   }
@@ -31,7 +48,8 @@ export const UserSlice = createSlice({
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.loading = "fulfilled";
-        state.data = action.payload;
+        state.user = action.payload.user;
+        state.todos = action.payload.todos;
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.loading = "rejected";

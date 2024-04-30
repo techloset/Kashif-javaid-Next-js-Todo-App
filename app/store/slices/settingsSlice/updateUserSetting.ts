@@ -64,7 +64,7 @@ export const updateSetting = createAsyncThunk(
         updateData.email = email;
       }
       if (updatedImageUrl) {
-        updateData.imageUrl = updatedImageUrl;
+        updateData.imageUrl = updatedImageUrl || imageUrl;
       }
 
       const updateRes = await AxiosInstance.put(

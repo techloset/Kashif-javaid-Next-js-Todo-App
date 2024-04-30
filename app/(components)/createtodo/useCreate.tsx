@@ -7,18 +7,23 @@ import {
   CreateTodo,
   fetchTodo,
 } from "@/app/store/slices/todoSlice/todoOperation";
+import { useSession } from "next-auth/react";
 
 const useCreate = (onSelectColor?: OnSelectColor) => {
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("");
   const [textColor, setTextColor] = useState("");
   const [borderColor, setBorderColor] = useState("");
+  const [data1, setUser] = useState("");
   const [data, setData] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const { data: session } = useSession();
+  console.log(session?.user?.email);
   const create = useAppSelector((state) => state.create.data);
+
   const handleColorSelect = (
     color: string,
     customBorders: string,
@@ -52,8 +57,16 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     }
 
     try {
+      const email = session?.user?.email || "";
+
       dispatch(
-        CreateTodo({ title, color: selectedColor, textColor, borderColor })
+        CreateTodo({
+          title,
+          color: selectedColor,
+          textColor,
+          borderColor,
+          email,
+        })
       );
       toast.success("successfully created");
       router.push("/");
@@ -61,15 +74,17 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     } catch (error) {}
   };
 
-  const fetchData = async () => {
-    try {
-      dispatch(fetchTodo);
-    } catch (error) {}
-  };
+  useEffect(() => {
+    dispatch(fetchTodo());
+  }, [dispatch]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    const filteredUser = create.filter(
+      (userData: any) => userData.email === session?.user?.email
+    );
+    setUser(filteredUser as any);
+  }, [create]);
+
   const customColors = [
     "bg-custom-todo1",
     "bg-custom-todo2",
@@ -119,7 +134,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   return {
     title,
     setTitle,
-    fetchData,
+    data1,
     data,
     setData,
     addlist,

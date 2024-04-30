@@ -16,9 +16,22 @@ export const POST = async (request: NextRequest) => {
   }
 };
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
   try {
-    const data = await prisma.user.findMany();
+    const email = req.nextUrl.searchParams.get("email");
+    console.log(email);
+
+    if (email === null) {
+      return NextResponse.json({ message: "error" });
+    }
+    const data = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+      include: { todo: true },
+    });
+    console.log(data);
+
     return NextResponse.json({ message: "success", data });
   } catch (error) {
     return NextResponse.json({ message: "error" });

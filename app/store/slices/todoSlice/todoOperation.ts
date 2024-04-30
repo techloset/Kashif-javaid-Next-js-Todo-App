@@ -13,6 +13,7 @@ const initialState: CreateState = {
   color: "",
   textColor: "",
   borderColor: "",
+  email: "",
 };
 export const CreateTodo = createAsyncThunk(
   "create",
@@ -21,11 +22,13 @@ export const CreateTodo = createAsyncThunk(
     color,
     textColor,
     borderColor,
+    email,
   }: {
     title: string;
     color: string;
     textColor: string;
     borderColor: string;
+    email: string;
   }) => {
     try {
       await AxiosInstance.post(`${URL}/api/createtodo`, {
@@ -33,6 +36,7 @@ export const CreateTodo = createAsyncThunk(
         color,
         textColor,
         borderColor,
+        email,
       });
     } catch (error) {}
   }
@@ -42,6 +46,7 @@ export const fetchTodo = createAsyncThunk("todo", async () => {
   try {
     const res = await AxiosInstance.get(`${URL}/api/createtodo`, {});
     const responseData: ALLdata[] = res.data.response;
+
     return responseData;
   } catch (error) {
     console.log(error);
