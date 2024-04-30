@@ -17,7 +17,7 @@ export default function Home() {
           <div className="flex justify-between h-[96px] ">
             <Image
               src={icon}
-              alt="Not found"
+              alt="Logo"
               className="w-[48px] h-[48px] mt-[24px] ml-[24px] "
             />
 
@@ -25,7 +25,7 @@ export default function Home() {
               <Link href={`/setting/${userFetch.id}`}>
                 <Image
                   src={setting}
-                  alt="Not Found"
+                  alt="Setting Logo"
                   className="w-[48px]  pt-[24px] mr-[24px]"
                 />
               </Link>

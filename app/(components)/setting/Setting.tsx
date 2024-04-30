@@ -31,13 +31,13 @@ export default function Setting({ params }: { params: paramsId }) {
           <div className="flex justify-between">
             <Image
               src={icon}
-              alt="not"
+              alt="Logo"
               className="w-[48px]  h-[48px] mt-[24px] ml-[24px]"
             />
 
             <Image
               src={logout}
-              alt="not"
+              alt="Setting Logo"
               className="w-[48px] h-[48px]  mt-[24px] mr-[24px] cursor-pointer"
               onClick={() => signOut({ callbackUrl: "/login" })}
             />
@@ -65,7 +65,7 @@ export default function Setting({ params }: { params: paramsId }) {
               />
               <Image
                 src={profileimage}
-                alt="not found"
+                alt="Profile Image"
                 className="relative top-[155px] left-10 mx-auto cursor-pointer"
               />
             </label>

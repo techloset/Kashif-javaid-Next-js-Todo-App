@@ -15,7 +15,7 @@ export default function Login() {
   return (
     <>
       <div className="h-[900px] bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px] ">
-        <Image src={NavbarImage} alt="Image Not Found" />
+        <Image src={NavbarImage} alt="Navbar Logo" />
         <div className="mt-[60px] w-[100%] sm:w-[60%] md:w-[50%] lg:w-[35%] xl:w-[30%]  px-3  mx-auto">
           <LabelText name="Email" />
           <InputField

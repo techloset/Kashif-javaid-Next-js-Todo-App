@@ -26,13 +26,13 @@ export default function CreateTodo() {
           <div className="flex justify-between h-[96px]">
             <Image
               src={icon}
-              alt="Not"
+              alt="Logo"
               className="w-12 h-[48px] mt-6 ml-[24px]"
             />
             <Link href={"/"}>
               <Image
                 src={setting}
-                alt="Not"
+                alt="Setting Logo"
                 className="w-[48px] h-[48px] mt-[24px] mr-[24px]"
               />
             </Link>

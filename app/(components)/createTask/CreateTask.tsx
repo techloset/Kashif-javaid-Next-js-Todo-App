@@ -34,13 +34,13 @@ export default function CreateTask({ params }: { params: ParamsList }) {
       >
         <Image
           src={icon}
-          alt="Not found image"
+          alt="Logo"
           className="w-[48px] h-[48px] mt-[24px] ml-[24px] "
         />
         <Link href={`/`}>
           <Image
             src={setting}
-            alt="Not found image"
+            alt="Setting"
             className="w-[48px] h-[48px] mt-[24px] mr-[24px]"
           />
         </Link>
@@ -107,7 +107,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
                   <Link href={`/editTask/${item.id}`}>
                     <Image
                       src={editicon}
-                      alt="not"
+                      alt="Edit Task"
                       className="lg:ml-[500px] relative bottom-3 lg:relative lg:bottom-16 "
                     />
                   </Link>
@@ -115,7 +115,7 @@ export default function CreateTask({ params }: { params: ParamsList }) {
                   <button onClick={() => removeTopic(item.id)}>
                     <Image
                       src={removeicon}
-                      alt="Remove"
+                      alt="Remove Task"
                       className="sm:relative  relative bottom-3 lg:relative lg:bottom-16"
                     />
                   </button>

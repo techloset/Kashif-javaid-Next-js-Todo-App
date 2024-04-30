@@ -18,7 +18,7 @@ export default function EditTodo({ params }: { params: ParamsList }) {
           height: "100vh",
         }}
       >
-        <Image src={header} alt="Logo Image" />
+        <Image src={header} alt="Logo" />
 
         <div className="mt-[125px] w-full sm:w-[60%] md:w-[50%] lg:w-[30%]  mx-auto px-3">
           <InputField

@@ -27,7 +27,7 @@ export default function SignUp(params: { title: string }) {
   return (
     <>
       <div className="bg-black bg-[radial-gradient(white_1px,transparent_2px)] [background-size:16px_16px]">
-        <Image src={navbarImage} alt="image not found"></Image>
+        <Image src={navbarImage} alt="Navbar Image"></Image>
         <div className="mt-[64px]"></div>
         <div className="w-[100%] sm:w-[60%] md:w-[50%] lg:w-[30%]  mx-auto px-3">
           <LabelText name="Name" />

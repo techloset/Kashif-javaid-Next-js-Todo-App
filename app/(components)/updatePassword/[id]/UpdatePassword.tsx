@@ -1,5 +1,4 @@
 "use client";
-
 import icon from "../../../../public/icon.png";
 import setting from "../../../../public/setting.png";
 import Image from "next/image";
@@ -21,13 +20,13 @@ export default function UpdatePassword({ params }: { params: paramsId }) {
         <div className="flex justify-between h-[96px] ">
           <Image
             src={icon}
-            alt="Not Found"
+            alt="Logo"
             className="w-[48px] h-[48px] mt-[24px] ml-[24px]"
           />
           <Link href={`/setting/${params.id}`}>
             <Image
               src={setting}
-              alt="Not Found"
+              alt="Setting Logo"
               className="w-[48px]  pt-[24px] mr-[24px]"
             />
           </Link>
