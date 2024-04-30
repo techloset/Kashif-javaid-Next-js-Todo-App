@@ -6,7 +6,7 @@ import useEditTodo from "./useEditTask";
 import InputField from "../inputField/InputField";
 import { ParamsList } from "@/types";
 export default function EditTodo({ params }: { params: ParamsList }) {
-  const { setTopicTitle, handleEdit } = useEditTodo(params);
+  const { setTopicTitle, handleEdit, topicTitle } = useEditTodo(params);
   return (
     <>
       <div
@@ -24,6 +24,7 @@ export default function EditTodo({ params }: { params: ParamsList }) {
           <InputField
             type="text"
             placeholder="Edit Todo"
+            value={topicTitle}
             onChange={(e) => setTopicTitle(e.target.value)}
           />
         </div>

@@ -22,6 +22,7 @@ const useEditTodo = ({ id }: ParamsList) => {
   return {
     setTopicTitle,
     handleEdit,
+    topicTitle,
   };
 };
 
