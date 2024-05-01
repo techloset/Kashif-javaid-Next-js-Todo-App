@@ -23,6 +23,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const { data: session } = useSession();
 
   const create = useAppSelector((state) => state.create.data);
+  console.log(create);
 
   const handleColorSelect = (
     color: string,

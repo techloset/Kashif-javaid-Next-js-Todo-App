@@ -214,3 +214,6 @@ export interface user {
 export interface ProviderTypes {
   children?: React.ReactNode;
 }
+export interface create {
+  email: string;
+}
