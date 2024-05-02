@@ -75,39 +75,34 @@ export default function useSignUp() {
 
     return isValid;
   };
-
   const formHandle = async (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     try {
-      if (!validate()) {
-        return;
-      }
       if (!name || !email || !password || !confirmpassword) {
-        toast.error("Please fill in all fields");
+        toast.error("Please All fields Required");
         return;
       }
-
-      const response = await dispatch(SignUp({ name, email, password }));
-      const exists = response;
-
-      if (!exists) {
+      const exists = email;
+      if (exists) {
         toast.error("User already exists");
+
         setName("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
         router.push("/login");
-      } else {
-        setName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        router.push("/login");
+        return exists;
       }
-      setLoading(false);
+
+      dispatch(SignUp({ name, email, password }));
+      await toast.success("Successfully Register");
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      router.push("/login");
     } catch (error) {
-      toast.error("Error registering");
+      toast.error("error registering");
     }
   };
 

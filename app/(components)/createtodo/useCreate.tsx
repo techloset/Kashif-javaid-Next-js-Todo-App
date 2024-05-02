@@ -23,7 +23,6 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
   const { data: session } = useSession();
 
   const create = useAppSelector((state) => state.create.data);
-  console.log(create);
 
   const handleColorSelect = (
     color: string,
@@ -46,7 +45,7 @@ const useCreate = (onSelectColor?: OnSelectColor) => {
     e.preventDefault();
     setLoading(true);
     if (!title) {
-      toast.error("Please select a title");
+      toast.error("Please enter a title");
       setLoading(false);
       return null;
     }

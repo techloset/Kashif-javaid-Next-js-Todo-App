@@ -21,22 +21,22 @@ export const SignUp = createAsyncThunk(
     password: string;
   }) => {
     try {
-      const res = await AxiosInstance.post(`${URL}/api/userexist`, {
-        email,
-      });
-      if (res.status !== 200) {
-        throw new Error("Error creating");
-      }
-
       await axios.post(`${URL}/api/register`, {
         name,
         email,
         password,
       });
-      toast.success("User Login successfully");
+      return true;
     } catch (error) {
       console.log("error: ", error);
       toast.error("error");
+    }
+
+    const res = await AxiosInstance.post(`${URL}/api/userexist`, {
+      email,
+    });
+    if (res.data.exists) {
+      return null;
     }
   }
 );
