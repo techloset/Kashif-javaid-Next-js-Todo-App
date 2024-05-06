@@ -78,6 +78,7 @@ export default function useSignUp() {
   const formHandle = async (e: FormEvent) => {
     e.preventDefault();
     try {
+      setLoading(true);
       if (!name || !email || !password || !confirmpassword) {
         toast.error("Please All fields Required");
         return;
@@ -85,12 +86,12 @@ export default function useSignUp() {
       const exists = email;
       if (exists) {
         toast.error("User already exists");
-
         setName("");
         setEmail("");
         setPassword("");
         setConfirmPassword("");
         router.push("/login");
+
         return exists;
       }
 
@@ -101,6 +102,7 @@ export default function useSignUp() {
       setPassword("");
       setConfirmPassword("");
       router.push("/login");
+      setLoading(false);
     } catch (error) {
       toast.error("error registering");
     }
